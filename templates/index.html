@@ -5,161 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="description" content="{{ tagline }}">
-    <style>
-        :root {
-            --primary: #0056b3;
-            --primary-hover: #004494;
-            --bg: #f5f7fa;
-            --text: #333;
-            --card-bg: #ffffff;
-            --border: #e0e0e0;
-        }
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text);
-            background-color: var(--bg);
-            line-height: 1.5;
-        }
-        header {
-            background-color: var(--primary);
-            color: #fff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 { margin: 0 0 0.5rem 0; font-size: 2rem; }
-        header p { margin: 0 0 1rem 0; opacity: 0.9; }
-        .contact-info { font-size: 0.95rem; opacity: 0.95; }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        .section { padding: 3rem 0; }
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: var(--text);
-        }
-        /* Features grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-        .feature-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin: 0 0 0.75rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        /* Services grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-        }
-        .service-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-        }
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        .service-card h3 {
-            margin: 0 0 1rem 0;
-            font-size: 1.1rem;
-        }
-        .service-card a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .service-card a:hover { text-decoration: underline; }
-        /* Steps */
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-        }
-        .step-item {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-        .step-num {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1;
-            margin: 0 0 0.75rem 0;
-            display: block;
-        }
-        /* FAQ */
-        .faq {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .faq-item {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-        .faq-item h3 { margin: 0 0 0.5rem 0; color: var(--primary); }
-        /* Footer */
-        footer {
-            background: #222;
-            color: #fff;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-        }
-        /* Mobile tweaks */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.5rem; }
-            .section-title { font-size: 1.5rem; }
-        }
-    </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>{{ title }}</h1>
-            <p>{{ tagline }}</p>
-            <div class="contact-info">
-                📞 {{ phone }} | 📧 {{ email }}<br>
-                📍 {{ address }} | ⏰ {{ hours }}
+<header>
+    <div class="header-wrapper">
+        <!-- Логотип слева -->
+        <a href="/" class="logo-block">
+            <img src="{{ url_for('static', filename='img/logo_service.jpeg') }}" alt="Логотип" class="logo-img">
+            <span class="logo-text">Цифровой сервис</span>
+        </a>
+
+        <!-- Навигация по центру (4 пункта) -->
+        <nav class="main-nav">
+            <a href="#repair" class="nav-link">Ремонт устройств</a>
+            <a href="#info" class="nav-link">Информация о сервисе</a>
+            <a href="#about" class="nav-link">О компании</a>
+            <a href="#contacts" class="nav-link">Контакты</a>
+        </nav>
+
+        <!-- Контакты и кнопка справа -->
+        <div class="header-actions">
+            <div class="header-contact-info">
+                <span class="phone-number">+7 (495) 021-89-06</span>
+                <span class="address">Люсиновская улица, 68</span>
             </div>
+            <a href="#" class="btn-call-to-action">Заказать звонок</a>
         </div>
-    </header>
+    </div>
+</header>
+
+
 
     <div class="container">
         <section class="section">
