@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="description" content="{{ tagline }}">
+    <link href="https://googleapis.com" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
@@ -13,26 +14,31 @@
     <div class="header-wrapper">
         <!-- Логотип слева -->
         <a href="/" class="logo-block">
-            <img src="{{ url_for('static', filename='img/logo_service.jpeg') }}" alt="Логотип" class="logo-img">
-            <span class="logo-text">Цифровой сервис</span>
+            <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+            <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
         </a>
 
         <!-- Навигация по центру (4 пункта) -->
         <nav class="main-nav">
-            <a href="#repair" class="nav-link">Ремонт устройств</a>
-            <a href="#info" class="nav-link">Информация о сервисе</a>
-            <a href="#about" class="nav-link">О компании</a>
+            <a href="#repair" class="nav-link">Диагностика</a>
+            <a href="#info" class="nav-link">Ремонт</a>
+            <a href="#about" class="nav-link">Услуги</a>
             <a href="#contacts" class="nav-link">Контакты</a>
         </nav>
 
-        <!-- Контакты и кнопка справа -->
-        <div class="header-actions">
-            <div class="header-contact-info">
-                <span class="phone-number">+7 (495) 021-89-06</span>
-                <span class="address">Люсиновская улица, 68</span>
-            </div>
-            <a href="#" class="btn-call-to-action">Заказать звонок</a>
-        </div>
+<!-- Контакты и кнопка справа -->
+<div class="header-actions">
+    <!-- Телефон всегда сверху на всю ширину блока -->
+    <span class="phone-number">8 (903) 103-61-04</span>
+
+    <!-- Нижний ряд: адрес слева, кнопка справа -->
+    <div class="header-bottom-row">
+        <span class="address">Балашиха, мкр. Железнодорожный,<br>ул Новая д.8а ТЦ "Корона"</span>
+        <a href="#" class="btn-call-to-action">Заказать звонок</a>
+    </div>
+</div>
+
+
     </div>
 </header>
 
