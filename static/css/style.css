@@ -524,9 +524,10 @@ header {
 @media (max-width: 600px) {
     .logo-block {margin: 0 auto !important;}
     .logo-img { height: 60px; }
-    .section-title { font-size: 1.5rem;
+    .section-title { font-size: 1.5rem;}
 
     }
+
 
     /* Делаем название сервиса крупным, жирным и красивым шрифтом Montserrat на смартфонах */
     .logo-text {
@@ -552,6 +553,7 @@ header {
     }
 
     .phone-number {
+        font-size: 1.8rem !important;
         text-align: center !important;     /* Центрирует сам номер телефона */
         width: 100% !important;
         margin-bottom: 0 !important;
@@ -569,17 +571,21 @@ header {
         text-align: center !important;     /* Центрирует строки адреса */
     }
 
-    /* Сетка навигационного меню */
+
+    /* Сетка навигационного меню на смартфонах */
     .main-nav {
-        margin: 0;
-        gap: 0;
-        justify-content: center;
-        width: 100%;
+        margin: 0 auto !important;
+        gap: 8px 0 !important;       /* Отступ между верхним и нижним рядом меню */
+        justify-content: center !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-wrap: wrap !important;  /* МАГИЯ: если пункты не влезают в один ряд, они переносятся вниз */
     }
+
 
     /* Увеличили кнопки меню ровно на 20% (до 1.26rem) с аккуратными микро-отступами */
     .nav-link {
-        font-size: 1.26rem !important;
+        font-size: 1rem !important;
         padding: 0.4rem 0.9rem !important;
     }
 
