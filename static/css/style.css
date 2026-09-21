@@ -205,7 +205,7 @@ header {
 }
 
 .address {
-    font-size: 1.18rem;       /* Крупный и чёткий шрифт адреса */
+    font-size: 1rem;       /* Крупный и чёткий шрифт адреса */
     color: #e0e0e0;
     line-height: 1.3;
     text-align: right;        /* Выравнивание строк адреса по правому краю */
@@ -380,7 +380,7 @@ header {
     color: #555555;
     padding: 3rem 0 0 0;
     border-top: 1px solid var(--border);
-    font-size: 0.95rem;
+    font-size: 1.2rem;
 }
 
 .footer-wrapper {
@@ -523,7 +523,7 @@ header {
 /* Mobile tweaks — Изменения применяются ТОЛЬКО на экранах смартфонов */
 @media (max-width: 600px) {
     .logo-block {margin: 0 auto !important;}
-    .logo-img { height: 60px; }
+    .logo-img { height: 70px; }
     .section-title { font-size: 1.5rem;}
 
     }
@@ -532,7 +532,7 @@ header {
     /* Делаем название сервиса крупным, жирным и красивым шрифтом Montserrat на смартфонах */
     .logo-text {
         font-family: 'Montserrat', sans-serif !important;
-        font-size: 1.9rem !important;
+        font-size: 1.8rem !important;
         font-weight: 800 !important;
         letter-spacing: 1px !important;
     }
@@ -572,22 +572,45 @@ header {
     }
 
 
-    /* Сетка навигационного меню на смартфонах */
+    /* Навигация на смартфонах — жестко фиксируем в одну строку */
     .main-nav {
         margin: 0 auto !important;
-        gap: 8px 0 !important;       /* Отступ между верхним и нижним рядом меню */
+        gap: 0 !important;               /* Обнуляем зазоры, чтобы контролировать швы вручную */
         justify-content: center !important;
+        align-items: center !important;
         width: 100% !important;
         display: flex !important;
-        flex-wrap: wrap !important;  /* МАГИЯ: если пункты не влезают в один ряд, они переносятся вниз */
+        flex-wrap: nowrap !important;    /* Запрет переноса строки */
     }
 
-
-    /* Увеличили кнопки меню ровно на 20% (до 1.26rem) с аккуратными микро-отступами */
+    /* Сами ссылки меню — задаем ЖЕСТКИЕ одинаковые отступы слева и справа */
     .nav-link {
-        font-size: 1rem !important;
-        padding: 0.4rem 0.9rem !important;
+        font-size: 1.05rem !important;
+        padding: 0.2rem 10px !important; /* Ровно по 10px воздуха слева и справа от каждого слова */
+        font-weight: 600 !important;
+        position: relative !important;
+        display: inline-block !important;
     }
+
+    /* ВОЗВРАЩАЕМ ЛАЗЕРНЫЕ РАЗДЕЛИТЕЛИ И СТАВИМ ИХ СТРОГО ПО ЦЕНТРУ */
+    .nav-link:not(:last-child)::after {
+        content: "" !important;
+        display: block !important;       /* Включаем видимость */
+        position: absolute !important;
+        right: -1px !important;          /* Сдвигаем ровно на центр между кнопками */
+        top: 20% !important;             /* Аккуратная высота шва на мобильных */
+        height: 60% !important;
+        width: 2px !important;           /* Толщина палочки */
+        background-color: #ffffff !important;
+
+        /* Наше фирменное лазерное свечение */
+        box-shadow:
+            0 0 4px #ffffff,
+            0 0 8px rgba(255, 255, 255, 0.5),
+            -1px 0 3px rgba(0, 0, 0, 0.4) !important;
+    }
+
+
 
 
     /* ==================== СТРОГОЕ ЦЕНТРИРОВАНИЕ КОНТАКТОВ И ЛЕВОЕ ВЫРАВНИВАНИЕ УСЛУГ ==================== */
