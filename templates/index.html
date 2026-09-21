@@ -57,18 +57,29 @@
             </div>
         </section>
 
-        <section class="section">
+                <section class="section">
             <h2 class="section-title">Наши услуги</h2>
             <div class="services-grid">
                 {% for service in services %}
                 <div class="service-card">
-                    <span class="service-icon">{{ service.icon }}</span>
+                    <span class="service-icon">
+                        {# Проверяем, картинка это или текстовый эмодзи #}
+                        {% if service.icon.endswith('.png') %}
+                            <img src="{{ url_for('static', filename='img/' + service.icon) }}"
+                                 style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
+                                 alt="{{ service.title }}">
+                        {% else %}
+                            {{ service.icon }}
+                        {% endif %}
+                    </span>
                     <h3>{{ service.title }}</h3>
-                    <a href="{{ service.link }}">Подробнее</a>
+                    {# Подставляем динамический ЧПУ-адрес вместо решетки #}
+                    <a href="/services/{{ service.slug }}">Подробнее</a>
                 </div>
                 {% endfor %}
             </div>
         </section>
+
 
         <section class="section">
             <h2 class="section-title">Как мы работаем</h2>
@@ -96,8 +107,59 @@
         </section>
     </div>
 
-    <footer>
-        <p>Версия сайта: {{ version }}</p>
+        <footer class="site-footer">
+        <div class="footer-wrapper">
+            <!-- 1 Колонка: Наши направления (features) -->
+            <div class="footer-col">
+                <h4>Наши направления</h4>
+                <ul>
+                    {% for feature in features %}
+                    <li><a href="#about">{{ feature.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- 2 Колонка: Наши услуги (services) -->
+            <div class="footer-col">
+                <h4>Наши услуги</h4>
+                <ul>
+                    {% for service in services %}
+                    <li><a href="/services/{{ service.slug }}">{{ service.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- 3 Колонка: Контакты -->
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <p class="footer-phone">{{ phone }}</p>
+                <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
+                <p class="footer-address"><strong>{{ address }}</strong></p>
+            </div>
+
+            <!-- 4 Колонка: Логотип и График работы -->
+            <div class="footer-col footer-brand-col">
+                <!-- МЕНЯЕМ ТУТ: оборачиваем в ссылку href="#" -->
+                <a href="#" class="logo-block footer-logo">
+                    <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+                    <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+                </a>
+                <div class="schedule-block">
+                    <h5>График работы:</h5>
+                    <p>{{ hours }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя плашка (Копирайт и Версия сайта) -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-wrapper">
+                <span>&copy; 2014-2026 Все права защищены.</span>
+                <a href="#" class="footer-link">Политика конфиденциальности</a>
+                <span class="footer-version">Версия сайта: {{ version }}</span>
+            </div>
+        </div>
     </footer>
+
 </body>
 </html>
