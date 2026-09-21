@@ -520,62 +520,48 @@ header {
 
 
 
-/* Mobile tweaks — Изменения применяются ТОЛЬКО на экранах смартфонов */
-@media (max-width: 600px) {
-    .logo-block {margin: 0 auto !important;}
-    .logo-img { height: 70px; }
-    .section-title { font-size: 1.5rem;}
+/* ==================== АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ ==================== */
+@media screen and (max-width: 600px) {
+    /* --- ВЕРХНЯЯ ШАПКА САЙТА (МОБИЛЬНАЯ) --- */
 
+    /* Разворачиваем логотип горизонтально ТОЛЬКО на смартфонах */
+    .logo-block {
+        margin: 0 auto !important;
+        flex-direction: row !important;   /* В РЯД: процессор слева, текст справа */
+        gap: 12px !important;            /* Отступ между ними */
+        align-items: center !important;   /* Выравнивание по центру высоты */
     }
 
+    .logo-img {
+        height: 70px !important;         /* Компактная высота для горизонтального ряда */
+        margin: 0 !important;            /* Сбросили авто-отступы */
+    }
 
-    /* Делаем название сервиса крупным, жирным и красивым шрифтом Montserrat на смартфонах */
     .logo-text {
         font-family: 'Montserrat', sans-serif !important;
-        font-size: 1.8rem !important;
+        font-size: 1.6rem !important;
         font-weight: 800 !important;
         letter-spacing: 1px !important;
+        margin: 0 !important;
+        text-align: center !important;
     }
 
-    /* Адаптация шапки на мобильных */
+    .section-title {
+        font-size: 1.5rem !important;
+    }
+
+    /* Перестраиваем контейнер шапки в одну колонку */
     .header-wrapper {
         flex-direction: column;
         align-items: stretch;
-        text-align: center;
+        text-align: center !important;
         gap: 1.2rem;
     }
-        /* ИСПРАВЛЕНИЕ ОШИБКИ: Сбрасываем правое выравнивание и принудительно центрируем контакты на мобильных */
-    .header-actions {
-        align-items: center !important;    /* Перебивает flex-end со 181 строки и двигает блок на центр */
-        text-align: center !important;     /* Перебивает right со 181 строки */
-        width: 100% !important;
-        gap: 12px !important;
-    }
 
-    .phone-number {
-        font-size: 1.8rem !important;
-        text-align: center !important;     /* Центрирует сам номер телефона */
-        width: 100% !important;
-        margin-bottom: 0 !important;
-    }
-
-    .header-bottom-row {
-        justify-content: center !important; /* Центрирует адрес и кнопку по горизонтали */
-        text-align: center !important;
-        width: 100% !important;
-        flex-direction: column !important;  /* Строит адрес и кнопку друг под другом на телефонах */
-        gap: 12px !important;
-    }
-
-    .address {
-        text-align: center !important;     /* Центрирует строки адреса */
-    }
-
-
-    /* Навигация на смартфонах — жестко фиксируем в одну строку */
+    /* НАВИГАЦИОННОЕ МЕНЮ: жестко в одну строку */
     .main-nav {
         margin: 0 auto !important;
-        gap: 0 !important;               /* Обнуляем зазоры, чтобы контролировать швы вручную */
+        gap: 0 !important;
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
@@ -583,37 +569,63 @@ header {
         flex-wrap: nowrap !important;    /* Запрет переноса строки */
     }
 
-    /* Сами ссылки меню — задаем ЖЕСТКИЕ одинаковые отступы слева и справа */
+    /* Сами ссылки меню — компактные и симметричные */
     .nav-link {
         font-size: 1.05rem !important;
-        padding: 0.2rem 10px !important; /* Ровно по 10px воздуха слева и справа от каждого слова */
+        padding: 0.2rem 10px !important; /* Ровно по 10px воздуха слева и справа от букв */
         font-weight: 600 !important;
         position: relative !important;
         display: inline-block !important;
     }
 
-    /* ВОЗВРАЩАЕМ ЛАЗЕРНЫЕ РАЗДЕЛИТЕЛИ И СТАВИМ ИХ СТРОГО ПО ЦЕНТРУ */
+    /* ЛАЗЕРНЫЕ РАЗДЕЛИТЕЛИ СТРОГО ПО ЦЕНТРУ МЕЖДУ СЛОВАМИ */
     .nav-link:not(:last-child)::after {
         content: "" !important;
-        display: block !important;       /* Включаем видимость */
+        display: block !important;
         position: absolute !important;
-        right: -1px !important;          /* Сдвигаем ровно на центр между кнопками */
-        top: 20% !important;             /* Аккуратная высота шва на мобильных */
+        right: -1px !important;          /* Центр между кнопками */
+        top: 20% !important;
         height: 60% !important;
-        width: 2px !important;           /* Толщина палочки */
+        width: 2px !important;
         background-color: #ffffff !important;
-
-        /* Наше фирменное лазерное свечение */
         box-shadow:
             0 0 4px #ffffff,
             0 0 8px rgba(255, 255, 255, 0.5),
             -1px 0 3px rgba(0, 0, 0, 0.4) !important;
     }
 
+    /* КОНТАКТЫ В ШАПКЕ */
+    .header-actions {
+        align-items: center !important;    /* Сдвигает блок телефона на центр */
+        text-align: center !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+
+    /* Идеальный размер телефона, чтобы он встал в ОДНУ строку на смартфонах */
+    .phone-number {
+        font-size: 1.8rem !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Ряд с адресом и кнопкой звонка */
+    .header-bottom-row {
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        flex-direction: column !important;  /* Строим адрес и кнопку друг под другом */
+        gap: 12px !important;
+    }
+
+    .address {
+        text-align: center !important;
+    }
 
 
+    /* --- НИЖНИЙ ФУТЕР САЙТА (МОБИЛЬНЫЙ) --- */
 
-    /* ==================== СТРОГОЕ ЦЕНТРИРОВАНИЕ КОНТАКТОВ И ЛЕВОЕ ВЫРАВНИВАНИЕ УСЛУГ ==================== */
     /* Перестраиваем сетку футера в одну колонку */
     .footer-wrapper {
         grid-template-columns: 1fr !important;
@@ -632,14 +644,13 @@ header {
         display: block !important;
     }
 
-        /* ТРЕТЬЯ КОЛОНКА: Контакты — возвращаем точное исходное выравнивание */
+    /* ТРЕТЬЯ КОЛОНКА: Контакты в подвале — по центру с КРУПНЫМИ шрифтами */
     .footer-wrapper .footer-col:nth-child(3) {
         text-align: center !important;
-        width: 100% !important;
     }
-    .footer-phone {
+    .footer-wrapper .footer-phone {
         font-size: 1.8rem !important;
-        margin: 0 auto 0.6rem auto !important; /* Авто-отступы центрируют сам блок номера */
+        margin: 0 auto 0.6rem auto !important;
         text-align: center !important;
         display: block !important;
     }
@@ -654,40 +665,42 @@ header {
         display: block !important;
     }
 
-
     /* ЧЕТВЕРТАЯ КОЛОНКА: Брендовый блок и График работы — строго по центру */
     .footer-brand-col {
         align-items: center !important;
         text-align: center !important;
     }
+
+    /* Увеличиваем нижний логотип-процессор в футере в 2 раза для мобильных */
+    .footer-logo .logo-img {
+        height: 120px !important;
+        margin-bottom: 12px !important;
+    }
+
     .schedule-block {
         text-align: center !important;
     }
     .schedule-block h5 {
-        font-size: 1.25rem !important; /* Заголовок "График работы:" крупнее */
+        font-size: 1.25rem !important;
         margin-bottom: 0.4rem !important;
     }
     .schedule-block p {
-        font-size: 1.2rem !important; /* НАША ПРАВКА: Сам график крупным шрифтом */
-        font-weight: 600 !important;   /* Сделали время более плотным */
-        color: #222222 !important;     /* Сделали цвет контрастным */
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        color: #222222 !important;
     }
 
-    /* САМЫЙ НИЖНИЙ БЛОК: Синяя плашка — строго по центру вертикальным столбцом */
+    /* САМЫЙ НИЖНИЙ БЛОК: Синяя плашка — по центру вертикальным столбцом */
     .footer-bottom-wrapper {
         flex-direction: column !important;
         text-align: center !important;
         gap: 0.8rem !important;
     }
-
-        /* Увеличиваем логотип-процессор в футере в 2 раза для мобильных */
-    .footer-logo .logo-img {
-        height: 120px !important; /* Увеличено с 60px до 120px */
-        margin-bottom: 12px !important;
-    }
+} /* ТУТ ЖЕСТКО ЗАКРЫВАЕТСЯ МЕДИА-ЗАПРОС. Мобильный код изолирован от ПК */
 
 
-}
+
+
 
 
 
