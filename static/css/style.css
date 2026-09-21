@@ -115,7 +115,7 @@ header {
 .nav-link {
     color: #fff;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 500;
     padding: 0.4rem 1.4rem;    /* Чуть увеличили боковые отступы для солидности */
     position: relative;        /* Нужен для точного позиционирования элементов */
