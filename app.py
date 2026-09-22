@@ -42,11 +42,6 @@ def service_page(slug):
     # Передаем обновленные данные в отдельный чистый шаблон лендинга услуги
     return render_template("service.html", **page_data)
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
 @app.route("/directions/<slug>")
 def direction_page(slug):
     # Получаем исходные данные сайта
@@ -76,3 +71,6 @@ def direction_page(slug):
 
     # Рендерим всё в тот же index.html, не плодя новые файлы
     return render_template("index.html", **page_data)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5001, debug=True)
