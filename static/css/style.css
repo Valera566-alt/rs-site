@@ -16,6 +16,7 @@ body {
     background-color: var(--bg);
     line-height: 1.5;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -23,92 +24,63 @@ html {
 header {
     background-color: var(--primary);
     color: #fff;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
 }
 
-/* Контейнер шапки: распределяет пространство на 3 колонки (лого | меню | действия) */
 .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
 }
 
-/* Логотип */
 .logo-block {
     display: flex;
-    flex-direction: column;   /* Текст остается строго ПОД картинкой */
-    align-items: center;      /* МАГИЯ: выравнивает и картинку, и текст ровно ПО ЦЕНТРУ */
-    justify-content: center;  /* Жестко фиксирует центрирование по горизонтали */
-    text-align: center;       /* Центрирует сам текст внутри своей строки */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     text-decoration: none;
     color: inherit;
-    width: fit-content;       /* Не дает блоку растягиваться и смещать картинку */
+    width: fit-content;
+    position: relative;
 }
-
-.logo-block:active {
-    top: 3px !important; /* При клике плавно смещаем весь блок на 3px вниз */
-}
-
-
 
 .logo-img {
     height: 60px;
     width: auto;
     max-width: 100%;
     display: block;
-    margin: 0 auto 8px auto;  /* Авто-отступы по бокам принудительно центрируют процессор */
-
-    /* МАГИЯ: Свечение контуров процессора точь-в-точь как у лазерных разделителей меню */
-    filter:
-        drop-shadow(0 0 3px #ffffff)
-        drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
-
-    /* Добавляем параметры для независимого движения картинки */
+    margin: 0 auto 8px auto;
+    filter: drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
     position: relative;
     top: 0;
     transition: filter 0.25s ease-in-out, top 0.1s ease-in-out;
 }
 
-/* При наведении мыши на логотип — процессор начинает вспыхивать ярче */
 .logo-block:hover .logo-img {
-    filter:
-        drop-shadow(0 0 5px #ffffff)
-        drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+    filter: drop-shadow(0 0 5px #ffffff) drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
 }
 
-/* ФИЗИЧЕСКИЙ КЛИК: Вжимается ТОЛЬКО сам процессор, текст под ним стоит на месте */
 .logo-block:active .logo-img {
-    top: 4px !important; /* Смещаем картинку вниз на 4px в момент нажатия */
-}
-
-
-/* При наведении мыши на логотип — процессор начинает вспыхивать ярче */
-.logo-block:hover .logo-img {
-    filter:
-        drop-shadow(0 0 5px #ffffff)
-        drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+    top: 4px !important;
 }
 
 .logo-text {
     margin-top: 0;
-    font-family: 'Montserrat', sans-serif; /* НАШ НАИБОЛЕЕ СИМПАТИЧНЫЙ ШРИФТ */
-    font-weight: 800;         /* Сделали буквы максимально плотными и солидными */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
     font-size: 1.15rem;
     color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: 2px;      /* Слегка раздвинули буквы для технологичного стиля */
+    letter-spacing: 2px;
 }
-
-
-
-
-/* Навигация (меню из 4 пунктов) */
 .main-nav {
     display: flex;
-    align-items: center;       /* Выравниваем пункты меню строго по центру высоты */
+    align-items: center;
     margin: 0 2rem;
 }
 
@@ -117,170 +89,154 @@ header {
     text-decoration: none;
     font-size: 1.4rem;
     font-weight: 500;
-    padding: 0.4rem 1.4rem;    /* Чуть увеличили боковые отступы для солидности */
-    position: relative;        /* Нужен для точного позиционирования элементов */
+    padding: 0.4rem 1.4rem;
+    position: relative;
     display: inline-block;
     transition: background-color 0.2s;
 }
 
-/* МАГИЯ: Яркие светящиеся врезные разделители МЕЖДУ пунктами меню (высота 70%) */
 .nav-link:not(:last-child)::after {
     content: "";
     position: absolute;
-    right: -1px;               /* Ставим строго между кнопками */
-    top: 15%;                  /* Высота теперь аккуратная — занимает 70% */
+    right: -1px;
+    top: 15%;
     height: 70%;
-    width: 2px;                /* Белое светящееся ядро */
+    width: 2px;
     background-color: #ffffff;
-
-    /* ЭФФЕКТ ЛАЗЕРНОЙ ВРЕЗКИ: Внутренний свет + мягкий ореол наружу */
-    box-shadow:
-        0 0 4px #ffffff,                      /* Внутренний яркий блик */
-        0 0 8px rgba(255, 255, 255, 0.5),      /* Мягкое свечение */
-        -1px 0 3px rgba(0, 0, 0, 0.4);         /* Легкая тень для врезного эффекта */
-
+    box-shadow: 0 0 4px #ffffff, 0 0 8px rgba(255, 255, 255, 0.5), -1px 0 3px rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.25s ease-in-out;
 }
 
-/* Плавное выезжание линии подсветки снизу */
 .nav-link::before {
     content: "";
     position: absolute;
-    left: 14px;                /* Начинаем линию ровно под текстом */
+    left: 14px;
     right: 14px;
-    bottom: -2px;              /* Опустили чуть ниже слова */
-    height: 3px;               /* Толщина линии подсветки */
-    background-color: #ffffff; /* Цвет линии */
-
-    /* Изначально сжимаем линию в точку по центру и делаем невидимой */
+    bottom: -2px;
+    height: 3px;
+    background-color: #ffffff;
     transform: scaleX(0);
     opacity: 0;
     transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 }
 
-/* Плавное растягивание линии из центра при наведении мыши */
 .nav-link:hover::before {
     transform: scaleX(1);
     opacity: 1;
 }
 
-/* При наведении мыши соседний шов начинает вспыхивать ярче */
 .nav-link:hover::after {
-    box-shadow:
-        0 0 6px #ffffff,
-        0 0 12px rgba(255, 255, 255, 0.8),
-        -1px 0 3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 6px #ffffff, 0 0 12px rgba(255, 255, 255, 0.8), -1px 0 3px rgba(0, 0, 0, 0.4);
 }
 
 .nav-link:hover {
     opacity: 1;
-    background-color: rgba(255, 255, 255, 0.05); /* Ячейка меню слегка подсвечивается изнутри */
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Блок справа: контакты и кнопка */
 .header-actions {
     display: flex;
-    flex-direction: column;   /* Строим структуру: телефон сверху, ряд с адресом/кнопкой снизу */
-    align-items: flex-end;     /* Прижимаем весь правый блок к правому краю */
+    flex-direction: column;
+    align-items: flex-end;
     text-align: right;
-    gap: 8px;                 /* Отступ между номером телефона и нижним рядом */
+    gap: 8px;
 }
 
 .phone-number {
-    font-size: 2.37rem;        /* Комфортный крупный размер номера */
+    font-size: 2.37rem;
     font-weight: 700;
     color: #fff;
     display: block;
     line-height: 1;
-    letter-spacing: 0.5px;    /* Идеально выравнивает цифры по длине нижнего ряда */
+    letter-spacing: 0.5px;
     margin-bottom: 4px;
 }
 
-/* Новый контейнер под телефоном: ставит адрес и кнопку в один ряд */
 .header-bottom-row {
     display: flex;
-    flex-direction: row;      /* Адрес и кнопка встают строго в один ряд */
-    align-items: center;      /* Идеально выравниваем их по центру высоты друг друга */
-    gap: 20px;                /* Удобное расстояние между текстом адреса и кнопкой */
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
 
 .address {
-    font-size: 1rem;       /* Крупный и чёткий шрифт адреса */
+    font-size: 1rem;
     color: #e0e0e0;
     line-height: 1.3;
-    text-align: right;        /* Выравнивание строк адреса по правому краю */
-    white-space: nowrap;      /* Не дает тексту прыгать на новые строки мимо <br> */
+    text-align: right;
+    white-space: nowrap;
 }
 
-/* Кнопка "Заказать звонок" — овальная, выпуклая, с ровной рамкой */
 .btn-call-to-action {
     display: inline-block;
     background-color: var(--primary);
     color: #fff;
     padding: 0.6rem 1.8rem;
-    border-radius: 50px;           /* Овальная форма */
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    border: 2px solid #d0d7de;     /* Идеальная серая рамка */
-
-    /* Внутренний и внешний рельеф: добавили мягкий белый микро-блик изнутри */
-    box-shadow:
-        0 4px 5px rgba(0, 0, 0, 0.25),
-        inset 0 1px 1px rgba(255, 255, 255, 0.35);
-
+    border: 2px solid #d0d7de;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35);
     transition: all 0.15s ease-in-out;
     position: relative;
     top: 0;
 }
 
-/* МАГИЯ: Возвращаем яркое, сочное неоновое свечение кнопке при наведении курсора */
 .btn-call-to-action:hover {
     background-color: #004fb5;
-
-    /* Двойная тень: плотная тёмная снизу + объёмное яркое белое свечение вокруг всей рамки кнопки */
-    box-shadow:
-        0 6px 12px rgba(0, 0, 0, 0.3),
-        0 0 10px rgba(255, 255, 255, 0.45),
-        inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-/* Реалистичный эффект НАЖАТИЯ кнопки (клик мышкой) */
 .btn-call-to-action:active {
-    top: 3px !important;           /* Вжимаем кнопку вниз */
+    top: 3px !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
-
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
 }
 
-.section { padding: 3rem 0; }
+.section { padding: 0rem 0; }
 
 .section-title {
     text-align: center;
     font-size: 1.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
     color: var(--text);
 }
 
-/* Features grid */
+/* Сетка Основных направлений — СТРОГО 4 блока в один ряд */
 .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+    /* Уменьшили минимальный порог до 200px. Теперь 4 блока идеально влезают в ряд! */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
 }
 
 .feature-card {
+    display: block;
+    text-decoration: none !important;
+    color: var(--text) !important;
     background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+}
+
+.feature-card:active {
+    transform: translateY(2px) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08) !important;
 }
 
 .feature-card h3 {
@@ -292,10 +248,11 @@ header {
     gap: 0.5rem;
 }
 
-/* Services grid */
+/* Сетка Наши услуги — СТРОГО 5 блоков в один ряд */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Уменьшили порог до 180px. Теперь 5 блоков гарантированно помещаются в один ряд в рамках 1200px контейнера */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.25rem;
 }
 
@@ -311,7 +268,12 @@ header {
 
 .service-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 166px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.service-card:active {
+    transform: translateY(2px) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08) !important;
 }
 
 .service-icon {
@@ -333,7 +295,6 @@ header {
 
 .service-card a:hover { text-decoration: underline; }
 
-/* Steps */
 .steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -358,7 +319,6 @@ header {
     display: block;
 }
 
-/* FAQ */
 .faq {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -374,7 +334,6 @@ header {
 
 .faq-item h3 { margin: 0 0 0.5rem 0; color: var(--primary); }
 
-/* ==================== СТИЛИ ФУТЕРА ==================== */
 .site-footer {
     background-color: #ffffff;
     color: #555555;
@@ -390,6 +349,7 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
+    box-sizing: border-box;
 }
 
 .footer-col h4 {
@@ -422,7 +382,6 @@ header {
     text-decoration: underline;
 }
 
-/* Стили контактов в футере */
 .footer-phone {
     font-size: 1.3rem;
     font-weight: 700;
@@ -440,7 +399,6 @@ header {
     color: #444444;
 }
 
-/* Правая брендовая колонка */
 .footer-brand-col {
     display: flex;
     flex-direction: column;
@@ -449,7 +407,7 @@ header {
 }
 
 .footer-logo {
-    color: var(--primary) !important; /* В футере делаем текст синим для читаемости на белом фоне */
+    color: var(--primary) !important;
     margin-bottom: 1.5rem;
 }
 
@@ -457,17 +415,12 @@ header {
     color: var(--primary) !important;
 }
 
-/* Синее свечение процессора на белом фоне вместо белого */
 .footer-logo .logo-img {
-    filter:
-        drop-shadow(0 0 2px var(--primary))
-        drop-shadow(0 0 5px rgba(0, 86, 179, 0.4)) !important;
+    filter: drop-shadow(0 0 2px var(--primary)) drop-shadow(0 0 5px rgba(0, 86, 179, 0.4)) !important;
 }
 
 .footer-logo:hover .logo-img {
-    filter:
-        drop-shadow(0 0 4px var(--primary))
-        drop-shadow(0 0 8px rgba(0, 86, 179, 0.7)) !important;
+    filter: drop-shadow(0 0 4px var(--primary)) drop-shadow(0 0 8px rgba(0, 86, 179, 0.7)) !important;
 }
 
 .schedule-block h5 {
@@ -481,12 +434,11 @@ header {
     color: #666666;
 }
 
-/* Нижняя подвальная плашка */
 .footer-bottom {
-    background-color: var(--primary); /* Синий фон точно как в шапке */
+    background-color: var(--primary);
     border-top: 1px solid var(--primary-hover);
     padding: 1.2rem 0;
-    color: #ffffff; /* Белый цвет текста */
+    color: #ffffff;
     font-size: 0.85rem;
 }
 
@@ -502,7 +454,7 @@ header {
 }
 
 .footer-link {
-    color: #ffffff; /* Белая ссылка политики конфиденциальности */
+    color: #ffffff;
     text-decoration: none;
     opacity: 0.85;
     transition: opacity 0.15s ease-in-out;
@@ -510,7 +462,7 @@ header {
 
 .footer-link:hover {
     text-decoration: underline;
-    opacity: 1; /* При наведении становится ярче */
+    opacity: 1;
 }
 
 .footer-version {
@@ -518,23 +470,17 @@ header {
     color: #ffffff;
 }
 
-
-
-/* ==================== АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ ==================== */
 @media screen and (max-width: 600px) {
-    /* --- ВЕРХНЯЯ ШАПКА САЙТА (МОБИЛЬНАЯ) --- */
-
-    /* Разворачиваем логотип горизонтально ТОЛЬКО на смартфонах */
     .logo-block {
         margin: 0 auto !important;
-        flex-direction: row !important;   /* В РЯД: процессор слева, текст справа */
-        gap: 12px !important;            /* Отступ между ними */
-        align-items: center !important;   /* Выравнивание по центру высоты */
+        flex-direction: row !important;
+        gap: 12px !important;
+        align-items: center !important;
     }
 
     .logo-img {
-        height: 70px !important;         /* Компактная высота для горизонтального ряда */
-        margin: 0 !important;            /* Сбросили авто-отступы */
+        height: 70px !important;
+        margin: 0 !important;
     }
 
     .logo-text {
@@ -544,21 +490,24 @@ header {
         letter-spacing: 1px !important;
         margin: 0 !important;
         text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        line-height: 1.2 !important;
     }
 
     .section-title {
         font-size: 1.5rem !important;
     }
 
-    /* Перестраиваем контейнер шапки в одну колонку */
     .header-wrapper {
         flex-direction: column;
         align-items: stretch;
         text-align: center !important;
         gap: 1.2rem;
+        padding: 0 1rem !important;
     }
 
-    /* НАВИГАЦИОННОЕ МЕНЮ: жестко в одну строку */
     .main-nav {
         margin: 0 auto !important;
         gap: 0 !important;
@@ -566,43 +515,36 @@ header {
         align-items: center !important;
         width: 100% !important;
         display: flex !important;
-        flex-wrap: nowrap !important;    /* Запрет переноса строки */
+        flex-wrap: nowrap !important;
     }
 
-    /* Сами ссылки меню — компактные и симметричные */
     .nav-link {
         font-size: 1.05rem !important;
-        padding: 0.2rem 10px !important; /* Ровно по 10px воздуха слева и справа от букв */
+        padding: 0.2rem 10px !important;
         font-weight: 600 !important;
         position: relative !important;
         display: inline-block !important;
     }
 
-    /* ЛАЗЕРНЫЕ РАЗДЕЛИТЕЛИ СТРОГО ПО ЦЕНТРУ МЕЖДУ СЛОВАМИ */
     .nav-link:not(:last-child)::after {
         content: "" !important;
         display: block !important;
         position: absolute !important;
-        right: -1px !important;          /* Центр между кнопками */
+        right: -1px !important;
         top: 20% !important;
         height: 60% !important;
         width: 2px !important;
         background-color: #ffffff !important;
-        box-shadow:
-            0 0 4px #ffffff,
-            0 0 8px rgba(255, 255, 255, 0.5),
-            -1px 0 3px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 0 4px #ffffff, 0 0 8px rgba(255, 255, 255, 0.5), -1px 0 3px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* КОНТАКТЫ В ШАПКЕ */
     .header-actions {
-        align-items: center !important;    /* Сдвигает блок телефона на центр */
+        align-items: center !important;
         text-align: center !important;
         width: 100% !important;
         gap: 12px !important;
     }
 
-    /* Идеальный размер телефона, чтобы он встал в ОДНУ строку на смартфонах */
     .phone-number {
         font-size: 1.8rem !important;
         text-align: center !important;
@@ -610,12 +552,11 @@ header {
         margin-bottom: 0 !important;
     }
 
-    /* Ряд с адресом и кнопкой звонка */
     .header-bottom-row {
         justify-content: center !important;
         text-align: center !important;
         width: 100% !important;
-        flex-direction: column !important;  /* Строим адрес и кнопку друг под другом */
+        flex-direction: column !important;
         gap: 12px !important;
     }
 
@@ -623,17 +564,12 @@ header {
         text-align: center !important;
     }
 
-
-    /* --- НИЖНИЙ ФУТЕР САЙТА (МОБИЛЬНЫЙ) --- */
-
-    /* Перестраиваем сетку футера в одну колонку */
     .footer-wrapper {
         grid-template-columns: 1fr !important;
         padding: 0 1rem 2rem 1rem !important;
         gap: 2.5rem !important;
     }
 
-    /* ПЕРВЫЕ ДВЕ КОЛОНКИ: Направления и Услуги остаются прижатыми к левому краю */
     .footer-wrapper .footer-col:nth-child(1),
     .footer-wrapper .footer-col:nth-child(2) {
         text-align: left !important;
@@ -644,7 +580,6 @@ header {
         display: block !important;
     }
 
-    /* ТРЕТЬЯ КОЛОНКА: Контакты в подвале — по центру с КРУПНЫМИ шрифтами */
     .footer-wrapper .footer-col:nth-child(3) {
         text-align: center !important;
     }
@@ -665,13 +600,11 @@ header {
         display: block !important;
     }
 
-    /* ЧЕТВЕРТАЯ КОЛОНКА: Брендовый блок и График работы — строго по центру */
     .footer-brand-col {
         align-items: center !important;
         text-align: center !important;
     }
 
-    /* Увеличиваем нижний логотип-процессор в футере в 2 раза для мобильных */
     .footer-logo .logo-img {
         height: 120px !important;
         margin-bottom: 12px !important;
@@ -690,19 +623,9 @@ header {
         color: #222222 !important;
     }
 
-    /* САМЫЙ НИЖНИЙ БЛОК: Синяя плашка — по центру вертикальным столбцом */
     .footer-bottom-wrapper {
         flex-direction: column !important;
         text-align: center !important;
         gap: 0.8rem !important;
     }
-} /* ТУТ ЖЕСТКО ЗАКРЫВАЕТСЯ МЕДИА-ЗАПРОС. Мобильный код изолирован от ПК */
-
-
-
-
-
-
-
-
-
+}

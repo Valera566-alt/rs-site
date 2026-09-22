@@ -6,8 +6,7 @@
     <title>{{ title }}</title>
     <meta name="description" content="{{ tagline }}">
     <link href="https://googleapis.com" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 <header>
@@ -26,140 +25,138 @@
             <a href="#contacts" class="nav-link">Контакты</a>
         </nav>
 
-<!-- Контакты и кнопка справа -->
-<div class="header-actions">
-    <!-- Телефон всегда сверху на всю ширину блока -->
-    <span class="phone-number">8 (903) 103-61-04</span>
+        <!-- Контакты и кнопка справа -->
+        <div class="header-actions">
+            <!-- Телефон всегда сверху на всю ширину блока -->
+            <span class="phone-number">8 (903) 103-61-04</span>
 
-    <!-- Нижний ряд: адрес слева, кнопка справа -->
-    <div class="header-bottom-row">
-        <span class="address">Балашиха, мкр. Железнодорожный,<br>ул Новая д.8а ТЦ "Корона"</span>
-        <a href="#" class="btn-call-to-action">Заказать звонок</a>
-    </div>
-</div>
-
-
+            <!-- Нижний ряд: адрес слева, кнопка справа -->
+            <div class="header-bottom-row">
+                <span class="address">Балашиха, мкр. Железнодорожный,<br>ул Новая д.8а ТЦ "Корона"</span>
+                <a href="#" class="btn-call-to-action">Заказать звонок</a>
+            </div>
+        </div>
     </div>
 </header>
 
+<!-- МАГИЯ ИСПРАВЛЕНИЯ: Открываем главный ограничитель ширины сайта! -->
+<div class="container">
 
+    <section class="section">
+        <h2 class="section-title">Основные направления</h2>
+        <div class="features">
+            {% for feature in features %}
+            <!-- Ссылка сама является карточкой feature-card. Внутри только чистый текст -->
+            <a href="/directions/{{ feature.slug }}" class="feature-card">
+                <h3>{{ feature.icon }} {{ feature.title }}</h3>
+                <p>{{ feature.text }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
 
-    <div class="container">
-        <section class="section">
-            <h2 class="section-title">Основные направления</h2>
-            <div class="features">
+    <section class="section">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card">
+                <span class="service-icon">
+                    {# Проверяем, картинка это или текстовый эмодзи #}
+                    {% if service.icon.endswith('.png') %}
+                        <img src="{{ url_for('static', filename='img/' + service.icon) }}"
+                             style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
+                             alt="{{ service.title }}">
+                    {% else %}
+                        {{ service.icon }}
+                    {% endif %}
+                </span>
+                <h3>{{ service.title }}</h3>
+                {# Подставляем динамический ЧПУ-адрес вместо решетки #}
+                <a href="/services/{{ service.slug }}">Подробнее</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Как мы работаем</h2>
+        <div class="steps">
+            {% for step in steps %}
+            <div class="step-item">
+                <span class="step-num">{{ step.num }}</span>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <div class="faq">
+            {% for item in faq %}
+            <div class="faq-item">
+                <h3>{{ item.q }}</h3>
+                <p>{{ item.a }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div> <!-- Тег на месте, теперь он корректно закрывает открытый сверху container -->
+
+<footer class="site-footer">
+    <div class="footer-wrapper">
+        <!-- 1 Колонка: Наши направления (features) -->
+        <div class="footer-col">
+            <h4>Наши направления</h4>
+            <ul>
                 {% for feature in features %}
-                <div class="feature-card">
-                    <h3>{{ feature.icon }} {{ feature.title }}</h3>
-                    <p>{{ feature.text }}</p>
-                </div>
+                <li><a href="#about">{{ feature.title }}</a></li>
                 {% endfor %}
-            </div>
-        </section>
+            </ul>
+        </div>
 
-                <section class="section">
-            <h2 class="section-title">Наши услуги</h2>
-            <div class="services-grid">
+        <!-- 2 Колонка: Наши услуги (services) -->
+        <div class="footer-col">
+            <h4>Наши услуги</h4>
+            <ul>
                 {% for service in services %}
-                <div class="service-card">
-                    <span class="service-icon">
-                        {# Проверяем, картинка это или текстовый эмодзи #}
-                        {% if service.icon.endswith('.png') %}
-                            <img src="{{ url_for('static', filename='img/' + service.icon) }}"
-                                 style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
-                                 alt="{{ service.title }}">
-                        {% else %}
-                            {{ service.icon }}
-                        {% endif %}
-                    </span>
-                    <h3>{{ service.title }}</h3>
-                    {# Подставляем динамический ЧПУ-адрес вместо решетки #}
-                    <a href="/services/{{ service.slug }}">Подробнее</a>
-                </div>
+                <li><a href="/services/{{ service.slug }}">{{ service.title }}</a></li>
                 {% endfor %}
-            </div>
-        </section>
+            </ul>
+        </div>
 
+        <!-- 3 Колонка: Контакты -->
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <p class="footer-phone">{{ phone }}</p>
+            <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
+            <p class="footer-address"><strong>{{ address }}</strong></p>
+        </div>
 
-        <section class="section">
-            <h2 class="section-title">Как мы работаем</h2>
-            <div class="steps">
-                {% for step in steps %}
-                <div class="step-item">
-                    <span class="step-num">{{ step.num }}</span>
-                    <h3>{{ step.title }}</h3>
-                    <p>{{ step.text }}</p>
-                </div>
-                {% endfor %}
+        <!-- 4 Колонка: Логотип и График работы -->
+        <div class="footer-col footer-brand-col">
+            <a href="#" class="logo-block footer-logo">
+                <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+                <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+            </a>
+            <div class="schedule-block">
+                <h5>График работы:</h5>
+                <p>{{ hours }}</p>
             </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Часто задаваемые вопросы</h2>
-            <div class="faq">
-                {% for item in faq %}
-                <div class="faq-item">
-                    <h3>{{ item.q }}</h3>
-                    <p>{{ item.a }}</p>
-                </div>
-                {% endfor %}
-            </div>
-        </section>
+        </div>
     </div>
 
-        <footer class="site-footer">
-        <div class="footer-wrapper">
-            <!-- 1 Колонка: Наши направления (features) -->
-            <div class="footer-col">
-                <h4>Наши направления</h4>
-                <ul>
-                    {% for feature in features %}
-                    <li><a href="#about">{{ feature.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <!-- 2 Колонка: Наши услуги (services) -->
-            <div class="footer-col">
-                <h4>Наши услуги</h4>
-                <ul>
-                    {% for service in services %}
-                    <li><a href="/services/{{ service.slug }}">{{ service.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <!-- 3 Колонка: Контакты -->
-            <div class="footer-col">
-                <h4>Контакты</h4>
-                <p class="footer-phone">{{ phone }}</p>
-                <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
-                <p class="footer-address"><strong>{{ address }}</strong></p>
-            </div>
-
-            <!-- 4 Колонка: Логотип и График работы -->
-            <div class="footer-col footer-brand-col">
-                <!-- МЕНЯЕМ ТУТ: оборачиваем в ссылку href="#" -->
-                <a href="#" class="logo-block footer-logo">
-                    <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
-                    <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
-                </a>
-                <div class="schedule-block">
-                    <h5>График работы:</h5>
-                    <p>{{ hours }}</p>
-                </div>
-            </div>
+    <!-- Нижняя плашка (Копирайт и Версия сайта) -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-wrapper">
+            <span>&copy; 2014-2026 Все права защищены.</span>
+            <a href="#" class="footer-link">Политика конфиденциальности</a>
+            <span class="footer-version">Версия сайта: {{ version }}</span>
         </div>
-
-        <!-- Нижняя плашка (Копирайт и Версия сайта) -->
-        <div class="footer-bottom">
-            <div class="footer-bottom-wrapper">
-                <span>&copy; 2014-2026 Все права защищены.</span>
-                <a href="#" class="footer-link">Политика конфиденциальности</a>
-                <span class="footer-version">Версия сайта: {{ version }}</span>
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 
 </body>
 </html>
