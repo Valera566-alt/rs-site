@@ -1,4 +1,5 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request, jsonify
+import requests  # Библиотека для будущей пересылки вебхуков в Макс мессенджер
 from services import get_site_info
 
 app = Flask(__name__)
@@ -31,8 +32,8 @@ def service_page(slug):
     # Создаем копию словаря, чтобы безопасно переопределить SEO-теги под Яндекс
     page_data = site_info.copy()
 
-    # Перезаписываем title и tagline под конкретную локальную услугу в Железнодорожном
-    page_data["title"] = f"{current_service['title']} в Железнодорожном — цены на ул. Новая 8а"
+    # Перезаписываем title и tagline под конкретную локальную услугу — ЗАМЕНИЛИ НА IT СЕРВИС
+    page_data["title"] = f"{current_service['title']} в Железнодорожном — IT Сервис"
     page_data[
         "tagline"] = f"Профессиональный {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
 
@@ -41,6 +42,7 @@ def service_page(slug):
 
     # Передаем обновленные данные в отдельный чистый шаблон лендинга услуги
     return render_template("service.html", **page_data)
+
 
 @app.route("/directions/<slug>")
 def direction_page(slug):
@@ -61,16 +63,42 @@ def direction_page(slug):
     # Создаем копию данных сайта для безопасной подмены SEO-тегов под Яндекс
     page_data = site_info.copy()
 
-    # Точечное SEO с жесткой локальной привязкой к Железнодорожному и Балашихе
-    page_data["title"] = f"{current_direction['title']} в Железнодорожном | Сервисный центр"
+    # Точечное SEO с жесткой локальной привязкой к Железнодорожному и Балашихе — ЗАМЕНИЛИ НА IT СЕРВИС
+    page_data["title"] = f"{current_direction['title']} в Железнодорожном | IT Сервис"
     page_data[
         "tagline"] = f"Услуги по {current_direction['seo_keyword']} в оригинальном сервисном центре на ул. Новая 8a. Звоните: {site_info['phone']}!"
 
     # Передаем маркер текущего открытого направления
     page_data["current_direction"] = current_direction
 
-    # Рендерим всё в тот же index.html, не плодя новые файлы
-    return render_template("index.html", **page_data)
+    # Рендерим отдельную шаблонную страницу направления
+    return render_template("direction.html", **page_data)
+
+
+# ДОБАВИЛИ РОУТ ПРИЁМА ЗАЯВОК: Обрабатывает клики по кнопке «Заказать звонок»
+@app.route("/submit-callback", methods=["POST"])
+def submit_callback():
+    data = request.get_json()
+    if not data or 'name' not in data or 'phone' not in data:
+        return jsonify({"success": False, "error": "Неполные данные"}), 400
+
+    client_name = data['name']
+    client_phone = data['phone']
+
+    message_text = (
+        f"🚨 НОВАЯ ЗАЯВКА С САЙТА it150.ru!\n"
+        f"👤 Имя клиента: {client_name}\n"
+        f"📞 Телефон: {client_phone}\n"
+        f"📍 Локация: мкр. Железнодорожный"
+    )
+
+    # Тестовый вывод в консоль VPS сервера Ubuntu (пока чат-бот на модерации)
+    print("\n" + "=" * 40)
+    print(message_text)
+    print("=" * 40 + "\n")
+
+    return jsonify({"success": True})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)

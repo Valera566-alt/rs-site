@@ -148,7 +148,7 @@ header {
     color: #fff;
     display: block;
     line-height: 1;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.02em;
     margin-bottom: 4px;
 }
 
@@ -199,7 +199,7 @@ header {
     box-sizing: border-box;
 }
 
-.section { padding: 0rem 0; }
+.section { padding: 0 0; }
 
 .section-title {
     text-align: center;
@@ -358,7 +358,7 @@ header {
     margin-top: 0;
     margin-bottom: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.02em;
 }
 
 .footer-col ul {

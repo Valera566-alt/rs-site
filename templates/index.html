@@ -32,7 +32,7 @@
 
             <!-- Нижний ряд: адрес слева, кнопка справа -->
             <div class="header-bottom-row">
-                <span class="address">Балашиха, мкр. Железнодорожный,<br>ул Новая д.8а ТЦ "Корона"</span>
+                <span class="address">Балашиха, мкр. Железнодорожный,<br>Ул. Новая д.8а ТЦ "Корона"</span>
                 <a href="#" class="btn-call-to-action">Заказать звонок</a>
             </div>
         </div>
@@ -42,7 +42,7 @@
 <!-- МАГИЯ ИСПРАВЛЕНИЯ: Открываем главный ограничитель ширины сайта! -->
 <div class="container">
 
-    <section class="section">
+    <section class="section" id="repair">
         <h2 class="section-title">Основные направления</h2>
         <div class="features">
             {% for feature in features %}
@@ -55,7 +55,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="info">
         <h2 class="section-title">Наши услуги</h2>
         <div class="services-grid">
             {% for service in services %}
@@ -78,7 +78,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="about">
         <h2 class="section-title">Как мы работаем</h2>
         <div class="steps">
             {% for step in steps %}
@@ -91,7 +91,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="contacts">
         <h2 class="section-title">Часто задаваемые вопросы</h2>
         <div class="faq">
             {% for item in faq %}
