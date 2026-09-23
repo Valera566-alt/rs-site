@@ -3,6 +3,21 @@ import requests  # Библиотека для пересылки вебхуко
 from services import get_site_info
 
 app = Flask(__name__)
+from flask import redirect
+
+@app.before_request
+def redirect_to_main_domain():
+    """SEO-склейка зеркал: принудительный редирект 301 на главное окно www.it150.ru"""
+    # Если мы работаем локально (на 127.0.0.1 или localhost), редирект НЕ нужен
+    if request.host and ('127.0.0.1' in request.host or 'localhost' in request.host):
+        return None
+
+    # Для реальных пользователей и роботов Яндекса в интернете делаем редирект
+    if request.host and request.host != 'www.it150.ru':
+        main_url = f"https://it150.ru{request.path}"
+        if request.query_string:
+            main_url += f"?{request.query_string.decode('utf-8')}"
+        return redirect(main_url, code=301)
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
