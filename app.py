@@ -1,9 +1,12 @@
-from flask import Flask, render_template, abort, request, jsonify
+import os
 import requests  # Библиотека для пересылки вебхуков в Макс мессенджер
+from flask import Flask, render_template, abort, request, jsonify, redirect
 from services import get_site_info
 
 app = Flask(__name__)
-from flask import redirect
+
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 @app.before_request
 def redirect_to_main_domain():
@@ -14,7 +17,7 @@ def redirect_to_main_domain():
     # Читаем оригинальный хост, который Nginx перенаправил во Flask
     real_host = request.headers.get('X-Forwarded-Host') or request.headers.get('Host', '')
     # Убираем порт, если он прикрепился (например, :5001)
-    real_host = real_host.split(':')[0]
+    real_host = real_host.split(':')
 
     # Если запрос внутренний или пустой, не трогаем его
     if not real_host or real_host in ['127.0.0.1', 'localhost']:
@@ -28,80 +31,53 @@ def redirect_to_main_domain():
         return redirect(main_url, code=301)
 
 
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-
-
 @app.route("/")
 def index():
-    # Главная страница: распаковываем все базовые данные (включая стандартные title и tagline)
+    # Главная страница: распаковываем все базовые данные
     return render_template("index.html", **get_site_info())
 
 
 @app.route("/services/<slug>")
 def service_page(slug):
-    # Получаем базовый словарь с данными сайта
     site_info = get_site_info()
-
-    # Ищем конкретную услугу, которую запросил пользователь по ссылке (slug)
     current_service = None
     for service in site_info['services']:
         if service['slug'] == slug:
             current_service = service
             break
 
-    # Если такой услуги нет в базе данных, отдаем стандартную ошибку 404
     if not current_service:
         abort(404)
 
-    # Создаем копию словаря, чтобы безопасно переопределить SEO-теги под Яндекс
     page_data = site_info.copy()
-
-    # Перезаписываем title и tagline под конкретную локальную услугу
     page_data["title"] = f"{current_service['title']} в Железнодорожном — IT Сервис"
     page_data[
         "tagline"] = f"Профессиональный {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
-
-    # Добавляем в словарь данные о текущей открытой услуге, чтобы вывести её текст на лендинге
     page_data["current_service"] = current_service
 
-    # Передаем обновленные данные в отдельный чистый шаблон лендинга услуги
     return render_template("service.html", **page_data)
 
 
 @app.route("/directions/<slug>")
 def direction_page(slug):
-    # Получаем исходные данные сайта
     site_info = get_site_info()
-
-    # Ищем, какое именно из 4 направлений открыл пользователь
     current_direction = None
     for feature in site_info['features']:
         if feature['slug'] == slug:
             current_direction = feature
             break
 
-    # Если направление не найдено в списке, отдаем стандартную ошибку 404
     if not current_direction:
         abort(404)
 
-    # Создаем копию данных сайта для безопасной подмены SEO-тегов под Яндекс
     page_data = site_info.copy()
-
-    # Точечное SEO с жесткой локальной привязкой к Железнодорожному и Балашихе
     page_data["title"] = f"{current_direction['title']} в Железнодорожном | IT Сервис"
     page_data[
         "tagline"] = f"Услуги по {current_direction['seo_keyword']} в оригинальном сервисном центре на ул. Новая 8a. Звоните: {site_info['phone']}!"
-
-    # Передаем маркер текущего открытого направления
     page_data["current_direction"] = current_direction
 
-    # Рендерим отдельную шаблонную страницу направления
     return render_template("direction.html", **page_data)
 
-
-# РОУТ ПРИЁМА ЗАЯВКИ: Пересылает имя и телефон клиента в мессенджер МАКС
-
-import os
 
 @app.route("/submit-callback", methods=["POST"])
 def submit_callback():
@@ -120,23 +96,15 @@ def submit_callback():
     )
 
     BOT_TOKEN = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
-    # user_id должен быть ЧИСЛОВЫМ — без префикса se
     USER_ID = "21641785"
-
-    API_URL = "https://platform-api2.max.ru/messages"
+    API_URL = "https://max.ru"
 
     headers = {
         "Authorization": BOT_TOKEN,
         "Content-Type": "application/json"
     }
-
-    params = {
-        "user_id": USER_ID
-    }
-
-    body = {
-        "text": message_text
-    }
+    params = {"user_id": USER_ID}
+    body = {"text": message_text}
 
     try:
         response = requests.post(
@@ -147,14 +115,10 @@ def submit_callback():
             verify='/etc/ssl/certs/ca-certificates.crt',
             timeout=10
         )
-        result = response.json()
-
         if response.ok:
             return jsonify({"success": True})
         else:
-            print(f"🚨 ОТКАЗ API МАКС: {result}")
             return jsonify({"success": False, "error": "Ошибка мессенджера"}), 500
-
     except requests.exceptions.SSLError as e:
         print(f"🔒 SSL-ошибка: {e}")
         return jsonify({"success": False, "error": "SSL сертификат"}), 500
@@ -163,7 +127,41 @@ def submit_callback():
         return jsonify({"success": False, "error": "Ошибка сервера"}), 500
 
 
+@app.route('/robots.txt')
+def robots_txt():
+    """Отдаем robots.txt поисковым роботам напрямую из папки static"""
+    return app.send_static_file('robots.txt')
 
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    """Динамическая генерация sitemap.xml для Яндекса и Google"""
+    from flask import make_response
+    import datetime
+
+    site_info = get_site_info()
+    base_url = "https://it150.ru"
+    now = datetime.datetime.now().strftime('%Y-%m-%d')
+
+    xml_content = f'<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml_content += f'<urlset xmlns="http://sitemaps.org">\n'
+
+    # 1. Главная страница
+    xml_content += f'  <url><loc>{base_url}/</loc><lastmod>{now}</lastmod><priority>1.0</priority></url>\n'
+
+    # 2. Страницы направлений
+    for feature in site_info['features']:
+        xml_content += f'  <url><loc>{base_url}/directions/{feature["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
+
+    # 3. Страницы услуг
+    for service in site_info['services']:
+        xml_content += f'  <url><loc>{base_url}/services/{service["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
+
+    xml_content += f'</urlset>'
+
+    response = make_response(xml_content)
+    response.headers["Content-Type"] = "application/xml"
+    return response
 
 
 if __name__ == '__main__':
