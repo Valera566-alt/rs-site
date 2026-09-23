@@ -10,21 +10,24 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.before_request
 def redirect_to_main_domain():
-    """SEO-склейка зеркал: безопасный редирект 301 на главное окно www.it150.ru"""
+    """SEO-склейка зеркал: безопасный редирект 301 на главное окно it150.ru (без www)"""
     if app.debug:
         return None
 
     # Читаем оригинальный хост, который Nginx перенаправил во Flask
     real_host = request.headers.get('X-Forwarded-Host') or request.headers.get('Host', '')
+
     # Убираем порт, если он прикрепился (например, :5001)
-    real_host = real_host.split(':')
+    if real_host:
+        real_host = real_host.split(':')[0]
 
     # Если запрос внутренний или пустой, не трогаем его
     if not real_host or real_host in ['127.0.0.1', 'localhost']:
         return None
 
-    # Жесткая склейка на www.it150.ru для Яндекса
-    if real_host != 'www.it150.ru':
+    # Если пользователь или робот зашли с www.it150.ru, it-150.ru или www.it-150.ru
+    if real_host != 'it150.ru':
+        # Жестко склеиваем на главное рабочее зеркало без www
         main_url = f"https://it150.ru{request.path}"
         if request.query_string:
             main_url += f"?{request.query_string.decode('utf-8')}"
