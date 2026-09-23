@@ -164,6 +164,17 @@ def sitemap_xml():
     return response
 
 
+@app.route('/yandex_093274bd8c7e1538.html')
+def yandex_verification():
+    """Безопасно отдаем проверочный HTML-код Яндекс.Вебмастера"""
+    from flask import make_response
+    # Текст внутри кавычек — это стандартное содержимое файла верификации прав
+    content = "verification: yandex_093274bd8c7e1538"
+    response = make_response(content)
+    response.headers["Content-Type"] = "text/html; charset=UTF-8"
+    return response
+
+
 if __name__ == '__main__':
     # Слушаем порт 5001, так как его жестко требует прокси-конфиг Nginx на VPS
     app.run(host='0.0.0.0', port=5001, debug=True)
