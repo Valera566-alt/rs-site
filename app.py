@@ -77,6 +77,7 @@ def direction_page(slug):
 
 # РОУТ ПРИЁМА ЗАЯВКИ: Пересылает имя и телефон клиента в мессенджер МАКС
 @app.route("/submit-callback", methods=["POST"])
+@app.route("/submit-callback", methods=["POST"])
 def submit_callback():
     data = request.get_json()
     if not data or 'name' not in data or 'phone' not in data:
@@ -85,7 +86,6 @@ def submit_callback():
     client_name = data['name']
     client_phone = data['phone']
 
-    # Текст лида для отправки на ваш рабочий аккаунт
     message_text = (
         f"🚨 НОВАЯ ЗАЯВКА С САЙТА it150.ru!\n\n"
         f"👤 Имя клиента: {client_name}\n"
@@ -93,30 +93,36 @@ def submit_callback():
         f"📍 Локация: мкр. Железнодорожный"
     )
 
-    # ВШИТЫЙ БОЕВОЙ ТОКЕН И ID ПОЛУЧАТЕЛЯ
     BOT_TOKEN = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
+
+    # ⚠️ ВАЖНО: Передаем юзернейм se14421641 напрямую без лишних доменов
     YOUR_USER_ID = "se14421641"
 
-    # Базовый эндпоинт отправки текстовых сообщений Bot API МАКС (VK Teams / MyTeam)
+    # Официальный базовый URL для бизнес-платформы web.max.ru
     API_URL = "https://max.ru"
 
-    params = {
+    # Формируем строгие заголовки и тело JSON-запроса под стандарты VK Teams
+    headers = {
+        "Content-Type": "application/json; charset=utf-8"
+    }
+
+    payload = {
         "token": BOT_TOKEN,
         "chatId": YOUR_USER_ID,
         "text": message_text
     }
 
     try:
-        # Отправляем HTTPS-запрос с VPS сервера в МАКС мессенджер
-        response = requests.get(API_URL, params=params, timeout=5)
+        # Отправляем POST-запрос с JSON-телом, который МАКС гарантированно прочитает
+        response = requests.post(API_URL, json=payload, headers=headers, timeout=5)
         result = response.json()
 
-        # Если сервер МАКС успешно принял запрос и доставил лид в чат
         if response.ok and result.get('ok', False):
             return jsonify({"success": True})
         else:
-            print(f"Ошибка API МАКС: {result}")
-            return jsonify({"success": False, "error": "Ошибка мессенджера"}), 500
+            # Если сервер МАКС выдал ошибку, Flask напечатает её в консоль VPS
+            print(f"🚨 ОТКАЗ API МАКС: {result}")
+            return jsonify({"success": False, "error": "Отказ мессенджера"}), 500
 
     except Exception as e:
         print(f"Критическая ошибка сети на VPS Ubuntu: {e}")
