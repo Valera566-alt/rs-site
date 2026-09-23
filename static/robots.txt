@@ -1,0 +1,13 @@
+User-agent: Yandex
+Disallow: /submit-callback
+Allow: /static/
+Sitemap: https://it150.ru/sitemap.xml
+
+User-agent: Googlebot
+Disallow: /submit-callback
+Allow: /static/
+Sitemap: https://it150.ru/sitemap.xml
+
+User-agent: *
+Disallow: /submit-callback
+Sitemap: https://it150.ru/sitemap.xml
