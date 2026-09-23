@@ -98,7 +98,7 @@ def submit_callback():
     YOUR_USER_ID = "se14421641"
 
     # Базовый эндпоинт отправки текстовых сообщений Bot API МАКС (VK Teams / MyTeam)
-    API_URL = "https://mail.ru"
+    API_URL = "https://max.ru"
 
     params = {
         "token": BOT_TOKEN,
