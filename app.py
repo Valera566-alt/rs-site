@@ -76,6 +76,9 @@ def direction_page(slug):
 
 
 # РОУТ ПРИЁМА ЗАЯВКИ: Пересылает имя и телефон клиента в мессенджер МАКС
+
+import os
+
 @app.route("/submit-callback", methods=["POST"])
 def submit_callback():
     data = request.get_json()
@@ -85,7 +88,6 @@ def submit_callback():
     client_name = data['name']
     client_phone = data['phone']
 
-    # Формируем текст уведомления для вашего аккаунта
     message_text = (
         f"🚨 НОВАЯ ЗАЯВКА С САЙТА it150.ru!\n\n"
         f"👤 Имя клиента: {client_name}\n"
@@ -94,32 +96,49 @@ def submit_callback():
     )
 
     BOT_TOKEN = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
-    YOUR_USER_ID = "se14421641"
+    # user_id должен быть ЧИСЛОВЫМ — без префикса se
+    USER_ID = "14421641"
 
-    # Официальный работающий эндпоинт бизнес-платформы MAX
-    API_URL = "https://web.max.ru/bot/v1/messages/sendText"
+    API_URL = "https://platform-api2.max.ru/messages"
 
-    # Официальный стандарт VK Teams: параметры передаются внутри URL Query
+    headers = {
+        "Authorization": BOT_TOKEN,
+        "Content-Type": "application/json"
+    }
+
     params = {
-        "token": BOT_TOKEN,
-        "chatId": YOUR_USER_ID,
+        "user_id": USER_ID
+    }
+
+    body = {
         "text": message_text
     }
 
     try:
-        # Отправляем метод POST, но параметры прокидываем через Query String под спецификацию MAX
-        response = requests.post(API_URL, params=params, timeout=5)
+        response = requests.post(
+            API_URL,
+            headers=headers,
+            params=params,
+            json=body,
+            verify='/etc/ssl/certs/ca-certificates.crt',
+            timeout=10
+        )
         result = response.json()
 
-        if response.ok and result.get('ok', False):
+        if response.ok:
             return jsonify({"success": True})
         else:
             print(f"🚨 ОТКАЗ API МАКС: {result}")
             return jsonify({"success": False, "error": "Ошибка мессенджера"}), 500
 
+    except requests.exceptions.SSLError as e:
+        print(f"🔒 SSL-ошибка: {e}")
+        return jsonify({"success": False, "error": "SSL сертификат"}), 500
     except Exception as e:
         print(f"Критическая ошибка сети на VPS Ubuntu: {e}")
         return jsonify({"success": False, "error": "Ошибка сервера"}), 500
+
+
 
 
 
