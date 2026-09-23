@@ -97,7 +97,7 @@ def submit_callback():
 
     BOT_TOKEN = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
     # user_id должен быть ЧИСЛОВЫМ — без префикса se
-    USER_ID = "14421641"
+    USER_ID = "21641785"
 
     API_URL = "https://platform-api2.max.ru/messages"
 
