@@ -8,7 +8,6 @@
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
 <body>
 <header>
@@ -41,7 +40,7 @@
     </div>
 </header>
 
-<!-- МАГИЯ ИСПРАВЛЕНИЯ: Открываем главный ограничитель ширины сайта! -->
+<!-- Главный ограничитель ширины сайта -->
 <div class="container">
 
     <section class="section" id="repair">
@@ -73,7 +72,6 @@
                     {% endif %}
                 </span>
                 <h3>{{ service.title }}</h3>
-                {# Подставляем динамический ЧПУ-адрес вместо решетки #}
                 <a href="/services/{{ service.slug }}">Подробнее</a>
             </div>
             {% endfor %}
@@ -105,11 +103,11 @@
         </div>
     </section>
 
-</div> <!-- Тег на месте, теперь он корректно закрывает открытый сверху container -->
+</div> <!-- Конец контейнера container -->
 
 <footer class="site-footer">
     <div class="footer-wrapper">
-        <!-- 1 Колонка: Наши направления (features) -->
+        <!-- 1 Колонка: Наши направления -->
         <div class="footer-col">
             <h4>Наши направления</h4>
             <ul>
@@ -119,7 +117,7 @@
             </ul>
         </div>
 
-        <!-- 2 Колонка: Наши услуги (services) -->
+        <!-- 2 Колонка: Наши услуги -->
         <div class="footer-col">
             <h4>Наши услуги</h4>
             <ul>
@@ -144,7 +142,7 @@
                 <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
             </a>
             <div class="schedule-block">
-                <h5>График работы:</h5>
+                <h5>Gradik работы:</h5>
                 <p>{{ hours }}</p>
             </div>
         </div>
@@ -159,6 +157,154 @@
         </div>
     </div>
 </footer>
+
+<!-- Всплывающее модальное окно обратного звонка -->
+<div id="callbackModal" class="modal-overlay">
+    <div class="modal-card">
+        <button class="modal-close-btn" id="closeModalBtn">&times;</button>
+        <h3>Заказать обратный звонок</h3>
+        <p>Оставьте ваши контакты, и наш специалист свяжется с вами в течение 10 минут.</p>
+
+        <form id="callbackForm">
+            <div class="form-group">
+                <input type="text" id="clientName" placeholder="Ваше имя" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <input type="tel" id="clientPhone" placeholder="Номер телефона" required autocomplete="off">
+            </div>
+            <button type="submit" class="btn-submit-form">Отправить заявку</button>
+        </form>
+        <div id="formStatus" class="form-status-msg"></div>
+    </div>
+</div>
+
+<!-- JavaScript для открытия и отправки формы -->
+<script>
+    const openButtons = document.querySelectorAll('.btn-call-to-action');
+    const modal = document.getElementById('callbackModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const form = document.getElementById('callbackForm');
+    const statusMsg = document.getElementById('formStatus');
+    const phoneInput = document.getElementById('clientPhone');
+
+    // ==================== МАГИЯ МАСКИ ТЕЛЕФОНА ====================
+    // Скрипт автоматически обрабатывает ввод, подставляет +7 (XXX) XXX-XX-XX
+    phoneInput.addEventListener('input', (e) => {
+        let input = phoneInput.value.replace(/\D/g, ''); // Удаляем все не-цифры
+        let formatted = '';
+
+        if (!input) {
+            phoneInput.value = '';
+            return;
+        }
+
+        // Если пользователь начал ввод с 7 или 8, убираем эту первую цифру для маски
+        if (input[0] === '7' || input[0] === '8') {
+            input = input.substring(1);
+        }
+
+        // Форматируем строку по ходу набора цифр
+        formatted = '+7 ';
+        if (input.length > 0) {
+            formatted += '(' + input.substring(0, 3);
+        }
+        if (input.length >= 3) {
+            formatted += ') ' + input.substring(3, 6);
+        }
+        if (input.length >= 6) {
+            formatted += '-' + input.substring(6, 8);
+        }
+        if (input.length >= 8) {
+            formatted += '-' + input.substring(8, 10);
+        }
+
+        phoneInput.value = formatted;
+    });
+
+    // Запрещаем стирать жесткую маску "+7 ", если поле в фокусе
+    phoneInput.addEventListener('keydown', (e) => {
+        if (phoneInput.value === '+7 ' && e.key === 'Backspace') {
+            e.preventDefault();
+        }
+    });
+    // ==============================================================
+
+    // Оживляем все кнопки "Заказать звонок" на главной странице
+    openButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            phoneInput.value = '+7 '; // Сразу подставляем маску при открытии
+        });
+    });
+
+    // Крестик закрытия
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        form.reset();
+        statusMsg.textContent = '';
+    });
+
+    // Клик мимо окна на темный фон
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            form.reset();
+            statusMsg.textContent = '';
+        }
+    });
+
+    // Асинхронная отправка формы во Flask
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Дополнительная защитная проверка длины номера перед отправкой в МАКС
+        if (phoneInput.value.length < 18) {
+            statusMsg.textContent = 'Введите номер телефона полностью!';
+            statusMsg.style.color = '#dc3545';
+            return;
+        }
+
+        statusMsg.textContent = 'Отправка...';
+        statusMsg.style.color = '#555';
+
+        const formData = {
+            name: document.getElementById('clientName').value,
+            phone: phoneInput.value
+        };
+
+        try {
+            const response = await fetch('/submit-callback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                statusMsg.textContent = 'Спасибо! Заявка успешно отправлена.';
+                statusMsg.style.color = '#28a745';
+                form.reset();
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    statusMsg.textContent = '';
+                }, 2000);
+            } else {
+                statusMsg.textContent = 'Ошибка сервера. Попробуйте позже.';
+                statusMsg.style.color = '#dc3545';
+            }
+        } catch (error) {
+            statusMsg.textContent = 'Ошибка сети. Проверьте соединение.';
+            statusMsg.style.color = '#dc3545';
+        }
+    });
+</script>
+
 
 </body>
 </html>

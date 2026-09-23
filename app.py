@@ -1,5 +1,5 @@
 from flask import Flask, render_template, abort, request, jsonify
-import requests  # Библиотека для будущей пересылки вебхуков в Макс мессенджер
+import requests  # Библиотека для пересылки вебхуков в Макс мессенджер
 from services import get_site_info
 
 app = Flask(__name__)
@@ -32,7 +32,7 @@ def service_page(slug):
     # Создаем копию словаря, чтобы безопасно переопределить SEO-теги под Яндекс
     page_data = site_info.copy()
 
-    # Перезаписываем title и tagline под конкретную локальную услугу — ЗАМЕНИЛИ НА IT СЕРВИС
+    # Перезаписываем title и tagline под конкретную локальную услугу
     page_data["title"] = f"{current_service['title']} в Железнодорожном — IT Сервис"
     page_data[
         "tagline"] = f"Профессиональный {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
@@ -63,7 +63,7 @@ def direction_page(slug):
     # Создаем копию данных сайта для безопасной подмены SEO-тегов под Яндекс
     page_data = site_info.copy()
 
-    # Точечное SEO с жесткой локальной привязкой к Железнодорожному и Балашихе — ЗАМЕНИЛИ НА IT СЕРВИС
+    # Точечное SEO с жесткой локальной привязкой к Железнодорожному и Балашихе
     page_data["title"] = f"{current_direction['title']} в Железнодорожном | IT Сервис"
     page_data[
         "tagline"] = f"Услуги по {current_direction['seo_keyword']} в оригинальном сервисном центре на ул. Новая 8a. Звоните: {site_info['phone']}!"
@@ -75,7 +75,7 @@ def direction_page(slug):
     return render_template("direction.html", **page_data)
 
 
-# ДОБАВИЛИ РОУТ ПРИЁМА ЗАЯВОК: Обрабатывает клики по кнопке «Заказать звонок»
+# РОУТ ПРИЁМА ЗАЯВКИ: Пересылает имя и телефон клиента в мессенджер МАКС
 @app.route("/submit-callback", methods=["POST"])
 def submit_callback():
     data = request.get_json()
@@ -85,20 +85,44 @@ def submit_callback():
     client_name = data['name']
     client_phone = data['phone']
 
+    # Текст лида для отправки на ваш рабочий аккаунт
     message_text = (
-        f"🚨 НОВАЯ ЗАЯВКА С САЙТА it150.ru!\n"
+        f"🚨 НОВАЯ ЗАЯВКА С САЙТА it150.ru!\n\n"
         f"👤 Имя клиента: {client_name}\n"
         f"📞 Телефон: {client_phone}\n"
         f"📍 Локация: мкр. Железнодорожный"
     )
 
-    # Тестовый вывод в консоль VPS сервера Ubuntu (пока чат-бот на модерации)
-    print("\n" + "=" * 40)
-    print(message_text)
-    print("=" * 40 + "\n")
+    # ВШИТЫЙ БОЕВОЙ ТОКЕН И ID ПОЛУЧАТЕЛЯ
+    BOT_TOKEN = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
+    YOUR_USER_ID = "se14421641"
 
-    return jsonify({"success": True})
+    # Базовый эндпоинт отправки текстовых сообщений Bot API МАКС (VK Teams / MyTeam)
+    API_URL = "https://mail.ru"
+
+    params = {
+        "token": BOT_TOKEN,
+        "chatId": YOUR_USER_ID,
+        "text": message_text
+    }
+
+    try:
+        # Отправляем HTTPS-запрос с VPS сервера в МАКС мессенджер
+        response = requests.get(API_URL, params=params, timeout=5)
+        result = response.json()
+
+        # Если сервер МАКС успешно принял запрос и доставил лид в чат
+        if response.ok and result.get('ok', False):
+            return jsonify({"success": True})
+        else:
+            print(f"Ошибка API МАКС: {result}")
+            return jsonify({"success": False, "error": "Ошибка мессенджера"}), 500
+
+    except Exception as e:
+        print(f"Критическая ошибка сети на VPS Ubuntu: {e}")
+        return jsonify({"success": False, "error": "Ошибка сервера"}), 500
 
 
 if __name__ == '__main__':
+    # Слушаем порт 5001, так как его жестко требует прокси-конфиг Nginx на VPS
     app.run(host='0.0.0.0', port=5001, debug=True)
