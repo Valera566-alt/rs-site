@@ -169,13 +169,9 @@ def sitemap_xml():
 
 @app.route('/yandex_093274bd8c7e1538.html')
 def yandex_verification():
-    """Напрямую отдаем Яндексу правильный HTML-контент и код 200 OK"""
-    from flask import make_response
-    content = "verification: yandex_093274bd8c7e1538"
-    response = make_response(content)
-    # Жестко прописываем тип контента, который требует робот Яндекса
-    response.headers["Content-Type"] = "text/html; charset=UTF-8"
-    return response
+    """Отдаем проверочный файл Яндекса из папки static, но по корневому адресу"""
+    return app.send_static_file('yandex_093274bd8c7e1538.html')
+
 
 
 
