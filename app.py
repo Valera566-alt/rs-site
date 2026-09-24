@@ -55,7 +55,7 @@ def service_page(slug):
     page_data = site_info.copy()
     page_data["title"] = f"{current_service['title']} в Железнодорожном — IT Сервис"
     page_data[
-        "tagline"] = f"Профессиональный {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
+        "tagline"] = f"Профессиональный ремонт {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
     page_data["current_service"] = current_service
 
     return render_template("service.html", **page_data)
@@ -76,7 +76,7 @@ def direction_page(slug):
     page_data = site_info.copy()
     page_data["title"] = f"{current_direction['title']} в Железнодорожном | IT Сервис"
     page_data[
-        "tagline"] = f"Услуги по {current_direction['seo_keyword']} в оригинальном сервисном центре на ул. Новая 8a. Звоните: {site_info['phone']}!"
+        "tagline"] = f"Услуги по {current_direction['seo_keyword']} в профессиональном сервисном центре на ул. Новая 8a. Звоните: {site_info['phone']}!"
     page_data["current_direction"] = current_direction
 
     return render_template("direction.html", **page_data)

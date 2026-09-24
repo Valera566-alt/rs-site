@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="description" content="{{ tagline }}">
-    <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
-
 </head>
+
 <body>
 <header>
     <div class="header-wrapper">
@@ -43,11 +42,21 @@
                 {{ current_service.icon }}
             {% endif %}
         </span>
+
         <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #222;">{{ current_service.title }}</h1>
+
         <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 2.5rem auto; color: #555; line-height: 1.6;">
-            Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.
-            Оригинальные комплектующие, честные фиксированные цены, быстрая диагностика и официальная гарантия на все выполненные работы!
+            {# Если в названии услуги есть слово Ремонт #}
+            {% if "Ремонт" in current_service.title %}
+                Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
+                Оригинальные комплектующие, честные фиксированные цены, быстрая диагностика и официальная гарантия на все выполненные работы!
+            {# Если это Продажа, Настройка или Сборка #}
+            {% else %}
+                Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
+                Честные фиксированные цены, быстрая помощь и официальная гарантия!
+            {% endif %}
         </p>
+
         <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 0.8rem 2rem;">Вернуться на главную</a>
     </section>
 </div>

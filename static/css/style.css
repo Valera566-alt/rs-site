@@ -73,7 +73,7 @@ header {
     margin-top: 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 16px;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -87,7 +87,7 @@ header {
 .nav-link {
     color: #fff;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 17px;
     font-weight: 500;
     padding: 0.4rem 1.4rem;
     position: relative;
@@ -160,7 +160,7 @@ header {
 }
 
 .address {
-    font-size: 1rem;
+    font-size: 13px;
     color: #e0e0e0;
     line-height: 1.3;
     text-align: right;
@@ -181,6 +181,7 @@ header {
     transition: all 0.15s ease-in-out;
     position: relative;
     top: 0;
+    white-space: nowrap;
 }
 
 .btn-call-to-action:hover {
@@ -203,8 +204,8 @@ header {
 
 .section-title {
     text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 1.8rem;
+    font-size: 20px;
+    margin-bottom: 28px;
     color: var(--text);
 }
 
@@ -213,7 +214,7 @@ header {
     display: grid;
     /* Уменьшили минимальный порог до 200px. Теперь 4 блока идеально влезают в ряд! */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.25rem;
+    gap: 20px;
 }
 
 .feature-card {
@@ -221,7 +222,7 @@ header {
     text-decoration: none !important;
     color: var(--text) !important;
     background: var(--card-bg);
-    padding: 1.5rem;
+    padding: 24px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 2px solid var(--border);
@@ -240,12 +241,19 @@ header {
 }
 
 .feature-card h3 {
-    font-size: 1.25rem;
-    margin: 0 0 0.75rem 0;
+    font-size: 20px;
+    margin: 0 0 12px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+/* Фиксируем и уменьшаем внутренний текст описания в Основных направлениях */
+.feature-card p {
+    font-size: 16px;    /* Уменьшили размер шрифта до аккуратных 14px */
+    margin: 0;          /* Убираем лишние отступы, чтобы карточка была компактной */
+    color: #555555;     /* Делаем цвет текста мягким тёмно-серым */
+    line-height: 1.4;   /* Удобный межстрочный интервал */
 }
 
 /* Сетка Наши услуги — СТРОГО 5 блоков в один ряд */
@@ -253,12 +261,12 @@ header {
     display: grid;
     /* Уменьшили порог до 180px. Теперь 5 блоков гарантированно помещаются в один ряд в рамках 1200px контейнера */
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.25rem;
+    gap: 20px;
 }
 
 .service-card {
     background: var(--card-bg);
-    padding: 1.5rem;
+    padding: 24px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 1px solid var(--border);
@@ -277,14 +285,14 @@ header {
 }
 
 .service-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 40px;
+    margin-bottom: 16px;
     display: block;
 }
 
 .service-card h3 {
-    margin: 0 0 1rem 0;
-    font-size: 1.1rem;
+    margin: 0 0 16px 0;
+    font-size: 15px;
 }
 
 .service-card a {
@@ -298,12 +306,12 @@ header {
 .steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
+    gap: 24px;
 }
 
 .step-item {
     background: var(--card-bg);
-    padding: 1.5rem;
+    padding: 24px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 1px solid var(--border);
@@ -311,14 +319,27 @@ header {
 }
 
 .step-num {
-    font-size: 3rem;
+    font-size: 48px;
     font-weight: 700;
     color: var(--primary);
     line-height: 1;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 12px 0;
     display: block;
 }
+/* Фиксируем заголовок шага (например: Приём устройства) */
+.step-item h3 {
+    font-size: 18px;    /* Точный размер названия шага */
+    margin: 0 0 10px 0; /* Фиксированный отступ до описания */
+    color: var(--text);
+}
 
+/* Фиксируем внутренний текст описания шага */
+.step-item p {
+    font-size: 14px;    /* Аккуратный, компактный размер шрифта */
+    margin: 0;          /* Сбрасываем лишние отступы */
+    color: #555555;     /* Читаемый серый цвет */
+    line-height: 1.5;
+}
 .faq {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -332,24 +353,42 @@ header {
     border: 1px solid var(--border);
 }
 
-.faq-item h3 { margin: 0 0 0.5rem 0; color: var(--primary); }
-
+.faq-item h3 {
+    margin: 0 0 8px 0;      /* Фиксированный отступ до текста ответа */
+    color: var(--primary);
+    font-size: 18px;        /* Точный фиксированный размер шрифта вопроса */
+    font-weight: 600;
+}
+/* Фиксируем шрифт текста-ответа внутри карточки FAQ */
+.faq-item p {
+    font-size: 15px;        /* Аккуратный, компактный размер шрифта для ответа */
+    margin: 0;              /* Сбрасываем лишние отступы браузеров */
+    color: #444444;         /* Читаемый темно-серый цвет текста */
+    line-height: 1.5;
+}
+/* Внешний контейнер подвала: снова растянут от края до края монитора */
 .site-footer {
-    background-color: #ffffff;
+    background-color: transparent; /* Убираем сплошной белый фон со всего низа */
     color: #555555;
-    padding: 3rem 0 0 0;
-    border-top: 1px solid var(--border);
-    font-size: 1.2rem;
+    padding: 0;                   /* Обнуляем внешние отступы */
+    margin-top: 60px;             /* Сохраняем пустой воздух после блока FAQ */
+    font-size: 15px;
 }
 
 .footer-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem 2rem 2rem;
+    max-width: 1136px;            /* Уменьшили ширину, чтобы она идеально совпадала с сеткой верхних блоков */
+    margin: 0 auto;               /* Центрируем блок на экране */
+    padding: 60px 32px 40px 32px; /* Увеличили верхний отступ до 60px, чтобы заголовки не прижимались к краю */
+    background-color: #ffffff;    /* Белый фон */
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    box-sizing: border-box;
+    gap: 32px;
+
+    /* Округлая рамка и тень */
+    border: 1px solid var(--border);
+    border-radius: 8px;           /* Округлые углы */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Мягкая тень */
 }
 
 .footer-col h4 {
@@ -367,13 +406,17 @@ header {
     margin: 0;
 }
 
+/* Фиксируем размер и стиль для строк списков в подвале */
 .footer-col ul li {
-    margin-bottom: 0.6rem;
+    margin-bottom: 10px; /* Фиксированный шаг между строками */
+    font-size: 14px;     /* Точный, аккуратный размер шрифта для списков в подвале */
 }
 
+/* Фиксируем внешний вид ссылок в подвале */
 .footer-col ul li a {
     color: #666666;
     text-decoration: none;
+    font-size: 14px;     /* Жестко зафиксировали размер букв в Хроме и Опере */
     transition: color 0.15s ease-in-out;
 }
 
@@ -382,22 +425,29 @@ header {
     text-decoration: underline;
 }
 
+/* Фиксируем крупный номер телефона в подвале */
 .footer-phone {
-    font-size: 1.3rem;
+    font-size: 20px; /* Четкий фиксированный размер телефона в подвале */
     font-weight: 700;
     color: #222222;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 6px 0; /* Точный отступ до email */
 }
 
+/* Фиксируем размер и стиль ссылки e-mail в подвале */
 .footer-email a {
     color: var(--primary);
     text-decoration: none;
+    font-size: 14px; /* Жестко зафиксировали размер шрифта для почты */
 }
 
+
+/* Фиксируем размер и межстрочный интервал адреса в подвале */
 .footer-address {
-    line-height: 1.4;
-    color: #444444;
+    font-size: 14px;   /* Чёткий фиксированный размер шрифта для адреса */
+    line-height: 1.4;  /* Комфортный межстрочный интервал */
+    color: #444444;    /* Стабильный тёмно-серый цвет */
 }
+
 
 .footer-brand-col {
     display: flex;
@@ -432,6 +482,9 @@ header {
 .schedule-block p {
     margin: 0;
     color: #666666;
+    font-size: 16px;    /* Жестко зафиксировали размер шрифта в пикселях */
+    max-width: 140px;   /* Ограничили ширину: время поместится, а остальное уйдет вниз */
+    line-height: 1.4;   /* Сделали красивый отступ между двумя строчками */
 }
 
 .footer-bottom {
@@ -612,9 +665,6 @@ header {
         line-height: 1.2 !important;
     }
 
-    .section-title {
-        font-size: 1.5rem !important;
-    }
 
     .header-wrapper {
         flex-direction: column;
@@ -744,4 +794,18 @@ header {
         text-align: center !important;
         gap: 0.8rem !important;
     }
+}
+/* Делаем ссылку-обертку блочной для сохранения сетки */
+.service-card-link {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card-link .service-card {
+    flex: 1;
+}
+
+/* Подчеркивание текста "Подробнее" при наведении на любую часть карточки */
+.service-card-link:hover .service-more-link {
+    text-decoration: underline;
 }

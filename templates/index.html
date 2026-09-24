@@ -38,13 +38,55 @@
             </div>
         </div>
     </div>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ title }}",
+  "image": "https://it150.ru",
+  "@id": "https://it150.ru",
+  "url": "https://it150.ru",
+  "telephone": "{{ phone }}",
+  "email": "{{ email }}",
+  "priceRange": "RUB",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Новая, д. 8а, ТЦ «Корона»",
+    "addressLocality": "Балашиха, мкр. Железнодорожный",
+    "addressRegion": "Московская область",
+    "postalCode": "143980",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.751351,
+    "longitude": 38.014282
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "09:00",
+    "closes": "20:00"
+  }
+}
+</script>
+
+
 </header>
 
 <!-- Главный ограничитель ширины сайта -->
 <div class="container">
 
     <section class="section" id="repair">
-        <h2 class="section-title">Основные направления</h2>
+        <h2 class="section-title">ОСНОВНЫЕ НАПРАВЛЕНИЯ</h2>
         <div class="features">
             {% for feature in features %}
             <!-- Ссылка сама является карточкой feature-card. Внутри только чистый текст -->
@@ -55,31 +97,33 @@
             {% endfor %}
         </div>
     </section>
-
     <section class="section" id="info">
-        <h2 class="section-title">Наши услуги</h2>
+        <h2 class="section-title">НАШИ УСЛУГИ</h2>
         <div class="services-grid">
             {% for service in services %}
-            <div class="service-card">
-                <span class="service-icon">
-                    {# Проверяем, картинка это или текстовый эмодзи #}
-                    {% if service.icon.endswith('.png') %}
-                        <img src="{{ url_for('static', filename='img/' + service.icon) }}"
-                             style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
-                             alt="{{ service.title }}">
-                    {% else %}
-                        {{ service.icon }}
-                    {% endif %}
-                </span>
-                <h3>{{ service.title }}</h3>
-                <a href="/services/{{ service.slug }}">Подробнее</a>
-            </div>
+            <a href="/services/{{ service.slug }}" class="service-card-link" style="text-decoration: none; color: inherit;">
+                <div class="service-card">
+                    <span class="service-icon">
+                        {# Проверяем, картинка это или текстовый эмодзи #}
+                        {% if service.icon.endswith('.png') %}
+                            <img src="{{ url_for('static', filename='img/' + service.icon) }}"
+                                 style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
+                                 alt="{{ service.title }}">
+                        {% else %}
+                            {{ service.icon }}
+                        {% endif %}
+                    </span>
+                    <h3>{{ service.title }}</h3>
+                    <span class="service-more-link" style="color: var(--primary); font-weight: 600;">Подробнее</span>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </section>
 
+
     <section class="section" id="about">
-        <h2 class="section-title">Как мы работаем</h2>
+        <h2 class="section-title">КАК МЫ РАБОТАМ</h2>
         <div class="steps">
             {% for step in steps %}
             <div class="step-item">
@@ -92,7 +136,7 @@
     </section>
 
     <section class="section" id="contacts">
-        <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
         <div class="faq">
             {% for item in faq %}
             <div class="faq-item">
@@ -109,7 +153,7 @@
     <div class="footer-wrapper">
         <!-- 1 Колонка: Наши направления -->
         <div class="footer-col">
-            <h4>Наши направления</h4>
+            <h4>НАШИ НАПРАВЛЕНИЯ</h4>
             <ul>
                 {% for feature in features %}
                 <li><a href="#about">{{ feature.title }}</a></li>
@@ -129,7 +173,7 @@
 
         <!-- 3 Колонка: Контакты -->
         <div class="footer-col">
-            <h4>Контакты</h4>
+            <h4>КОНТАКТЫ</h4>
             <p class="footer-phone">{{ phone }}</p>
             <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
             <p class="footer-address"><strong>{{ address }}</strong></p>
