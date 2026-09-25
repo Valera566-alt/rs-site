@@ -172,6 +172,12 @@ def yandex_verification():
     """Отдаем проверочный файл Яндекса из папки static, но по корневому адресу"""
     return app.send_static_file('yandex_093274bd8c7e1538.html')
 
+@app.route("/google969b44c74adecf16.html")
+def google_verification():
+    # Отдаем роботу именно ту строчку, которую он ожидает увидеть внутри файла
+    return "google-site-verification: google969b44c74adecf16.html"
+
+
 
 
 
