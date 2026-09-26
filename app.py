@@ -206,7 +206,18 @@ def google_verification():
     return "google-site-verification: google969b44c74adecf16.html"
 
 
+@app.route("/contacts")
+def contacts_page():
+    """Страница контактов сервисного центра с гео-SEO оптимизацией"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
 
+    # Формируем строго локальные SEO-метатеги под Яндекс и Google
+    page_data["title"] = "Контакты сервисного центра в Железнодорожном — ул. Новая 8а"
+    page_data[
+        "tagline"] = f"Адрес: {site_info['address']} (ТЦ 'Корона'). Телефон: {site_info['phone']}. График работы: {site_info['hours']}. Схема проезда и контакты."
+
+    return render_template("contacts.html", **page_data)
 
 
 if __name__ == '__main__':

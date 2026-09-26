@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ tagline }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+</head>
+<body>
+<header>
+    <div class="header-wrapper">
+        <a href="/" class="logo-block">
+            <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+            <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+        </a>
+        <nav class="main-nav">
+            <a href="/#repair" class="nav-link">Диагностика</a>
+            <a href="/#info" class="nav-link">Ремонт</a>
+            <a href="/#about" class="nav-link">Услуги</a>
+            <a href="/contacts" class="nav-link">Контакты</a>
+        </nav>
+        <div class="header-actions">
+            <span class="phone-number">{{ phone }}</span>
+            <div class="header-bottom-row">
+                <span class="address">Балашиха, мкр. Железнодорожный,<br>Ул. Новая д.8а ТЦ "Корона"</span>
+                <a href="#" class="btn-call-to-action">Заказать звонок</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <section class="section">
+        <h1 class="section-title" style="font-size: 26px; margin-top: 40px;">Сервисный центр в Железнодорожном на ул. Новая 8а</h1>
+
+        <div class="faq" style="margin-bottom: 40px;">
+            <div class="faq-item">
+                <h3>📍 Адрес сервиса</h3>
+                <p>г. Балашиха, микрорайон Железнодорожный, улица Новая, дом 8а, ТЦ "Корона", 2 этаж.</p>
+            </div>
+            <div class="faq-item">
+                <h3>📞 Консультации</h3>
+                <p>Телефон: <strong>{{ phone }}</strong><br>Email: <a href="mailto:{{ email }}">{{ email }}</a></p>
+            </div>
+            <div class="faq-item">
+                <h3>⏰ График работы</h3>
+                <p>{{ hours }}</p>
+            </div>
+        </div>
+        <!-- Блок интерактивной Яндекс.Карты (Скрипт-виджет со встроенной картой вашего сервиса) -->
+
+<div class="map-container">
+    <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1027878357"
+            width="100%"
+            height="400"
+            frameborder="0"
+            allowfullscreen="true"></iframe>
+</div>
+
+    </section>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-wrapper">
+        <div class="footer-col">
+            <h4>НАШИ НАПРАВЛЕНИЯ</h4>
+            <ul>
+                {% for feature in features %}
+                <li><a href="/directions/{{ feature.slug }}">{{ feature.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Наши услуги</h4>
+            <ul>
+                {% for service in services %}
+                <li><a href="/services/{{ service.slug }}">{{ service.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>КОНТАКТЫ</h4>
+            <p class="footer-phone">{{ phone }}</p>
+            <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
+            <p class="footer-address"><strong>{{ address }}</strong></p>
+        </div>
+        <div class="footer-col footer-brand-col">
+            <a href="/" class="logo-block footer-logo">
+                <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+                <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+            </a>
+            <div class="schedule-block">
+                <h5>График работы:</h5>
+                <p>{{ hours }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-wrapper">
+            <span>&copy; 2014-2026 Все права защищены.</span>
+            <a href="#" class="footer-link">Политика конфиденциальности</a>
+            <span class="footer-version">Версия сайта: {{ version }}</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

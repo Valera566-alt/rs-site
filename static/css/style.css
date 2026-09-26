@@ -358,6 +358,7 @@ header {
     color: var(--primary);
     font-size: 18px;        /* Точный фиксированный размер шрифта вопроса */
     font-weight: 600;
+    text-align: center;
 }
 /* Фиксируем шрифт текста-ответа внутри карточки FAQ */
 .faq-item p {
@@ -365,6 +366,7 @@ header {
     margin: 0;              /* Сбрасываем лишние отступы браузеров */
     color: #444444;         /* Читаемый темно-серый цвет текста */
     line-height: 1.5;
+    text-align: center;
 }
 /* Внешний контейнер подвала: снова растянут от края до края монитора */
 .site-footer {
@@ -809,3 +811,21 @@ header {
 .service-card-link:hover .service-more-link {
     text-decoration: underline;
 }
+
+/* ==================== КАРТА ==================== */
+.map-container {
+    width: 100%;
+    max-width: 1200px;       /* Ограничиваем максимальную ширину, чтобы на больших экранах не было слишком широко */
+    margin: 24px auto 60px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 450px;          /* Чуть увеличил высоту, чтобы карта смотрелась пропорционально */
+}
+
