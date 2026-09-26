@@ -142,24 +142,24 @@ def robots_txt():
     """Динамически отдаем оптимизированный текст robots.txt напрямую из кода без редиректов"""
     from flask import make_response
 
-    lines = [
-        "User-agent: Yandex",
-        "Disallow: /submit-callback",
-        "Allow: /static/",
-        "Sitemap: https://it150.ru/sitemap.xml",
-        "",
-        "User-agent: Googlebot",
-        "Disallow: /submit-callback",
-        "Allow: /static/",
-        "Sitemap: https://it150.ru/sitemap.xml",
-        "",
-        "User-agent: *",
-        "Disallow: /submit-callback",
+    # Формируем контент единой чистой строкой, как в sitemap.xml
+    txt_content = (
+        "User-agent: Yandex\n"
+        "Disallow: /submit-callback\n"
+        "Allow: /static/\n"
+        "Sitemap: https://it150.ru/sitemap.xml\n"
+        "\n"
+        "User-agent: Googlebot\n"
+        "Disallow: /submit-callback\n"
+        "Allow: /static/\n"
+        "Sitemap: https://it150.ru/sitemap.xml\n"
+        "\n"
+        "User-agent: *\n"
+        "Disallow: /submit-callback\n"
         "Sitemap: https://it150.ru/sitemap.xml"
-    ]
+    )
 
-    content = "\n".join(lines)
-    response = make_response(content)
+    response = make_response(txt_content)
     response.headers["Content-Type"] = "text/plain; charset=utf-8"
     return response
 
