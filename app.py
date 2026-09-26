@@ -132,8 +132,29 @@ def submit_callback():
 
 @app.route('/robots.txt')
 def robots_txt():
-    """Отдаем robots.txt поисковым роботам напрямую из папки static"""
-    return app.send_static_file('robots.txt')
+    """Динамически отдаем оптимизированный текст robots.txt напрямую из кода без редиректов"""
+    from flask import make_response
+
+    lines = [
+        "User-agent: Yandex",
+        "Disallow: /submit-callback",
+        "Allow: /static/",
+        "Sitemap: https://it150.ru/sitemap.xml",
+        "",
+        "User-agent: Googlebot",
+        "Disallow: /submit-callback",
+        "Allow: /static/",
+        "Sitemap: https://it150.ru/sitemap.xml",
+        "",
+        "User-agent: *",
+        "Disallow: /submit-callback",
+        "Sitemap: https://it150.ru/sitemap.xml"
+    ]
+
+    content = "\n".join(lines)
+    response = make_response(content)
+    response.headers["Content-Type"] = "text/plain; charset=utf-8"
+    return response
 
 
 @app.route('/sitemap.xml')
