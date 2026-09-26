@@ -8,10 +8,15 @@ app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
+
 @app.before_request
 def redirect_to_main_domain():
     """SEO-склейка зеркал: безопасный редирект 301 на главное окно it150.ru (без www)"""
     if app.debug:
+        return None
+
+    # ИСКЛЮЧЕНИЕ: отдаем robots.txt и sitemap.xml сразу, игнорируя редиректы хостов
+    if request.path in ['/robots.txt', '/sitemap.xml']:
         return None
 
     # Читаем оригинальный хост, который Nginx перенаправил во Flask
@@ -32,6 +37,8 @@ def redirect_to_main_domain():
         if request.query_string:
             main_url += f"?{request.query_string.decode('utf-8')}"
         return redirect(main_url, code=301)
+
+    # ... весь ваш остальной код функции ниже остается без изменений ...
 
 
 @app.route("/")
