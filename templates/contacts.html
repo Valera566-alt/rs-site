@@ -38,7 +38,7 @@
         <div class="faq" style="margin-bottom: 40px;">
             <div class="faq-item">
                 <h3>📍 Адрес сервиса</h3>
-                <p>г. Балашиха, микрорайон Железнодорожный, улица Новая, дом 8а, ТЦ "Корона", 2 этаж.</p>
+                <p>г. Балашиха, микрорайон Железнодорожный, улица Новая, дом 8а, ТЦ "Корона", 1 этаж.</p>
             </div>
             <div class="faq-item">
                 <h3>📞 Консультации</h3>
@@ -49,22 +49,15 @@
                 <p>{{ hours }}</p>
             </div>
         </div>
-        <!-- Блок интерактивной Яндекс.Карты (Скрипт-виджет со встроенной картой вашего сервиса) -->
 
-<div class="map-container">
-    <!--<iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1027878357"
-            width="100%"
-            height="400"
-            frameborder="0"
-            allowfullscreen="true"></iframe>-->
-        <iframe src="https://yandex.ru/map-widget/v1/?ll=38.011476%2C55.747605&z=16&pt=38.011476,55.747605"
-            width="100%"
-            height="450"
-            frameborder="0"
-            allowfullscreen="true">
-    </iframe>
-</div>
-
+        <div class="map-container">
+            <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1027878357"
+                    width="100%"
+                    height="400"
+                    frameborder="0"
+                    allowfullscreen="true">
+            </iframe>
+        </div>
     </section>
 </div>
 
@@ -111,5 +104,8 @@
         </div>
     </div>
 </footer>
+
+{% include 'includes/_callback_modal.html' %}
+
 </body>
 </html>

@@ -107,7 +107,7 @@ def submit_callback():
 
     BOT_TOKEN = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
     USER_ID = "21641785"
-    API_URL = "https://max.ru"
+    API_URL = "https://platform-api2.max.ru/messages"
 
     headers = {
         "Authorization": BOT_TOKEN,

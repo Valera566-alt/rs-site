@@ -1,0 +1,151 @@
+<!-- Модальное окно "Заказать звонок" -->
+<div id="callbackModal" class="modal-overlay">
+    <div class="modal-card">
+        <button class="modal-close-btn" id="closeModalBtn">&times;</button>
+        <h3>Заказать обратный звонок</h3>
+        <p>Оставьте ваши контакты, и наш специалист свяжется с вами в течение 10 минут.</p>
+
+        <form id="callbackForm">
+            <div class="form-group">
+                <input type="text" id="clientName" placeholder="Ваше имя" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <input type="tel" id="clientPhone" placeholder="Номер телефона" required autocomplete="off">
+            </div>
+            <button type="submit" class="btn-submit-form">Отправить заявку</button>
+        </form>
+        <div id="formStatus" class="form-status-msg"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const openButtons = document.querySelectorAll('.btn-call-to-action');
+    const modal = document.getElementById('callbackModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const form = document.getElementById('callbackForm');
+    const statusMsg = document.getElementById('formStatus');
+    const phoneInput = document.getElementById('clientPhone');
+
+    // Маска телефона: подставляет +7 и форматирует ввод
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            let input = phoneInput.value.replace(/\D/g, '');
+            if (!input) {
+                phoneInput.value = '';
+                return;
+            }
+            if (input[0] === '7' || input[0] === '8') {
+                input = input.substring(1);
+            }
+
+            let formatted = '+7 ';
+            if (input.length > 0) formatted += '(' + input.substring(0, 3);
+            if (input.length >= 3) formatted += ') ' + input.substring(3, 6);
+            if (input.length >= 6) formatted += '-' + input.substring(6, 8);
+            if (input.length >= 8) formatted += '-' + input.substring(8, 10);
+
+            phoneInput.value = formatted;
+        });
+
+        // Защита: нельзя стереть "+7 " одним Backspace
+        phoneInput.addEventListener('keydown', (e) => {
+            if (phoneInput.value === '+7 ' && e.key === 'Backspace') {
+                e.preventDefault();
+            }
+        });
+    }
+
+    // Открытие модального окна по всем кнопкам .btn-call-to-action
+    if (openButtons.length && modal) {
+        openButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                if (phoneInput) phoneInput.value = '+7 '; // сразу маска при открытии
+            });
+        });
+    }
+
+    // Закрытие по крестику
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            if (form) form.reset();
+            if (statusMsg) statusMsg.textContent = '';
+        });
+    }
+
+    // Закрытие по клику на затемнённый фон
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                if (form) form.reset();
+                if (statusMsg) statusMsg.textContent = '';
+            }
+        });
+    }
+
+    // Отправка формы во Flask
+    if (form && modal) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Проверка длины номера (маска делает его ~18 символов)
+            if (!phoneInput || phoneInput.value.length < 18) {
+                if (statusMsg) {
+                    statusMsg.textContent = 'Введите номер телефона полностью!';
+                    statusMsg.style.color = '#dc3545';
+                }
+                return;
+            }
+
+            const name = document.getElementById('clientName').value;
+            const phone = phoneInput.value;
+
+            if (statusMsg) {
+                statusMsg.textContent = 'Отправка...';
+                statusMsg.style.color = '#555';
+            }
+
+            try {
+                const response = await fetch('/submit-callback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    if (statusMsg) {
+                        statusMsg.textContent = 'Спасибо! Заявка успешно отправлена.';
+                        statusMsg.style.color = '#28a745';
+                    }
+                    form.reset();
+                    setTimeout(() => {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                        if (statusMsg) statusMsg.textContent = '';
+                    }, 2000);
+                } else {
+                    if (statusMsg) {
+                        statusMsg.textContent = 'Ошибка сервера. Попробуйте позже.';
+                        statusMsg.style.color = '#dc3545';
+                    }
+                }
+            } catch (error) {
+                console.error(error);
+                if (statusMsg) {
+                    statusMsg.textContent = 'Ошибка сети. Проверьте соединение.';
+                    statusMsg.style.color = '#dc3545';
+                }
+            }
+        });
+    }
+})();
+</script>
