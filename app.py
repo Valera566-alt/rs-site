@@ -1,7 +1,8 @@
 import os
-import requests  # Библиотека для пересылки вебхуков в Макс мессенджер
-from flask import Flask, render_template, abort, request, jsonify, redirect
+import requests
+from flask import Flask, render_template, abort, request, jsonify, redirect, send_from_directory
 from services import get_site_info
+
 
 app = Flask(__name__)
 
@@ -40,7 +41,9 @@ def redirect_to_main_domain():
 
     # ... весь ваш остальной код функции ниже остается без изменений ...
 
-
+@app.route('/favicon.png')
+def favicon():
+    return send_from_directory(os.getcwd(), 'favicon.png', mimetype='image/png')
 @app.route("/")
 def index():
     # Главная страница: распаковываем все базовые данные
