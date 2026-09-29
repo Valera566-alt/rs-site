@@ -178,7 +178,7 @@ def sitemap_xml():
     now = datetime.datetime.now().strftime('%Y-%m-%d')
 
     xml_content = f'<?xml version="1.0" encoding="UTF-8"?>\n'
-    xml_content += f'<urlset xmlns="http://sitemaps.org">\n'
+    xml_content += f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
     # 1. Главная страница
     xml_content += f'  <url><loc>{base_url}/</loc><lastmod>{now}</lastmod><priority>1.0</priority></url>\n'
@@ -207,7 +207,6 @@ def yandex_verification():
 def google_verification():
     # Отдаем роботу именно ту строчку, которую он ожидает увидеть внутри файла
     return "google-site-verification: google969b44c74adecf16.html"
-
 
 @app.route("/contacts")
 def contacts_page():

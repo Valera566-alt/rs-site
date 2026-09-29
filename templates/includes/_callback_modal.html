@@ -48,7 +48,7 @@
             phoneInput.value = formatted;
         });
 
-        // Защита: нельзя стереть "+7 " одним Backspace
+        // Защита: нельзя стереть "+7" одним Backspace
         phoneInput.addEventListener('keydown', (e) => {
             if (phoneInput.value === '+7 ' && e.key === 'Backspace') {
                 e.preventDefault();

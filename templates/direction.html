@@ -32,6 +32,84 @@
 </header>
 
 <div class="container">
+
+{% if current_direction.slug == 'professionalnyj-remont' %}
+
+    <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ» === -->
+
+    <section class="section" style="text-align: center; padding: 3rem 1rem 1rem;">
+        <span style="font-size: 4rem; display: block; margin-bottom: 1rem;">
+            {{ current_direction.icon }}
+        </span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #222;">
+            {{ current_direction.title }}
+        </h1>
+
+    </section>
+
+    <!-- 4 блока -->
+    <section class="section" id="repair-blocks">
+        <div class="features">
+            <div class="feature-card">
+                <h3>🛠️ Заголовок блока №1</h3>
+                <p>Текст под заголовком блока №1. Здесь размещается описание услуги, преимущества или краткая характеристика направления.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔧 Заголовок блока №2</h3>
+                <p>Текст под заголовком блока №2. Пример текста для заполнения карточки услуги на странице ремонта.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚙️ Заголовок блока №3</h3>
+                <p>Текст под заголовком блока №3. Блок предназначен для размещения ключевой информации по отдельному виду работ.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✅ Заголовок блока №4</h3>
+                <p>Текст под заголовком блока №4. Сюда можно добавить информацию о гарантиях, сроках или используемых запчастях.</p>
+            </div>
+        </div>
+    </section>
+
+     <!-- SEO-текст -->
+    <section class="section" id="seo-text" style="margin-bottom: 32px;">
+        <h2 class="section-title" style="margin-bottom: 16px;">РЕМОНТ КОМПЬЮТЕРОВ И ТЕХНИКИ</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.5; color: #555; margin-bottom: 16px;">Профессиональный ремонт компьютеров, ноутбуков, системных блоков, наушников, приставок и другой цифровой техники в Железнодорожном. Быстро, качественно, с гарантией. Наши мастера устранят любые неисправности: от замены комплектующих до сложного восстановления плат. Работаем с оригинальными и сертифицированными запчастями, соблюдаем сроки и предоставляем отчёт о выполненных работах.</p>
+            <p style="line-height: 1.5; color: #555; margin-bottom: 16px;">Осуществляем ремонт компьютеров и ноутбуков любой сложности: замена матрицы, ремонт клавиатуры, восстановление жёстких дисков и SSD, чистка системы охлаждения, замена термопасты, апгрейд оперативной памяти. Ремонтируем игровые приставки Xbox и Sony PlayStation, наушники и гарнитуры, мониторы и телевизоры.</p>
+            <p style="line-height: 1.5; color: #555;">Сервисный центр находится по адресу: Балашиха, мкр. Железнодорожный, ул. Новая 8а. Работаем без выходных с 09:00 до 20:00. Доверьте ремонт техники профессионалам — восстановим работоспособность вашего устройства в кратчайшие сроки.</p>
+        </div>
+    </section>
+
+
+    <!-- Секция «Как мы работаем» -->
+    <section class="section" id="about">
+        <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
+        <div class="steps">
+            {% for step in steps %}
+            <div class="step-item">
+                <span class="step-num">{{ step.num }}</span>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+        <div class="faq">
+            {% for item in faq %}
+            <div class="faq-item">
+                <h3>{{ item.q }}</h3>
+                <p>{{ item.a }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% else %}
+
+    <!-- === ОБЫЧНАЯ СТРАНИЦА НАПРАВЛЕНИЯ === -->
     <section class="section" style="text-align: center; padding: 5rem 1rem;">
         <span style="font-size: 4rem; display: block; margin-bottom: 1rem;">
             {{ current_direction.icon }}
@@ -42,11 +120,13 @@
         </p>
         <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 0.8rem 2rem;">Вернуться на главную</a>
     </section>
+
+{% endif %}
+
 </div>
 
 <footer class="site-footer">
     <div class="footer-wrapper">
-        <!-- 1 Колонка: Наши направления (features) -->
         <div class="footer-col">
             <h4>Наши направления</h4>
             <ul>
@@ -55,8 +135,6 @@
                 {% endfor %}
             </ul>
         </div>
-
-        <!-- 2 Колонка: Наши услуги (services) -->
         <div class="footer-col">
             <h4>Наши услуги</h4>
             <ul>
@@ -65,16 +143,12 @@
                 {% endfor %}
             </ul>
         </div>
-
-        <!-- 3 Колонка: Контакты -->
         <div class="footer-col">
             <h4>Контакты</h4>
             <p class="footer-phone">{{ phone }}</p>
             <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
             <p class="footer-address"><strong>{{ address }}</strong></p>
         </div>
-
-        <!-- 4 Колонка: Логотип и График работы -->
         <div class="footer-col footer-brand-col">
             <a href="#" class="logo-block footer-logo">
                 <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
@@ -86,8 +160,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Нижняя плашка (Копирайт и Версия сайта) -->
     <div class="footer-bottom">
         <div class="footer-bottom-wrapper">
             <span>&copy; 2014-2026 Все права защищены. IT Сервис.</span>
