@@ -64,8 +64,7 @@ def service_page(slug):
 
     page_data = site_info.copy()
     page_data["title"] = f"{current_service['title']} в Железнодорожном — IT Сервис"
-    page_data[
-        "tagline"] = f"Профессиональный ремонт {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
+    page_data["tagline"] = f"Профессиональный ремонт {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
     page_data["current_service"] = current_service
 
     return render_template("service.html", **page_data)
@@ -191,6 +190,9 @@ def sitemap_xml():
     for service in site_info['services']:
         xml_content += f'  <url><loc>{base_url}/services/{service["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
 
+    # 4. Страница политики конфиденциальности
+    xml_content += f'  <url><loc>{base_url}/privacy</loc><lastmod>{now}</lastmod><priority>0.3</priority></url>\n'
+
     xml_content += f'</urlset>'
 
     response = make_response(xml_content)
@@ -220,6 +222,19 @@ def contacts_page():
         "tagline"] = f"Адрес: {site_info['address']} (ТЦ 'Корона'). Телефон: {site_info['phone']}. График работы: {site_info['hours']}. Схема проезда и контакты."
 
     return render_template("contacts.html", **page_data)
+
+
+@app.route("/privacy")
+def privacy_page():
+    """Страница политики конфиденциальности с SEO-оптимизацией"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+
+    # Формируем SEO-метатеги для страницы политики конфиденциальности
+    page_data["title"] = "Политика конфиденциальности и обработки персональных данных — IT Сервис"
+    page_data["tagline"] = "Политика конфиденциальности IT Сервис. Сбор и обработка персональных данных клиентов сервисного центра в Железнодорожном."
+
+    return render_template("privacy.html", **page_data)
 
 
 if __name__ == '__main__':

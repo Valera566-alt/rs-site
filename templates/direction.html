@@ -37,11 +37,11 @@
 
     <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ» === -->
 
-    <section class="section" style="text-align: center; padding: 3rem 1rem 1rem;">
-        <span style="font-size: 4rem; display: block; margin-bottom: 1rem;">
+    <section class="section" style="text-align: center; padding: 48px 16px 16px;">
+        <span style="font-size: 44px; display: block; margin-bottom: 16px;">
             {{ current_direction.icon }}
         </span>
-        <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #222;">
+        <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">
             {{ current_direction.title }}
         </h1>
 
@@ -51,7 +51,7 @@
     <section class="section" id="repair-blocks">
         <div class="features">
             <div class="feature-card">
-                <h3>🛠️ Заголовок блока №1</h3>
+                <h3>🛠️ Ремонт системных блоков, ноутбуков, моноблоков</h3>
                 <p>Текст под заголовком блока №1. Здесь размещается описание услуги, преимущества или краткая характеристика направления.</p>
             </div>
             <div class="feature-card">
@@ -110,15 +110,15 @@
 {% else %}
 
     <!-- === ОБЫЧНАЯ СТРАНИЦА НАПРАВЛЕНИЯ === -->
-    <section class="section" style="text-align: center; padding: 5rem 1rem;">
-        <span style="font-size: 4rem; display: block; margin-bottom: 1rem;">
+    <section class="section" style="text-align: center; padding: 80px 16px;">
+        <span style="font-size: 44px; display: block; margin-bottom: 16px;">
             {{ current_direction.icon }}
         </span>
-        <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #222;">{{ current_direction.title }}</h1>
-        <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 2.5rem auto; color: #555; line-height: 1.6;">
+        <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">{{ current_direction.title }}</h1>
+       <p style="font-size: 20.8px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
             {{ current_direction.text }} Мы предлагаем профессиональный подход, современное оборудование, фиксированную стоимость и официальную гарантию качества в Балашихе и Железнодорожном!
         </p>
-        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 0.8rem 2rem;">Вернуться на главную</a>
+        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 12.8px 32px;">Вернуться на главную</a>
     </section>
 
 {% endif %}
@@ -163,10 +163,11 @@
     <div class="footer-bottom">
         <div class="footer-bottom-wrapper">
             <span>&copy; 2014-2026 Все права защищены. IT Сервис.</span>
-            <a href="#" class="footer-link">Политика конфиденциальности</a>
+            <a href="/privacy" class="footer-link">Политика конфиденциальности</a>
             <span class="footer-version">Версия сайта: {{ version }}</span>
         </div>
     </div>
 </footer>
+{% include 'includes/_callback_modal.html' %}
 </body>
 </html>

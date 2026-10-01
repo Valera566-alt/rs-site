@@ -33,8 +33,8 @@
 </header>
 
 <div class="container">
-    <section class="section" style="text-align: center; padding: 5rem 1rem;">
-        <span style="font-size: 4rem; display: block; margin-bottom: 1rem;">
+    <section class="section" style="text-align: center; padding: 80px 16px;">
+        <span style="font-size: 64px; display: block; margin-bottom: 16px;">
             {# Вывод эмодзи или картинки услуги #}
             {% if '.png' in current_service.icon %}
                 <img src="/static/img/{{ current_service.icon }}" style="height: 80px; width: auto;" alt="{{ current_service.title }}">
@@ -43,9 +43,9 @@
             {% endif %}
         </span>
 
-        <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #222;">{{ current_service.title }}</h1>
+        <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">{{ current_service.title }}</h1>
 
-        <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 2.5rem auto; color: #555; line-height: 1.6;">
+        <p style="font-size: 20.8px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
             {# Если в названии услуги есть слово Ремонт #}
             {% if "Ремонт" in current_service.title %}
                 Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
@@ -57,7 +57,7 @@
             {% endif %}
         </p>
 
-        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 0.8rem 2rem;">Вернуться на главную</a>
+        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 12.8px 32px;">Вернуться на главную</a>
     </section>
 </div>
 
@@ -108,7 +108,7 @@
     <div class="footer-bottom">
         <div class="footer-bottom-wrapper">
             <span>&copy; 2014-2026 Все права защищены. IT Сервис.</span>
-            <a href="#" class="footer-link">Политика конфиденциальности</a>
+            <a href="/privacy" class="footer-link">Политика конфиденциальности</a>
             <span class="footer-version">Версия сайта: {{ version }}</span>
         </div>
     </div>
