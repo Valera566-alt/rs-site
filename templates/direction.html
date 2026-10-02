@@ -7,17 +7,18 @@
     <meta name="description" content="{{ tagline }}">
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
 <header>
     <div class="header-wrapper">
         <a href="/" class="logo-block">
-            <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+            <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
             <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
         </a>
         <nav class="main-nav">
             <a href="/#repair" class="nav-link">Диагностика</a>
-            <a href="/#info" class="nav-link">Ремонт</a>
+            <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
             <a href="/#about" class="nav-link">Услуги</a>
             <a href="/#contacts" class="nav-link">Контакты</a>
         </nav>
@@ -33,7 +34,7 @@
 
 <div class="container">
 
-{% if current_direction.slug == 'professionalnyj-remont' %}
+{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'remont-kompyuterov' %}
 
     <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ» === -->
 
@@ -52,37 +53,61 @@
         <div class="features">
             <div class="feature-card">
                 <h3>🛠️ Ремонт системных блоков, ноутбуков, моноблоков</h3>
-                <p>Текст под заголовком блока №1. Здесь размещается описание услуги, преимущества или краткая характеристика направления.</p>
+                <p>Профессиональный ремонт компьютеров в Железнодорожном: системные блоки, ноутбуки, моноблоки. Бесплатная диагностика, замена комплектующих, установка Windows, чистка от пыли. Гарантия на работы.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
             <div class="feature-card">
-                <h3>🔧 Заголовок блока №2</h3>
-                <p>Текст под заголовком блока №2. Пример текста для заполнения карточки услуги на странице ремонта.</p>
+                <h3>🔧 Ремонт смартфонов и планшетов</h3>
+                <p>Ремонт смартфонов и планшетов в Железнодорожном: замена экранов, аккумуляторов, разъемов зарядки. Ремонт iOS и Android устройств. Гарантия на запчасти.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
             <div class="feature-card">
-                <h3>⚙️ Заголовок блока №3</h3>
-                <p>Текст под заголовком блока №3. Блок предназначен для размещения ключевой информации по отдельному виду работ.</p>
+                <h3>⚙️ Ремонт мониторов и телевизоров</h3>
+                <p>Ремонт мониторов и телевизоров в Балашихе: замена матриц, инверторов, блоков питания. Ремонт LED и LCD панелей. Быстрое восстановление изображения.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 1200 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
             <div class="feature-card">
-                <h3>✅ Заголовок блока №4</h3>
-                <p>Текст под заголовком блока №4. Сюда можно добавить информацию о гарантиях, сроках или используемых запчастях.</p>
+                <h3>✅ Ремонт наушников и гарнитур</h3>
+                <p>Ремонт наушников и гарнитур в Железнодорожном: восстановление звука, замена кабелей, амбушюр. Ремонт беспроводных и проводных моделей. Гарантия качества.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
         </div>
     </section>
 
      <!-- SEO-текст -->
     <section class="section" id="seo-text" style="margin-bottom: 32px;">
-        <h2 class="section-title" style="margin-bottom: 16px;">РЕМОНТ КОМПЬЮТЕРОВ И ТЕХНИКИ</h2>
+        <h2 class="section-title" style="margin-bottom: 16px;">ПРОФЕССИОНАЛЬНЫЙ РЕМОНТ ТЕХНИКИ В ЖЕЛЕЗНОДОРОЖНОМ</h2>
         <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
-            <p style="line-height: 1.5; color: #555; margin-bottom: 16px;">Профессиональный ремонт компьютеров, ноутбуков, системных блоков, наушников, приставок и другой цифровой техники в Железнодорожном. Быстро, качественно, с гарантией. Наши мастера устранят любые неисправности: от замены комплектующих до сложного восстановления плат. Работаем с оригинальными и сертифицированными запчастями, соблюдаем сроки и предоставляем отчёт о выполненных работах.</p>
-            <p style="line-height: 1.5; color: #555; margin-bottom: 16px;">Осуществляем ремонт компьютеров и ноутбуков любой сложности: замена матрицы, ремонт клавиатуры, восстановление жёстких дисков и SSD, чистка системы охлаждения, замена термопасты, апгрейд оперативной памяти. Ремонтируем игровые приставки Xbox и Sony PlayStation, наушники и гарнитуры, мониторы и телевизоры.</p>
-            <p style="line-height: 1.5; color: #555;">Сервисный центр находится по адресу: Балашиха, мкр. Железнодорожный, ул. Новая 8а. Работаем без выходных с 09:00 до 20:00. Доверьте ремонт техники профессионалам — восстановим работоспособность вашего устройства в кратчайшие сроки.</p>
+            <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
+                <img src="{{ url_for('static', filename='img/pc_restor.webp') }}" alt="Ремонт компьютеров и ноутбуков в Железнодорожном" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Сервисный центр «IT Сервис» в Железнодорожном (Балашиха, ул. Новая 8а, ТЦ «Корона») выполняет квалифицированный ремонт компьютерной техники, мобильных устройств и электроники. Мы специализируемся на ремонте системных блоков, ноутбуков, моноблоков, смартфонов, планшетов, мониторов, телевизоров и наушников. Наши мастера имеют опыт работы от 5 лет и устраняют любые неисправности: от замены комплектующих до пайки и микропайки. Работаем с оригинальными и сертифицированными запчастями, соблюдаем сроки и предоставляем отчёт о выполненных работах.</p>
+            </div>
+            
+            <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
+                <img src="{{ url_for('static', filename='img/pc_motherboard.webp') }}" alt="Ремонт материнских плат и видеокарт в Балашихе" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Ремонт компьютеров и ноутбуков в Железнодорожном включает: бесплатную диагностику, замену материнских плат, видеокарт, процессоров, оперативной памяти, блоков питания. Устанавливаем и переустанавливаем Windows и Linux, удаляем вирусы, чистим систему охлаждения, меняем термопасту. Ремонтируем смартфоны и планшеты iOS и Android: замена экранов, аккумуляторов, разъёмов зарядки, восстановление после воды. Выполняем ремонт мониторов и телевизоров: замена матриц, инверторов, блоков питания, LED и LCD панелей. Восстанавливаем наушники и гарнитуры: ремонт кабелей, замена аккумуляторов (не на всех моделях), замена динамиков, ремонт и замена корпусных деталей и штекеров наушников и гарнитур. </p>
+            </div>
+            
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Почему выбирают наш сервисный центр в Железнодорожном? Фиксированные цены без скрытых платежей, срочный ремонт в день обращения (по возможности), официальная гарантия на все виды работ от 6 месяцев (каждый случай индивидуален и сроки гарантии могут быть изменены в обе стороны). Цены на ремонт компьютеров от 850 рублей, смартфонов от 850 рублей, мониторов и телевизоров от 1200 рублей, наушников от 850 рублей. Работаем без выходных с 09:00 до 20:00. Обслуживаем, как частных клиентов, так и организации.</p>
+            
+            <p style="line-height: 1.6; color: #555; text-indent: 24px;">Сервисный центр находится по адресу: Балашиха, мкрн. Железнодорожный, ул. Новая 8а, ТЦ «Корона». Доверьте ремонт техники профессионалам — восстановим работоспособность вашего устройства в кратчайшие сроки. Звоните: +7 (903) 103-61-04 для записи на диагностику.</p>
         </div>
     </section>
 
 
     <!-- Секция «Как мы работаем» -->
     <section class="section" id="about">
+        {% if current_direction.slug == 'professionalnyj-remont' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
+        {% elif current_direction.slug == 'remont-kompyuterov' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА КОМПЬЮТЕРОВ</h2>
+        {% else %}
         <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
+        {% endif %}
         <div class="steps">
             {% for step in steps %}
             <div class="step-item">
@@ -151,7 +176,7 @@
         </div>
         <div class="footer-col footer-brand-col">
             <a href="#" class="logo-block footer-logo">
-                <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+                <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
                 <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
             </a>
             <div class="schedule-block">

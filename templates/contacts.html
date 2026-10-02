@@ -6,18 +6,18 @@
     <title>{{ title }}</title>
     <meta name="description" content="{{ tagline }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
 <header>
     <div class="header-wrapper">
         <a href="/" class="logo-block">
-            <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+            <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
             <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
         </a>
         <nav class="main-nav">
             <a href="/#repair" class="nav-link">Диагностика</a>
-            <a href="/#info" class="nav-link">Ремонт</a>
+            <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
             <a href="/#about" class="nav-link">Услуги</a>
            <a href="javascript:void(0);" class="nav-link">Контакты</a>
         </nav>
@@ -87,7 +87,7 @@
         </div>
         <div class="footer-col footer-brand-col">
             <a href="/" class="logo-block footer-logo">
-                <img src="{{ url_for('static', filename='img/logo13.png') }}" alt="Логотип" class="logo-img">
+                <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
                 <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
             </a>
             <div class="schedule-block">
