@@ -17,10 +17,10 @@
             <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
         </a>
         <nav class="main-nav">
-            <a href="/#repair" class="nav-link">Диагностика</a>
+            <a href="/directions/diagnostika" class="nav-link">Диагностика</a>
             <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
             <a href="/#about" class="nav-link">Услуги</a>
-            <a href="/#contacts" class="nav-link">Контакты</a>
+            <a href="/contacts" class="nav-link">Контакты</a>
         </nav>
         <div class="header-actions">
             <span class="phone-number">8 (903) 103-61-04</span>
@@ -34,13 +34,17 @@
 
 <div class="container">
 
-{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'remont-kompyuterov' %}
+{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' %}
 
-    <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ» === -->
+    <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ и страница ДИАГНОСТИКА» === -->
 
     <section class="section" style="text-align: center; padding: 48px 16px 16px;">
         <span style="font-size: 44px; display: block; margin-bottom: 16px;">
-            {{ current_direction.icon }}
+          {% if current_direction.slug == 'diagnostika' %}
+        <img src="{{ url_for('static', filename='img/diagnostika.webp') }}" alt="Диагностика техники" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% else %}
+        <img src="{{ url_for('static', filename='img/remont_computerov.webp') }}" alt="Ремонт компьютеров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% endif %}
         </span>
         <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">
             {{ current_direction.title }}
@@ -48,53 +52,87 @@
 
     </section>
 
-    <!-- 4 блока -->
+        <!-- 4 блока -->
     <section class="section" id="repair-blocks">
         <div class="features">
+            {% if current_direction.slug == 'diagnostika' %}
+            <!-- Содержимое для страницы Диагностика -->
             <div class="feature-card">
-                <h3>🛠️ Ремонт системных блоков, ноутбуков, моноблоков</h3>
-                <p>Профессиональный ремонт компьютеров в Железнодорожном: системные блоки, ноутбуки, моноблоки. Бесплатная диагностика, замена комплектующих, установка Windows, чистка от пыли. Гарантия на работы.</p>
+                <h3><img src="{{ url_for('static', filename='img/systems_block.webp') }}" alt="..." style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Диагностика компьютеров</h3>
+                <p>Диагностика системных блоков, ноутбуков, моноблоков осуществляется специалистами нашего сервиса в Железнодорожном. Как правило срок диагностики не превышает 1 дня, часто результаты есть сразу в день обращения. В сложнодиагностируемых случаях срок поиска неисправности может быть увеличен до 3 дней.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Стоимость диагностики: 850р.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+                <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/smartphone.webp') }}" alt="..." style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Диагностика смартфонов</h3>
+                <p>Диагностика мобильных телефонов и смартфонов (iPhone, Samsung, Xiaomi, Realme, Tecno, POCO, Huawei и др.) в сервисном центре на ул. Новая 8а. Проверяем состояние аккумулятора, контроллера питания, дисплейного модуля и шлейфов на профессиональном оборудовании. </p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Стоимость диагностики: 850р.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+                <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/remont_tv.webp') }}" alt="..." style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Диагностика мониторов и телевизоров</h3>
+                <p>Профессиональное тестирование ЖК, LED и OLED телевизоров, а также игровых и офисных мониторов в Балашихе. Мастер проводит комплексную диагностику блока питания, инвертора подсветки, ламп, светодиодных линеек и материнской платы. Локализация неисправности (когда аппарат не включается, гаснет экран или искажается картинка) занимает от 1 до 2 дней. </p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Стоимость диагностики: 1200р.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+                <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/headphones.webp') }}" alt="..." style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Диагностика наушников и гарнитур</h3>
+                <p>Диагностика беспроводных Bluetooth-наушников (Apple AirPods, JBL, Sony, Marshall), а также массивных игровых и полноразмерных гарнитур. Проверяем целостность динамиков, микрофонов, аудио-разъемов и плат сопряжения. Поиск причины, почему один наушник тише другого, пропадает звук или не держится заряд, занимает 1-2 дня.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Стоимость диагностики: 850р.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+
+            {% else %}
+            <!-- Содержимое для страницы Профессиональный ремонт -->
+            <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/systems_block.webp') }}" alt="Ремонт компьютеров" style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт системных блоков, ноутбуков, моноблоков</h3>
+                <p>Профессиональный ремонт компьютеров в Железнодорожном: системные блоки, ноутбуки, моноблоки. Диагностика, замена комплектующих, установка Windows, Linux чистка от пыли. Гарантия.</p>
                 <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
             <div class="feature-card">
-                <h3>🔧 Ремонт смартфонов и планшетов</h3>
-                <p>Ремонт смартфонов и планшетов в Железнодорожном: замена экранов, аккумуляторов, разъемов зарядки. Ремонт iOS и Android устройств. Гарантия на запчасти.</p>
-                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <h3><img src="{{ url_for('static', filename='img/smartphone.webp') }}" alt="Ремонт смартфонов" style="height: 60px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт смартфонов и планшетов</h3>
+                <p>Ремонт смартфонов и планшетов в Железнодорожном: замена экранов, аккумуляторов, разъемов зарядки. Ремонт iOS и Android устройств. Установка приложений, удаление вирусов с телефона, чистка от рекламы. Гарантия на запчасти.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 650 руб.</p>
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
             <div class="feature-card">
-                <h3>⚙️ Ремонт мониторов и телевизоров</h3>
-                <p>Ремонт мониторов и телевизоров в Балашихе: замена матриц, инверторов, блоков питания. Ремонт LED и LCD панелей. Быстрое восстановление изображения.</p>
+                <h3><img src="{{ url_for('static', filename='img/remont_tv.webp') }}" alt="Ремонт телевизоров и мониторов" style="height: 60px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт мониторов и телевизоров</h3>
+                <p>Ремонт мониторов и телевизоров в Балашихе: замена матриц, инверторов, блоков питания. Диагностика и ремонт LED и LCD панелей, ремонт блоков питания ТВ и замена подсветки. Быстрое восстановление изображения.</p>
                 <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 1200 руб.</p>
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
             <div class="feature-card">
-                <h3>✅ Ремонт наушников и гарнитур</h3>
+                <h3><img src="{{ url_for('static', filename='img/headphones.webp') }}" alt="Ремонт наушников и гарнитур" style="height: 60px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт наушников и гарнитур</h3>
                 <p>Ремонт наушников и гарнитур в Железнодорожном: восстановление звука, замена кабелей, амбушюр. Ремонт беспроводных и проводных моделей. Гарантия качества.</p>
-                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 550 руб.</p>
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
+            {% endif %}
         </div>
     </section>
 
      <!-- SEO-текст -->
     <section class="section" id="seo-text" style="margin-bottom: 32px;">
-        <h2 class="section-title" style="margin-bottom: 16px;">ПРОФЕССИОНАЛЬНЫЙ РЕМОНТ ТЕХНИКИ В ЖЕЛЕЗНОДОРОЖНОМ</h2>
+        <h2 class="section-title" style="margin-bottom: 16px;">Как проходит профессиональная диагностика техники в «IT Сервис»?</h2>
         <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
             <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
                 <img src="{{ url_for('static', filename='img/pc_restor.webp') }}" alt="Ремонт компьютеров и ноутбуков в Железнодорожном" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
-                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Сервисный центр «IT Сервис» в Железнодорожном (Балашиха, ул. Новая 8а, ТЦ «Корона») выполняет квалифицированный ремонт компьютерной техники, мобильных устройств и электроники. Мы специализируемся на ремонте системных блоков, ноутбуков, моноблоков, смартфонов, планшетов, мониторов, телевизоров и наушников. Наши мастера имеют опыт работы от 5 лет и устраняют любые неисправности: от замены комплектующих до пайки и микропайки. Работаем с оригинальными и сертифицированными запчастями, соблюдаем сроки и предоставляем отчёт о выполненных работах.</p>
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точная локализация неисправности — это 90% успешного ремонта. В нашей мастерской в Железнодорожном (Балашиха, ул. Новая 8а) мы не гадаем на коленке, а используем сертифицированное диагностическое оборудование: цифровые осциллографы, мультиметры, ЛБП (лабораторные блоки питания), термовоздушные станции и специализированные программные комплексы для стресс-тестирования плат.</p>
             </div>
             
             <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
                 <img src="{{ url_for('static', filename='img/pc_motherboard.webp') }}" alt="Ремонт материнских плат и видеокарт в Балашихе" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
-                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Ремонт компьютеров и ноутбуков в Железнодорожном включает: бесплатную диагностику, замену материнских плат, видеокарт, процессоров, оперативной памяти, блоков питания. Устанавливаем и переустанавливаем Windows и Linux, удаляем вирусы, чистим систему охлаждения, меняем термопасту. Ремонтируем смартфоны и планшеты iOS и Android: замена экранов, аккумуляторов, разъёмов зарядки, восстановление после воды. Выполняем ремонт мониторов и телевизоров: замена матриц, инверторов, блоков питания, LED и LCD панелей. Восстанавливаем наушники и гарнитуры: ремонт кабелей, замена аккумуляторов (не на всех моделях), замена динамиков, ремонт и замена корпусных деталей и штекеров наушников и гарнитур. </p>
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы проводим два вида проверки компьютерной и мобильной техники:
+                Первичная (экспресс-диагностика): позволяет сразу выявить модульные дефекты: разбитый экран смартфона, изношенный аккумулятор ноутбука, сгоревший блок питания стационарного ПК или поврежденный разъем питания, как правило, занимает 1 день.
+                Глубокая (аппаратная диагностика): необходима в сложных случаях — если устройство не включается после залития жидкостью, короткого замыкания, сильного удара или выдает синий экран (BSOD). В этом случае мастер полностью разбирает аппарат, тестирует цепи питания на материнской плате, проверяет контроллеры, видеочип, южный/северный мосты и элементы BGA-пайки. Это занимает от 1 до 3 дней.</p>
             </div>
             
-            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Почему выбирают наш сервисный центр в Железнодорожном? Фиксированные цены без скрытых платежей, срочный ремонт в день обращения (по возможности), официальная гарантия на все виды работ от 6 месяцев (каждый случай индивидуален и сроки гарантии могут быть изменены в обе стороны). Цены на ремонт компьютеров от 850 рублей, смартфонов от 850 рублей, мониторов и телевизоров от 1200 рублей, наушников от 850 рублей. Работаем без выходных с 09:00 до 20:00. Обслуживаем, как частных клиентов, так и организации.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Условия и честные цены на диагностику на ул. Новая 8а
+            Фиксированная стоимость при отказе: Если вы решите отложить ремонт или восстанавливать устройство нецелесообразно, цена выполненной диагностики фиксированная и составляет от 850 до 1200 рублей (в зависимости от типа техники и сложности разбора). Никаких накруток и скрытых платежей.
+            Официальное заключение: По результатам проверки мы детально согласуем с вами стоимость оригинальных запчастей (или качественных аналогов), сроки проведения работ и предоставим гарантийный талон на срок от 6 месяцев.</p>
             
-            <p style="line-height: 1.6; color: #555; text-indent: 24px;">Сервисный центр находится по адресу: Балашиха, мкрн. Железнодорожный, ул. Новая 8а, ТЦ «Корона». Доверьте ремонт техники профессионалам — восстановим работоспособность вашего устройства в кратчайшие сроки. Звоните: +7 (903) 103-61-04 для записи на диагностику.</p>
+            <p style="line-height: 1.6; color: #555; text-indent: 24px;">Привезите вашу неисправную технику в наш сервисный центр в ТЦ «Корона» (микрорайон Железнодорожный) — мы точно определим, что сломалось, и предложим самый выгодный вариант ремонта!</p>
         </div>
     </section>
 
@@ -103,8 +141,8 @@
     <section class="section" id="about">
         {% if current_direction.slug == 'professionalnyj-remont' %}
         <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
-        {% elif current_direction.slug == 'remont-kompyuterov' %}
-        <h2 class="section-title">ЭТАПЫ РЕМОНТА КОМПЬЮТЕРОВ</h2>
+        {% elif current_direction.slug == 'diagnostika' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
         {% else %}
         <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
         {% endif %}
