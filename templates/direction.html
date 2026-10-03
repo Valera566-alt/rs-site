@@ -19,7 +19,7 @@
         <nav class="main-nav">
             <a href="/directions/diagnostika" class="nav-link">Диагностика</a>
             <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
-            <a href="/#about" class="nav-link">Услуги</a>
+            <a href="/directions/uslugi" class="nav-link">Услуги</a>
             <a href="/contacts" class="nav-link">Контакты</a>
         </nav>
         <div class="header-actions">
@@ -34,7 +34,7 @@
 
 <div class="container">
 
-{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' %}
+{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' %}
 
     <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ и страница ДИАГНОСТИКА» === -->
 
@@ -42,6 +42,8 @@
         <span style="font-size: 44px; display: block; margin-bottom: 16px;">
           {% if current_direction.slug == 'diagnostika' %}
         <img src="{{ url_for('static', filename='img/diagnostika.webp') }}" alt="Диагностика техники" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'uslugi' %}
+        <img src="{{ url_for('static', filename='img/digital_services.webp') }}" alt="Услуги по ремонту техники" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% else %}
         <img src="{{ url_for('static', filename='img/remont_computerov.webp') }}" alt="Ремонт компьютеров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% endif %}
@@ -80,6 +82,28 @@
                 <p>Диагностика беспроводных Bluetooth-наушников (Apple AirPods, JBL, Sony, Marshall), а также массивных игровых и полноразмерных гарнитур. Проверяем целостность динамиков, микрофонов, аудио-разъемов и плат сопряжения. Поиск причины, почему один наушник тише другого, пропадает звук или не держится заряд, занимает 1-2 дня.</p>
                 <p style="margin-top: 12px; font-weight: 600; color: #555;">Стоимость диагностики: 850р.</p>
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+
+            {% elif current_direction.slug == 'uslugi' %}
+            <!-- Секция "Наши услуги" для страницы Услуги -->
+            <div class="services-grid">
+                {% for service in services %}
+                <a href="/services/{{ service.slug }}" class="service-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="service-card">
+                        <span class="service-icon">
+                            {% if service.icon.endswith('.webp') %}
+                                <img src="{{ url_for('static', filename='img/' + service.icon) }}"
+                                     style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
+                                     alt="{{ service.title }}">
+                            {% else %}
+                                {{ service.icon }}
+                            {% endif %}
+                        </span>
+                        <h3>{{ service.title }}</h3>
+                        <span class="service-more-link" style="color: var(--primary); font-weight: 600;">Подробнее</span>
+                    </div>
+                </a>
+                {% endfor %}
             </div>
 
             {% else %}
@@ -135,6 +159,23 @@
             
             <p style="line-height: 1.6; color: #555; text-indent: 24px;">Привезите вашу неисправную технику в наш сервисный центр в ТЦ «Корона» (микрорайон Железнодорожный) — мы точно определим, что сломалось, и предложим самый выгодный вариант ремонта!</p>
         </div>
+        {% elif current_direction.slug == 'uslugi' %}
+        <h2 class="section-title" style="margin-bottom: 16px;">ПОЛНЫЙ СПЕКТР УСЛУГ В «IT СЕРВИС»</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
+                <img src="{{ url_for('static', filename='img/pc_restor.webp') }}" alt="Услуги по ремонту компьютеров" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Сервисный центр «IT Сервис» в Железнодорожном (Балашиха, ул. Новая 8а, ТЦ «Корона») предлагает полный спектр услуг по ремонту и обслуживанию компьютерной техники. Мы ремонтируем системные блоки, ноутбуки, моноблоки, смартфоны, планшеты, мониторы и телевизоры. Наши мастера работают с 09:00 до 20:00 без выходных и выполняют работы в кратчайшие сроки.</p>
+            </div>
+            
+            <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
+                <img src="{{ url_for('static', filename='img/pc_motherboard.webp') }}" alt="Настройка и модернизация компьютеров" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Помимо ремонта, мы оказываем услуги по настройке и модернизации компьютеров. Устанавливаем Windows и Linux, настраиваем сети и интернет, удаляем вирусы, чистим от пыли, меняем термопасту. Модернизируем системные блоки и ноутбуки: устанавливаем SSD, увеличиваем объём оперативной памяти, меняем видеокарты и процессоры для повышения производительности.</p>
+            </div>
+            
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Почему выбирают нас? Фиксированные цены без скрытых платежей, официальная гарантия на все виды работ от 6 месяцев, выезд мастера на дом, обслуживание частных клиентов и организаций с предоставлением документов. Работаем с оригинальными и сертифицированными запчастями.</p>
+            
+            <p style="line-height: 1.6; color: #555; text-indent: 24px;">Обращайтесь в «IT Сервис» на ул. Новая 8а — мы решим любую проблему с вашей техникой! Звоните: +7 (903) 103-61-04.</p>
+        </div>
         {% else %}
         <h2 class="section-title" style="margin-bottom: 16px;">ПРОФЕССИОНАЛЬНЫЙ РЕМОНТ ТЕХНИКИ В ЖЕЛЕЗНОДОРОЖНОМ</h2>
         <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
@@ -162,6 +203,8 @@
         <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
         {% elif current_direction.slug == 'diagnostika' %}
         <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
+        {% elif current_direction.slug == 'uslugi' %}
+        <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
         {% else %}
         <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
         {% endif %}

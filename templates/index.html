@@ -23,7 +23,7 @@
         <nav class="main-nav">
             <a href="/directions/diagnostika" class="nav-link">Диагностика</a>
             <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
-            <a href="#about" class="nav-link">Услуги</a>
+            <a href="/directions/uslugi" class="nav-link">Услуги</a>
             <a href="/contacts" class="nav-link">Контакты</a>
         </nav>
 
@@ -90,7 +90,7 @@
         <h2 class="section-title">ОСНОВНЫЕ НАПРАВЛЕНИЯ</h2>
         <div class="features">
             {% for feature in features %}
-            {% if feature.slug != 'diagnostika' %}
+            {% if feature.show_on_main %}
             <!-- Ссылка сама является карточкой feature-card. Внутри только чистый текст -->
             <a href="/directions/{{ feature.slug }}" class="feature-card">
                 <h3>{{ feature.icon }} {{ feature.title }}</h3>
