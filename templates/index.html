@@ -90,11 +90,13 @@
         <h2 class="section-title">ОСНОВНЫЕ НАПРАВЛЕНИЯ</h2>
         <div class="features">
             {% for feature in features %}
+            {% if feature.slug != 'diagnostika' %}
             <!-- Ссылка сама является карточкой feature-card. Внутри только чистый текст -->
             <a href="/directions/{{ feature.slug }}" class="feature-card">
                 <h3>{{ feature.icon }} {{ feature.title }}</h3>
                 <p>{{ feature.text }}</p>
             </a>
+            {% endif %}
             {% endfor %}
         </div>
     </section>
