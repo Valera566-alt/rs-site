@@ -1,5 +1,6 @@
 import os
 import requests
+from typing import Dict, Any, Optional
 from flask import Flask, render_template, abort, request, jsonify, redirect, send_from_directory
 from services import get_site_info
 
@@ -51,9 +52,9 @@ def index():
 
 
 @app.route("/services/<slug>")
-def service_page(slug):
+def service_page(slug: str):
     site_info = get_site_info()
-    current_service = None
+    current_service: Optional[Dict[str, Any]] = None
     for service in site_info.get('services', []):
         if service['slug'] == slug:
             current_service = service
@@ -61,6 +62,8 @@ def service_page(slug):
 
     if not current_service:
         abort(404)
+
+    assert current_service is not None
 
     page_data = site_info.copy()
     page_data["title"] = f"{current_service['title']} в Железнодорожном — IT Сервис"
@@ -71,9 +74,9 @@ def service_page(slug):
 
 
 @app.route("/directions/<slug>")
-def direction_page(slug):
+def direction_page(slug: str):
     site_info = get_site_info()
-    current_direction = None
+    current_direction: Optional[Dict[str, Any]] = None
     for feature in site_info.get('features', []):
         if feature['slug'] == slug:
             current_direction = feature
@@ -81,6 +84,8 @@ def direction_page(slug):
 
     if not current_direction:
         abort(404)
+
+    assert current_direction is not None
 
     page_data = site_info.copy()
     page_data["title"] = f"{current_direction['title']} в Железнодорожном | IT Сервис"
@@ -122,7 +127,7 @@ def direction_page(slug):
             {"q": "Делаете ли вы модернизацию компьютеров?", "a": "Да, модернизируем системные блоки и ноутбуки: устанавливаем SSD, увеличиваем объём оперативной памяти, меняем видеокарты и процессоры."},
         ]
         # Добавляем services для отображения на странице Услуги
-        page_data["services"] = site_info["services"]
+        page_data["services"] = site_info.get("services", [])
 
     return render_template("direction.html", **page_data)
 
@@ -213,6 +218,7 @@ def sitemap_xml():
     now = datetime.datetime.now().strftime('%Y-%m-%d')
 
     xml_content = f'<?xml version="1.0" encoding="UTF-8"?>\n'
+    # noinspection HttpUrlsUsage - стандартный namespace sitemap, не сетевой запрос
     xml_content += f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
     # 1. Главная страница
@@ -220,11 +226,13 @@ def sitemap_xml():
 
     # 2. Страницы направлений
     for feature in site_info.get('features', []):
-        xml_content += f'  <url><loc>{base_url}/directions/{feature["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
+        if feature:
+            xml_content += f'  <url><loc>{base_url}/directions/{feature["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
 
     # 3. Страницы услуг
     for service in site_info.get('services', []):
-        xml_content += f'  <url><loc>{base_url}/services/{service["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
+        if service:
+            xml_content += f'  <url><loc>{base_url}/services/{service["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
 
     # 4. Страница политики конфиденциальности
     xml_content += f'  <url><loc>{base_url}/privacy</loc><lastmod>{now}</lastmod><priority>0.3</priority></url>\n'
