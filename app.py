@@ -39,7 +39,7 @@ def redirect_to_main_domain():
             main_url += f"?{request.query_string.decode('utf-8')}"
         return redirect(main_url, code=301)
 
-    # ... весь ваш остальной код функции ниже остается без изменений ...
+    return None
 
 @app.route('/favicon.png')
 def favicon():
@@ -54,7 +54,7 @@ def index():
 def service_page(slug):
     site_info = get_site_info()
     current_service = None
-    for service in site_info['services']:
+    for service in site_info.get('services', []):
         if service['slug'] == slug:
             current_service = service
             break
@@ -74,7 +74,7 @@ def service_page(slug):
 def direction_page(slug):
     site_info = get_site_info()
     current_direction = None
-    for feature in site_info['features']:
+    for feature in site_info.get('features', []):
         if feature['slug'] == slug:
             current_direction = feature
             break
@@ -85,28 +85,11 @@ def direction_page(slug):
     page_data = site_info.copy()
     page_data["title"] = f"{current_direction['title']} в Железнодорожном | IT Сервис"
     page_data[
-        "tagline"] = f"Услуги по {current_direction['seo_keyword']} в профессиональном сервисном центре на ул. Новая 8a. Звоните: {site_info['phone']}!"
+        "tagline"] = f"Услуги по {current_direction['seo_keyword']} в профессиональном сервисном центре на ул. Новая 8a. Звоните: {site_info.get('phone', '')}!"
     page_data["current_direction"] = current_direction
 
-    # Специальные данные для страницы "Профессиональный ремонт"
-    if slug == "professionalnyj-remont":
-        page_data["steps"] = [
-            {"num": "1", "title": "Диагностика", "text": "Мастер осматривает устройство, выявляет неисправность и определяет стоимость ремонта."},
-            {"num": "2", "title": "Согласование цены", "text": "Сообщаем вам точную стоимость и сроки ремонта. Работаем только после вашего согласия."},
-            {"num": "3", "title": "Выполнение ремонта", "text": "Заменяем неисправные детали на оригинальные или сертифицированные аналоги. Проверяем работоспособность."},
-            {"num": "4", "title": "Выдача с гарантией", "text": "Выдаём устройство с гарантийным талоном. Гарантия на работы от 6 месяцев."},
-        ]
-        page_data["faq"] = [
-            {"q": "Какие виды техники вы ремонтируете?", "a": "Ремонтируем системные блоки, ноутбуки, моноблоки, смартфоны, планшеты, мониторы, телевизоры, наушники и гарнитуры."},
-            {"q": "Сколько стоит диагностика?", "a": "Стоимость диагностики от 850 рублей. Если вы согласитесь на ремонт, стоимость диагностики вычитается из общей суммы ремонта."},
-            {"q": "Какая гарантия на ремонт?", "a": "Гарантия на работы от 6 месяцев. Срок зависит от типа заменяемой детали и характера поломки."},
-            {"q": "Делаете ли ремонт в день обращения?", "a": "Да, большинство неисправностей устраняем в день обращения. Сложные случаи занимают 1-3 дня."},
-            {"q": "Используете ли оригинальные запчасти?", "a": "Используем оригинальные запчасти и сертифицированные аналоги. Все детали с гарантией от производителя."},
-            {"q": "Можно ли оставить технику на хранение?", "a": "Да, храним технику до 30 дней бесплатно. После этого взимается плата за хранение."},
-        ]
-
-    # Специальные данные для страницы "Диагностика" (копия professionalnyj-remont)
-    if slug == "diagnostika":
+    # Специальные данные для страницы "Профессиональный ремонт" и "Диагностика"
+    if slug in ["professionalnyj-remont", "diagnostika"]:
         page_data["steps"] = [
             {"num": "1", "title": "Диагностика", "text": "Мастер осматривает устройство, выявляет неисправность и определяет стоимость ремонта."},
             {"num": "2", "title": "Согласование цены", "text": "Сообщаем вам точную стоимость и сроки ремонта. Работаем только после вашего согласия."},
@@ -150,8 +133,8 @@ def submit_callback():
     if not data or 'name' not in data or 'phone' not in data:
         return jsonify({"success": False, "error": "Неполные данные"}), 400
 
-    client_name = data['name']
-    client_phone = data['phone']
+    client_name = data.get('name', '')
+    client_phone = data.get('phone', '')
 
     message_text = (
         f"🚨 НОВАЯ ЗАЯВКА С САЙТА it150.ru!\n\n"
@@ -160,20 +143,20 @@ def submit_callback():
         f"📍 Локация: мкр. Железнодорожный"
     )
 
-    BOT_TOKEN = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
-    USER_ID = "21641785"
-    API_URL = "https://platform-api2.max.ru/messages"
+    bot_token = "f9LHodD0cOLb4_aiv1mUeV2QhSthPNmzFLzT-_dtpIjei5hOXJvo2Fko7droG2G06vPZP9CESvhY-vWbimuB"
+    user_id = "21641785"
+    api_url = "https://platform-api2.max.ru/messages"
 
     headers = {
-        "Authorization": BOT_TOKEN,
+        "Authorization": bot_token,
         "Content-Type": "application/json"
     }
-    params = {"user_id": USER_ID}
+    params = {"user_id": user_id}
     body = {"text": message_text}
 
     try:
         response = requests.post(
-            API_URL,
+            api_url,
             headers=headers,
             params=params,
             json=body,
@@ -236,11 +219,11 @@ def sitemap_xml():
     xml_content += f'  <url><loc>{base_url}/</loc><lastmod>{now}</lastmod><priority>1.0</priority></url>\n'
 
     # 2. Страницы направлений
-    for feature in site_info['features']:
+    for feature in site_info.get('features', []):
         xml_content += f'  <url><loc>{base_url}/directions/{feature["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
 
     # 3. Страницы услуг
-    for service in site_info['services']:
+    for service in site_info.get('services', []):
         xml_content += f'  <url><loc>{base_url}/services/{service["slug"]}</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
 
     # 4. Страница политики конфиденциальности
@@ -275,7 +258,7 @@ def contacts_page():
     # Формируем строго локальные SEO-метатеги под Яндекс и Google
     page_data["title"] = "Контакты сервисного центра в Железнодорожном — ул. Новая 8а"
     page_data[
-        "tagline"] = f"Адрес: {site_info['address']} (ТЦ 'Корона'). Телефон: {site_info['phone']}. График работы: {site_info['hours']}. Схема проезда и контакты."
+        "tagline"] = f"Адрес: {site_info.get('address', '')} (ТЦ 'Корона'). Телефон: {site_info.get('phone', '')}. График работы: {site_info.get('hours', '')}. Схема проезда и контакты."
 
     return render_template("contacts.html", **page_data)
 
