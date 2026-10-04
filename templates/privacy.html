@@ -132,7 +132,7 @@
             <h4>Наши услуги</h4>
             <ul>
                 {% for service in services %}
-                <li><a href="/services/{{ service.slug }}">{{ service.title }}</a></li>
+                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>

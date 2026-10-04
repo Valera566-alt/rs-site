@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ tagline }}">
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+<header>
+    <div class="header-wrapper">
+        <a href="/" class="logo-block">
+            <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
+            <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+        </a>
+        <nav class="main-nav">
+            <a href="/directions/diagnostika" class="nav-link">Диагностика</a>
+            <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
+            <a href="/directions/uslugi" class="nav-link">Услуги</a>
+            <a href="/contacts" class="nav-link">Контакты</a>
+        </nav>
+        <div class="header-actions">
+            <span class="phone-number">8 (903) 103-61-04</span>
+            <div class="header-bottom-row">
+                <span class="address">Балашиха, мкр. Железнодорожный,<br>Ул. Новая д.8а ТЦ "Корона"</span>
+                <a href="#" class="btn-call-to-action">Заказать звонок</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <section class="section" style="text-align: center; padding: 32px 16px 16px;">
+        <span style="font-size: 48px; display: block; margin-bottom: 12px;">
+            🔑
+        </span>
+        <h1 style="font-size: 24px; margin-bottom: 16px; color: #222;">Настройка ЭЦП и Рутокенов</h1>
+        <p style="font-size: 16px; max-width: 700px; margin: 0 auto 24px auto; color: #555; line-height: 1.5;">
+            Профессиональные услуги по подключению и настройке ЭЦП и Рутокен в мкр. Железнодорожный.<br>
+            Честные фиксированные цены, быстрая помощь и официальная гарантия!
+        </p>
+    </section>
+
+    <!-- Инструкция по настройке ЭЦП -->
+    <section class="section" id="instruction">
+        <h2 class="section-title">ИНСТРУКЦИЯ: Что делать после покупки Рутокена</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 24px; font-size: 14px;">Для руководителей организаций, ИП и самозанятых. Актуально на октябрь 2026 года</p>
+
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 32px;">
+            <h3 style="font-size: 22px; margin-bottom: 16px; color: #222;">1. Итак, что у вас в руках: </h3>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px;">Вы купили Рутокен (защищённый носитель, «флешку»). Это хранилище для электронной подписи, но не сама подпись. Чтобы подписывать документы (отчётность, торги, ЭДО и проч.), на этот носитель нужно записать квалифицированный сертификат (КЭП).</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px;"><strong>Два главных этапа:</strong></p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; list-style: none;">
+                <li>1. Получить сертификат: это делает УЦ (если вы самозанятый) и ФНС или доверенные лица если вы ИП или руководитель, другое уполномоченное лицо.</li>
+                <li>2. Настроить компьютер (установка драйверов, КриптоПро, плагинов).</li>
+            </ul>
+        </div>
+
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 32px;">
+            <h3 style="font-size: 22px; margin-bottom: 16px; color: #222;">2. Определяем ваш статус и маршрут</h3>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 24px;">От вашего статуса зависит, где и как вы получите сертификат.</p>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+                <thead>
+                    <tr style="background: var(--primary); color: white;">
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Ваш статус</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Что нужно получить</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Где получить</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Ваш статус" style="padding: 12px; border: 1px solid #ddd; color: #555;">Директор ООО/АО (действует без доверенности)</td>
+                        <td data-label="Что нужно получить" style="padding: 12px; border: 1px solid #ddd; color: #555;">КЭП руководителя (на физлицо)</td>
+                        <td data-label="Где получить" style="padding: 12px; border: 1px solid #ddd; color: #555;">УЦ ФНС (лично) или доверенные лица ФНС</td>
+                        <td data-label="Стоимость" style="padding: 12px; border: 1px solid #ddd; color: #555;">Бесплатно</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Ваш статус" style="padding: 12px; border: 1px solid #ddd; color: #555;">Индивидуальный предприниматель (ИП)</td>
+                        <td data-label="Что нужно получить" style="padding: 12px; border: 1px solid #ddd; color: #555;">КЭП ИП (в сертификате есть ОГРНИП)</td>
+                        <td data-label="Где получить" style="padding: 12px; border: 1px solid #ddd; color: #555;">УЦ ФНС (лично) или доверенные лица ФНС</td>
+                        <td data-label="Стоимость" style="padding: 12px; border: 1px solid #ddd; color: #555;">Бесплатно</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Ваш статус" style="padding: 12px; border: 1px solid #ddd; color: #555;">Самозанятый без статуса ИП</td>
+                        <td data-label="Что нужно получить" style="padding: 12px; border: 1px solid #ddd; color: #555;">КЭП физлица</td>
+                        <td data-label="Где получить" style="padding: 12px; border: 1px solid #ddd; color: #555;">Приложение «Госключ» или аккредитованный коммерческий УЦ</td>
+                        <td data-label="Стоимость" style="padding: 12px; border: 1px solid #ddd; color: #555;">Бесплатно (Госключ) или платно (УЦ)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="line-height: 1.6; color: #555; background: #fff3cd; padding: 16px; border-radius: 4px; border-left: 4px solid #ffc107;"><strong>Важно:</strong> В Межрайонной ИФНС № 20 по Московской области (Балашиха) не выдают КЭП обычным физлицам. Если вы самозанятый без ИП, в налоговую идти не нужно — вам откажут.</p>
+        </div>
+
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 32px;">
+            <h3 style="font-size: 22px; margin-bottom: 16px; color: #222;">3. Проверка носителя (Рутокена)</h3>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 24px;">С 1 апреля 2026 года ФНС требует соответствие новым ГОСТам шифрования. Старые носители не подходят. Посмотрите маркировку на корпусе вашего устройства:</p>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+                <thead>
+                    <tr style="background: var(--primary); color: white;">
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Маркировка на корпусе</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Статус</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Рекомендация</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Маркировка на корпусе" style="padding: 12px; border: 1px solid #ddd; color: #555;">Рутокен ЭЦП 3.0</td>
+                        <td data-label="Статус" style="padding: 12px; border: 1px solid #ddd; color: #28a745; font-weight: 600;">✅ Подходит</td>
+                        <td data-label="Рекомендация" style="padding: 12px; border: 1px solid #ddd; color: #555;">Можно использовать</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Маркировка на корпусе" style="padding: 12px; border: 1px solid #ddd; color: #555;">JaCarta-2 ГОСТ / JaCarta-3 ГОСТ</td>
+                        <td data-label="Статус" style="padding: 12px; border: 1px solid #ddd; color: #28a745; font-weight: 600;">✅ Подходит</td>
+                        <td data-label="Рекомендация" style="padding: 12px; border: 1px solid #ddd; color: #555;">Можно использовать</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Маркировка на корпусе" style="padding: 12px; border: 1px solid #ddd; color: #555;">Рутокен ЭЦП 2.0</td>
+                        <td data-label="Статус" style="padding: 12px; border: 1px solid #ddd; color: #dc3545; font-weight: 600;">❌ Не подходит</td>
+                        <td data-label="Рекомендация" style="padding: 12px; border: 1px solid #ddd; color: #555;">Требуется замена. Ключ с него нельзя перенести на новый носитель.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Маркировка на корпусе" style="padding: 12px; border: 1px solid #ddd; color: #555;">Рутокен Lite / Рутокен S</td>
+                        <td data-label="Статус" style="padding: 12px; border: 1px solid #ddd; color: #ffc107; font-weight: 600;">⚠️ Частично</td>
+                        <td data-label="Рекомендация" style="padding: 12px; border: 1px solid #ddd; color: #555;">«Lite» имеет истёкший сертификат соответствия (март 2026). Для первичного получения КЭП в 2026 году лучше использовать версию 3.0.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="line-height: 1.6; color: #555; font-weight: 600;"><strong>Правило:</strong> Сначала меняем носитель (если нужно), потом идём за подписью.</p>
+        </div>
+
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 32px;">
+            <h3 style="font-size: 22px; margin-bottom: 16px; color: #222;">4. Получение сертификата КЭП (для ИП и Директоров)</h3>
+            
+            <h4 style="font-size: 18px; margin-bottom: 12px; color: #333;">Что взять с собой</h4>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 24px;">Нужен только оригинал паспорта. Остальные данные (ИНН, СНИЛС, ОГРН/ОГРНИП) достаточно знать наизусть или иметь в телефоне — копии не требуются.</p>
+            
+            <h4 style="font-size: 18px; margin-bottom: 12px; color: #333;">Способы получения</h4>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 24px;">
+                <li><strong>Лично в ИФНС № 20 (Балашиха):</strong> Быстро (15–20 мин), бесплатно.</li>
+                <li><strong>У доверенных лиц ФНС:</strong> Банки (Сбер, ВТБ, Т-Банк и др.) и крупные операторы. Те же сертификаты, но иногда меньше очередей.</li>
+                <li><strong>Дистанционно:</strong> Через ЛК ИП/ЮЛ или приложение «Моя подпись» (требуется биометрия в ЕБС).</li>
+            </ul>
+            
+            <h4 style="font-size: 18px; margin-bottom: 12px; color: #333;">Как записаться в ИФНС № 20</h4>
+            <ol style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 24px;">
+                <li>Зайдите на сервис order.nalog.ru.</li>
+                <li>Выберите услугу: «Выдача квалифицированного сертификата ключа проверки электронной подписи».</li>
+                <li>Выберите инспекцию: Межрайонная ИФНС России № 20 по Московской области (код 5012).</li>
+                <li>Выберите дату и время.</li>
+                <li>Получите талон с PIN-кодом на почту.</li>
+            </ol>
+            <p style="line-height: 1.6; color: #555; background: #fff3cd; padding: 16px; border-radius: 4px; border-left: 4px solid #ffc107; margin-bottom: 24px;"><strong>Важно:</strong> При опоздании более чем на 10 минут запись аннулируется.</p>
+            
+            <h4 style="font-size: 18px; margin-bottom: 12px; color: #333;">Как проходит визит</h4>
+            <ol style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px;">
+                <li>Сотрудник сверяет паспорт и данные в реестрах.</li>
+                <li>Вы проверяете заявление (ФИО, ИНН, ОГРН) и подписываете его.</li>
+                <li>На ваш Рутокен генерируют ключи и записывают сертификат.</li>
+                <li>Вы задаёте PIN-код для токена.</li>
+                <li>Вам выдают Акт о выдаче сертификата (обязательно сохраните его!).</li>
+            </ol>
+        </div>
+
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 32px;">
+            <h3 style="font-size: 22px; margin-bottom: 16px; color: #222;">5. Получение сертификата КЭП (для самозанятых, у которых есть Рутокен)</h3>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 24px;">Если вы самозанятый без статуса ИП, но у вас уже есть Рутокен (например, купили «на будущее» или по совету), действовать нужно иначе, чем ИП и директорам.</p>
+            
+            <h4 style="font-size: 18px; margin-bottom: 12px; color: #333;">Вариант 1. Если нужна подпись на токене (для работы с 1С, ЭДО, некоторыми торговыми площадками)</h4>
+            <ol style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 24px;">
+                <li>Выберите аккредитованный УЦ. Проверьте актуальный список на сайте Минцифры.</li>
+                <li>Подготовьте документы: паспорт (оригинал), СНИЛС, ИНН.</li>
+                <li>Посетите офис УЦ лично (или закажите выезд курьера, если услуга доступна).</li>
+                <li>Предъявите Рутокен. Оператор запишет на него сертификат КЭП физлица.</li>
+                <li>Получите акт о выдаче.</li>
+            </ol>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 24px;"><strong>Стоимость:</strong> от 1 500 до 8 000 ₽ в зависимости от центра и срока действия.</p>
+            
+            <h4 style="font-size: 18px; margin-bottom: 12px; color: #333;">Вариант 2. Если достаточно облачной подписи (для Госуслуг, части ЭДО)</h4>
+            <ol style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 24px;">
+                <li>Скачайте приложение «Госключ».</li>
+                <li>Пройдите идентификацию одним из способов:
+                    <ul style="margin-left: 24px; margin-top: 8px;">
+                        <li>загранпаспорт нового образца + смартфон с NFC;</li>
+                        <li>сданная биометрия в ЕБС;</li>
+                        <li>очная идентификация в МФЦ или банке.</li>
+                    </ul>
+                </li>
+                <li>Сертификат будет храниться в телефоне. Ваш Рутокен в этом сценарии не используется.</li>
+            </ol>
+            
+            <h4 style="font-size: 18px; margin-bottom: 12px; color: #333;">Вариант 3. Если планируете участвовать в торгах или работать с маркировкой</h4>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px;">Проверьте требования конкретной площадки. Многие до сих пор требуют подпись на токене. В этом случае используйте Вариант 1. Облачная подпись из «Госключа» поддерживается не всеми площадками.</p>
+            <p style="line-height: 1.6; color: #555; background: #d1ecf1; padding: 16px; border-radius: 4px; border-left: 4px solid #17a2b8;"><strong>Нюанс:</strong> Если вы решите зарегистрироваться как ИП, вы сможете бесплатно получить КЭП в ФНС на свой Рутокен по инструкции из раздела 4.</p>
+        </div>
+
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 32px; text-align: center;">
+            <h3 style="font-size: 22px; margin-bottom: 16px; color: #222;">6. Настройка рабочего места (Компьютера)</h3>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 24px;">После получения сертификата нужно подготовить компьютер.</p>
+
+            <div style="background: #e7f3ff; padding: 24px; border-radius: 8px; border-left: 4px solid #007bff; margin-bottom: 16px; text-align: left;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; font-weight: 600;">На данном шаге нужно обратиться к специалистам в IT сервис в Железнодорожном на ул. Новая 8а (+7-903-103-61-04).</p>
+                <p style="line-height: 1.6; color: #555; margin-bottom: 12px;"><strong>Наши специалисты:</strong></p>
+                <ul style="line-height: 1.8; color: #555; margin-left: 24px;">
+                    <li>Удалят конфликтующие версии ПО.</li>
+                    <li>Установят актуальную версию КриптоПро и драйверы.</li>
+                    <li>Правильно разместят корневые сертификаты.</li>
+                    <li>Настроят браузеры и рабочие системы (1С, СБИС, Контур и т.д.).</li>
+                    <li>Проведут тестовое подписание.</li>
+                </ul>
+            </div>
+
+            <a href="#" class="btn-call-to-action" style="display: inline-block;">Заказать звонок</a>
+        </div>
+    </section>
+
+    <!-- Секция «Как мы работаем» -->
+    <section class="section" id="about">
+        <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Консультация</h3>
+                <p>Уточняем ваши задачи: для каких сайтов и сервисов нужна ЭЦП, какой тип токена используется.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Установка ПО</h3>
+                <p>Устанавливаем КриптоПро, драйверы Рутокена и необходимое программное обеспечение.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Настройка</h3>
+                <p>Настраиваем сертификат, проверяем работу в браузерах и на требуемых сайтах.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Проверка</h3>
+                <p>Проверяем вход в ЛК ФНС, Госуслуги и другие сервисы. Обучаем использованию.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Какие токены вы настраиваете?</h3>
+                <p>Настраиваем Рутокен ЭЦП, JaCarta, eToken и  любые другие токены для работы с государственными порталами и коммерческими сервисами.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько стоит настройка ЭЦП?</h3>
+                <p>Стоимость настройки зависит от объема работ. Базовая настройка КриптоПро и токена от 2500 рублей. Комплексная настройка рабочего места обсуждается индивидуально.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Нужен ли свой токен?</h3>
+                <p>Да, токен и сертификат вы должны получить в удостоверяющем центре. Мы помогаем установить и настроить их на вашем компьютере.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Работаете ли с организациями?</h3>
+                <p>Да, настраиваем ЭЦП для сотрудников организаций, помогаем с регистрацией в ЛК ФНС, настройкой электронной отчетности.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли удалённо настроить ЭЦП?</h3>
+                <p>Да, при наличии удалённого доступа (AnyDesk) можем настроить ЭЦП дистанционно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какая гарантия на работы?</h3>
+                <p>Гарантия на настройку ЭЦП — 30 дней. Если в этот период возникнут проблемы, связанные с работой установленных нами плагинов и расщирений, бесплатно поможем их решить.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Модальное окно "Заказать звонок" -->
+{% include 'includes/_callback_modal.html' %}
+
+<footer class="site-footer">
+    <div class="footer-wrapper">
+        <div class="footer-col">
+            <h4>Наши направления</h4>
+            <ul>
+                {% for feature in features %}
+                <li><a href="/directions/{{ feature.slug }}">{{ feature.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Наши услуги</h4>
+            <ul>
+                {% for service in services %}
+                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <p class="footer-phone">{{ phone }}</p>
+            <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
+            <p class="footer-address"><strong>{{ address }}</strong></p>
+        </div>
+        <div class="footer-col footer-brand-col">
+            <a href="#" class="logo-block footer-logo">
+                <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
+                <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+            </a>
+            <div class="schedule-block">
+                <h5>График работы:</h5>
+                <p>{{ hours }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-wrapper">
+            <span>&copy; 2014-2026 Все права защищены. IT Сервис.</span>
+            <a href="/privacy" class="footer-link">Политика конфиденциальности</a>
+            <span class="footer-version">Версия сайта: {{ version }}</span>
+        </div>
+    </div>
+</footer>
+{% include 'includes/_callback_modal.html' %}
+</body>
+</html>

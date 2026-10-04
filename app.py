@@ -246,6 +246,9 @@ def sitemap_xml():
     # 4. Страница политики конфиденциальности
     xml_content += f'  <url><loc>{base_url}/privacy</loc><lastmod>{now}</lastmod><priority>0.3</priority></url>\n'
 
+    # 5. Страница настройки ЭЦП и Рутокенов
+    xml_content += f'  <url><loc>{base_url}/nastrojka-ecp</loc><lastmod>{now}</lastmod><priority>0.8</priority></url>\n'
+
     xml_content += f'</urlset>'
 
     response = make_response(xml_content)
@@ -288,6 +291,19 @@ def privacy_page():
     page_data["tagline"] = "Политика конфиденциальности IT Сервис. Сбор и обработка персональных данных клиентов сервисного центра в Железнодорожном."
 
     return render_template("privacy.html", **page_data)
+
+
+@app.route("/nastrojka-ecp")
+def nastrojka_ecp_page():
+    """Страница настройки ЭЦП и Рутокенов"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+
+    # Формируем SEO-метатеги для страницы настройки ЭЦП
+    page_data["title"] = "Настройка ЭЦП и Рутокенов в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональные услуги по подключению и настройке ЭЦП и Рутокен в Железнодорожном. Установка КриптоПро, настройка сертификатов."
+
+    return render_template("nastrojka_ecp.html", **page_data)
 
 
 if __name__ == '__main__':
