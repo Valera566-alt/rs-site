@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="description" content="{{ tagline }}">
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" type="image/png" href="/favicon.png">
 </head>
@@ -34,7 +34,7 @@
 
 <div class="container">
 
-{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' %}
+{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' %}
 
     <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ и страница ДИАГНОСТИКА» === -->
 
@@ -45,7 +45,7 @@
         {% elif current_direction.slug == 'uslugi' %}
         <img src="{{ url_for('static', filename='img/digital_services.webp') }}" alt="Услуги по ремонту техники" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% else %}
-        <img src="{{ url_for('static', filename='img/remont_computerov.webp') }}" alt="Ремонт компьютеров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        <img src="{{ url_for('static', filename='img/pc_repair.webp') }}" alt="Ремонт компьютеров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% endif %}
         </span>
         <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">
@@ -88,7 +88,8 @@
             <!-- Секция "Наши услуги" для страницы Услуги -->
             <div class="services-grid">
                 {% for service in services %}
-                <a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}" class="service-card-link" style="text-decoration: none; color: inherit;">
+                {% if service.show_in_list != False %}
+                <a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% elif service.slug == 'remont-kompyuterov' %}/directions/remont-kompyuterov-noutbukov-monoblokov{% else %}/services/{{ service.slug }}{% endif %}" class="service-card-link" style="text-decoration: none; color: inherit;">
                     <div class="service-card">
                         <span class="service-icon">
                             {% if service.icon.endswith('.webp') %}
@@ -103,23 +104,24 @@
                         <span class="service-more-link" style="color: var(--primary); font-weight: 600;">Подробнее</span>
                     </div>
                 </a>
+                {% endif %}
                 {% endfor %}
             </div>
 
-            {% else %}
+            {% elif current_direction.slug == 'professionalnyj-remont' %}
             <!-- Содержимое для страницы Профессиональный ремонт -->
-            <div class="feature-card">
+            <a href="/directions/remont-kompyuterov-noutbukov-monoblokov" class="feature-card" style="text-decoration: none; color: inherit;">
                 <h3><img src="{{ url_for('static', filename='img/systems_block.webp') }}" alt="Ремонт компьютеров" style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт системных блоков, ноутбуков, моноблоков</h3>
                 <p>Профессиональный ремонт компьютеров в Железнодорожном: системные блоки, ноутбуки, моноблоки. Диагностика, замена комплектующих, установка Windows, Linux чистка от пыли. Гарантия.</p>
                 <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
-            </div>
-            <div class="feature-card">
+            </a>
+            <a href="/services/remont-smartfonov" class="feature-card" style="text-decoration: none; color: inherit;">
                 <h3><img src="{{ url_for('static', filename='img/smartphone.webp') }}" alt="Ремонт смартфонов" style="height: 60px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт смартфонов и планшетов</h3>
                 <p>Ремонт смартфонов и планшетов в Железнодорожном: замена экранов, аккумуляторов, разъемов зарядки. Ремонт iOS и Android устройств. Установка приложений, удаление вирусов с телефона, чистка от рекламы. Гарантия на запчасти.</p>
                 <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 650 руб.</p>
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
-            </div>
+            </a>
             <div class="feature-card">
                 <h3><img src="{{ url_for('static', filename='img/remont_tv.webp') }}" alt="Ремонт телевизоров и мониторов" style="height: 60px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт мониторов и телевизоров</h3>
                 <p>Ремонт мониторов и телевизоров в Балашихе: замена матриц, инверторов, блоков питания. Диагностика и ремонт LED и LCD панелей, ремонт блоков питания ТВ и замена подсветки. Быстрое восстановление изображения.</p>
@@ -133,8 +135,57 @@
                 <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
             </div>
             {% endif %}
+            {% if current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' %}
+            <!-- Содержимое для страницы Ремонт компьютеров, ноутбуков, моноблоков -->
+            <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/systems_block.webp') }}" alt="Ремонт системных блоков" style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт системных блоков</h3>
+                <p>Ремонт системных блоков в Железнодорожном: диагностика, замена комплектующих, восстановление после залития. Используем оригинальные и сертифицированные запчасти. Гарантия до 12 месяцев.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+            <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/pc_laptop.webp') }}" alt="Ремонт ноутбуков" style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт ноутбуков</h3>
+                <p>Ремонт ноутбуков в Железнодорожном: замена матриц, клавиатур, аккумуляторов. Пайка материнских плат, восстановление после залития. Быстрая установка Windows и драйверов.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+            <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/monoblock.webp') }}" alt="Ремонт моноблоков" style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Ремонт моноблоков</h3>
+                <p>Ремонт моноблоков в Железнодорожном: замена дисплеев, матриц, блоков питания. Ремонт материнских плат, восстановление после механических повреждений. Гарантия на все работы.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 850 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+            <div class="feature-card">
+                <h3><img src="{{ url_for('static', filename='img/pc-cooler.webp') }}" alt="Техническое обслуживание" style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;">Техническое обслуживание компьютеров</h3>
+                <p>Чистка от пыли и замена термопасты: предотвращение перегрева и продление срока службы ПК. Регулярное ТО снижает риск поломки на 80%. Выполняем за 30 минут с гарантией результата.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #555;">Цены от 650 руб.</p>
+                <p style="margin-top: 8px; font-weight: 600; color: var(--primary);">Звоните: +7 (903) 103-61-04</p>
+            </div>
+            {% endif %}
         </div>
     </section>
+
+     <!-- SEO-текст для remont-kompyuterov-noutbukov-monoblokov -->
+    {% if current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' %}
+    <section class="section" id="seo-text" style="margin-bottom: 32px;">
+        <h2 class="section-title" style="margin-bottom: 16px;">РЕМОНТ СИСТЕМНЫХ БЛОКОВ, НОУТБУКОВ, МОНОБЛОКОВ В ЖЕЛЕЗНОДОРОЖНОМ</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
+                <img src="{{ url_for('static', filename='img/pc_restor.webp') }}" alt="Ремонт компьютеров и ноутбуков в Железнодорожном" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Сервисный центр «IT Сервис» в Железнодорожном (Балашиха, ул. Новая 8а, ТЦ «Корона») выполняет квалифицированный ремонт системных блоков, ноутбуков и моноблоков. Мы специализируемся на диагностике, замене комплектующих, установке и настройки ПО и сетевого оборудования, удалении вирусов. Наши мастера имеют опыт работы от 5 лет и устраняют любые неисправности: от замены термопасты до BGA-пайки.</p>
+            </div>
+            
+            <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
+                <img src="{{ url_for('static', filename='img/pc_motherboard.webp') }}" alt="Ремонт материнских плат и видеокарт в Балашихе" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Ремонт компьютеров и ноутбуков в Железнодорожном включает: диагностику, замену материнских плат, видеокарт, процессоров, оперативной памяти, блоков питания. Устанавливаем и переустанавливаем Windows и Linux, удаляем вирусы, чистим систему охлаждения, меняем термопасту. Выполняем ремонт моноблоков: замена дисплеев, матриц, блоков питания, восстановление после механических повреждений. Регулярное техническое обслуживание — чистка от пыли и замена термопасты — снижает риск перегрева на 80%.</p>
+            </div>
+            
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Почему выбирают наш сервисный центр в Железнодорожном? Фиксированные цены без скрытых платежей, срочный ремонт в день обращения (по возможности), официальная гарантия на все виды работ от 6 месяцев (каждый случай индивидуален и сроки гарантии могут быть изменены в обе стороны). Цены на ремонт системных блоков и ноутбуков от 850 рублей, моноблоков от 850 рублей, техническое обслуживание от 650 рублей. Работаем без выходных с 09:00 до 20:00. Обслуживаем, как частных клиентов, так и организации.</p>
+            
+            <p style="line-height: 1.6; color: #555; text-indent: 24px;">Сервисный центр находится по адресу: Балашиха, мкрн. Железнодорожный, ул. Новая 8а, ТЦ «Корона». Доверьте ремонт техники профессионалам — восстановим работоспособность вашего устройства в кратчайшие сроки. Звоните: +7 (903) 103-61-04 для записи на диагностику.</p>
+        </div>
+    </section>
+    {% endif %}
 
      <!-- SEO-текст -->
     <section class="section" id="seo-text" style="margin-bottom: 32px;">
@@ -176,7 +227,7 @@
             
             <p style="line-height: 1.6; color: #555; text-indent: 24px;">Обращайтесь в «IT Сервис» на ул. Новая 8а — мы решим любую проблему с вашей техникой! Звоните: +7 (903) 103-61-04.</p>
         </div>
-        {% else %}
+        {% elif current_direction.slug == 'professionalnyj-remont' %}
         <h2 class="section-title" style="margin-bottom: 16px;">ПРОФЕССИОНАЛЬНЫЙ РЕМОНТ ТЕХНИКИ В ЖЕЛЕЗНОДОРОЖНОМ</h2>
         <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
             <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 24px;">
@@ -199,7 +250,7 @@
 
     <!-- Секция «Как мы работаем» -->
     <section class="section" id="about">
-        {% if current_direction.slug == 'professionalnyj-remont' %}
+        {% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' %}
         <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
         {% elif current_direction.slug == 'diagnostika' %}
         <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
@@ -240,10 +291,10 @@
             {{ current_direction.icon }}
         </span>
         <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">{{ current_direction.title }}</h1>
-       <p style="font-size: 20.8px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
+       <p style="font-size: 21px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
             {{ current_direction.text }} Мы предлагаем профессиональный подход, современное оборудование, фиксированную стоимость и официальную гарантию качества в Балашихе и Железнодорожном!
         </p>
-        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 12.8px 32px;">Вернуться на главную</a>
+        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 13px 32px;">Вернуться на главную</a>
     </section>
 
 {% endif %}
@@ -264,7 +315,9 @@
             <h4>Наши услуги</h4>
             <ul>
                 {% for service in services %}
-                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% if service.show_in_list != False %}
+                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% elif service.slug == 'remont-kompyuterov' %}/directions/remont-kompyuterov-noutbukov-monoblokov{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>

@@ -3,12 +3,13 @@
 ## Техническое окружение
 - **ОС:** Kali Linux (русская раскладка)
 - **IDE:** PyCharm 2026.2.2 
-- **Стек:** Python, Flask, Jinja2, HTML, CSS (только .px)
+- **Стек:** Python, Flask, Jinja2, HTML, CSS (только .px и только целые значения пикселей без дробных)
 - **Проект в сети:** www.it150.ru (301 редирект с www.it-150.ru)
 - **Локальный хост:** http://localhost:5001/
 - **Деплой:** Собственный VPS через SSH
 
 ## Схема взаимодействия с ИИ
+Ты — Senior Fullstack разработчик. Мы пишем локальный SEO-сайт для сервисного центра в Железнодорожном (ул. Новая 8а).
 1. **Общение:** Строго на русском языке. Комментарии к коду — только на русском.
 2. **Шаги:** Предлагать не более 1–3 шагов по текущему вопросу.
 3. **Безопасность кода:** Без уведомления пользователя НЕ МЕНЯТЬ ничего самостоятельно, не удалять файлы и не предлагать то, чего не просили.
@@ -17,7 +18,7 @@
 ┌──(fenix㉿yoga)-[~]
 └─$ tree -L 4 -I '__pycache__|.git|node_modules|venv' /home/fenix/rs-site/
 
-## Дерево файлов пректа:
+## Дерево файлов проекта:
 
 /home/fenix/rs-site/
 ├── ai_rules.md
@@ -43,6 +44,7 @@
 │   │   ├── pc-cooler.webp
 │   │   ├── pc_laptop.webp
 │   │   ├── pc_motherboard.webp
+│   │   ├── pc_repair.webp
 │   │   ├── pc_restor.webp
 │   │   ├── pc_store.webp
 │   │   ├── pc_videocard.webp
@@ -58,11 +60,13 @@
 │   ├── includes
 │   │   └── _callback_modal.html
 │   ├── index.html
+│   ├── nastrojka_ecp.html
 │   ├── privacy.html
 │   └── service.html
 └── yandex_093274bd8c7e1538.html
 
-6 directories, 36 files
+6 directories, 38 files
+
 
 
 ## Требования к коду и SEO

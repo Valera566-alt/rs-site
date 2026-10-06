@@ -45,11 +45,10 @@
 
         <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">{{ current_service.title }}</h1>
 
-        <p style="font-size: 20.8px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
+        <p style="font-size: 21px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
             {# Если в названии услуги есть слово Ремонт #}
             {% if "Ремонт" in current_service.title %}
                 Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
-                Оригинальные комплектующие, честные фиксированные цены, быстрая диагностика и официальная гарантия на все выполненные работы!
             {# Если это Продажа, Настройка или Сборка #}
             {% else %}
                 Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
@@ -57,8 +56,73 @@
             {% endif %}
         </p>
 
-        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 12.8px 32px;">Вернуться на главную</a>
+        {% if current_service.slug == 'remont-smartfonov' %}
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px;">
+            <span style="font-size: 18px; font-weight: 600; color: #333;">Выберите какой смартфон Вам нужно отремонтировать:</span>
+            <div class="brand-dropdown" style="position: relative;">
+                <button class="dropdown-btn" onclick="toggleDropdown(this)" style="background-color: var(--primary); color: #fff; padding: 12px 24px; border-radius: 8px; border: none; font-size: 16px; cursor: pointer; font-weight: 600; min-width: 200px; text-align: left; display: flex; justify-content: space-between; align-items: center;">
+                    Выберите бренд
+                    <span style="font-size: 12px;">▼</span>
+                </button>
+                <div class="dropdown-content" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; margin-top: 4px; overflow: hidden; text-align: center;">
+                <style>
+                    .dropdown-content a:hover {
+                        background-color: rgba(0, 86, 179, 0.15) !important;
+                    }
+                </style>
+                    <a href="/services/remont-xiaomi" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/xiaomi.webp" alt="" style="height: 18px; width: auto;">Xiaomi</a>
+                    <a href="/services/remont-redmi" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/redmi.webp" alt="" style="height: 18px; width: auto;">Redmi</a>
+                    <a href="/services/remont-poco" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/poco.webp" alt="" style="height: 18px; width: auto;">POCO</a>
+                    <a href="/services/remont-samsung" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/samsung.webp" alt="" style="height: 18px; width: auto;">Samsung</a>
+                    <a href="/services/remont-apple" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/apple.webp" alt="" style="height: 18px; width: auto;">Apple</a>
+                    <a href="/services/remont-realme" style="display: flex; align-items: center; justify-content: center; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;">Realme</a>
+                    <a href="/services/remont-huawei" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/huawei.webp" alt="" style="height: 18px; width: auto;">Huawei</a>
+                    <a href="/services/remont-honor" style="display: flex; align-items: center; justify-content: center; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;">Honor</a>
+                    <a href="/services/remont-tecno" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/tecno.webp" alt="" style="height: 18px; width: auto;">Tecno</a>
+                    <a href="/services/remont-infinix" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; transition: background 0.2s;"><img src="/static/img/infinix.webp" alt="" style="height: 18px; width: auto;">Infinix</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <a href="/" class="btn-call-to-action" style="display: inline-block; background-color: var(--primary); padding: 13px 32px;">Вернуться на главную</a>
+        {% endif %}
     </section>
+
+    {% if current_service.slug == 'remont-smartfonov' %}
+    <section class="section" id="about" id="seo-text">
+        <h2 class="section-title" style="margin-bottom: 16px;">РЕМОНТ СМАРТФОНОВ В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px;">
+            <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <img src="{{ url_for('static', filename='img/remont_tel_1.webp') }}" alt="Ремонт смартфонов в Железнодорожном" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Внимание! Все товарные знаки и логотипы, представленные на данном сайте принадлежат их правообладателям. Использование логотипов осуществляется в информационных целях. Сервис является независимым ремонтным центром! В сервисном центре «IT Сервис» в Балашихе (мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона») мы ежедневно ремонтируем популярные в России смартфоны — iPhone, Samsung Galaxy, Xiaomi, Redmi, POCO, Huawei, Honor и Realme. Для каждой из этих моделей у нас отработаны типовые сценарии ремонта: от простой замены стекла до сложной пайки микросхем. Мастера знают особенности конструкции популярных серий — например, специфику влагозащиты у Galaxy S, нюансы шлейфов у Redmi и особенности модулей камер у Realme — и подбирают решение, которое вернёт устройству прежнюю надёжность.</p>
+            </div>
+        </div>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px;">
+            <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <img src="{{ url_for('static', filename='img/remont_tel_2.webp') }}" alt="Виды ремонта смартфонов" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Чаще всего владельцы смартфонов сталкиваются с разбитыми экранами, быстрой разрядкой батареи, проблемами с зарядкой и последствиями попадания влаги. Мы устраняем эти неисправности быстро и с гарантией: меняем дисплеи и аккумуляторы, восстанавливаем разъёмы, чистим платы, меняем повреждённые компоненты. Для iPhone выполняем ремонт Face ID и кнопок, для Samsung — восстановление влагозащиты и замену AMOLED-экранов, для Xiaomi, Redmi, POCO и Realme — ремонт после падений, замену стекла и диагностику цепей питания, для Huawei и Honor — замену экранов и восстановление платы.</p>
+            </div>
+        </div>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px;">
+            <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <img src="{{ url_for('static', filename='img/remont_tel_3.webp') }}" alt="Процесс ремонта" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Процесс ремонта у нас выстроен так, чтобы вы точно знали, что происходит с устройством. Сначала мастер проводит диагностику на профессиональном оборудовании и называет точную стоимость и сроки. Мы приступаем к работе только после вашего согласия. В ходе ремонта используем оригинальные запчасти или сертифицированные аналоги — выбор остаётся за вами. После завершения работ проверяем работоспособность устройства и выдаём гарантийный талон: гарантия на все виды работ — от 6 месяцев.</p>
+            </div>
+        </div>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px;">
+            <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <img src="{{ url_for('static', filename='img/remont_tel_4.webp') }}" alt="Сроки и стоимость ремонта" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы ценим ваше время: во многих случаях ремонт занимает 1–2 часа, а диагностику можно пройти в день обращения. Стоимость диагностики — от 850 рублей, а при согласии на ремонт эта сумма вычитается из общей стоимости работ. Никаких скрытых платежей и наценок — цена фиксируется до начала ремонта.</p>
+            </div>
+        </div>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px;">
+            <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <img src="{{ url_for('static', filename='img/remont_tel_1.webp') }}" alt="Доверьте ремонт смартфона профессионалам" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Доверьте ремонт смартфона профессионалам: мы работаем без выходных с 09:00 до 20:00, находимся в удобном месте в Железнодорожном и берём на себя все сложности — от точной диагностики до финальной проверки устройства. Записаться на диагностику или получить консультацию можно по телефону +7 (903) 103-61-04. Наш адрес: Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона».</p>
+            </div>
+        </div>
+    </section>
+    {% endif %}
 </div>
 
 <footer class="site-footer">
@@ -78,7 +142,9 @@
             <h4>Наши услуги</h4>
             <ul>
                 {% for service in services %}
-                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% if service.show_in_list != False %}
+                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% elif service.slug == 'remont-kompyuterov' %}/directions/remont-kompyuterov-noutbukov-monoblokov{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
@@ -113,6 +179,21 @@
         </div>
     </div>
 </footer>
+
+<script>
+    function toggleDropdown(btn) {
+        event.stopPropagation();
+        const dropdown = btn.nextElementSibling;
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    document.addEventListener('click', function() {
+        const dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(function(dropdown) {
+            dropdown.style.display = 'none';
+        });
+    });
+</script>
 
 </body>
 </html>

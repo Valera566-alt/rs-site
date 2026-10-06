@@ -89,7 +89,7 @@ header {
     text-decoration: none;
     font-size: 17px;
     font-weight: 500;
-    padding: 6.4px 22.4px;
+    padding: 6px 22px;
     position: relative;
     display: inline-block;
     transition: background-color 0.2s;
@@ -143,7 +143,7 @@ header {
 }
 
 .phone-number {
-    font-size: 37.92px;
+    font-size: 38px;
     font-weight: 700;
     color: #fff;
     display: block;
@@ -171,7 +171,7 @@ header {
     display: inline-block;
     background-color: var(--primary);
     color: #fff;
-    padding: 9.6px 28.8px;
+    padding: 10px 29px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
@@ -205,6 +205,7 @@ header {
 .section-title {
     text-align: center;
     font-size: 20px;
+    margin-top: 28px;
     margin-bottom: 28px;
     color: var(--text);
 }
@@ -395,9 +396,9 @@ header {
 
 .footer-col h4 {
     color: #222222;
-    font-size: 18.4px;
+    font-size: 18px;
     margin-top: 0;
-    margin-bottom: 19.2px;
+    margin-bottom: 19px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
@@ -476,7 +477,7 @@ header {
 }
 
 .schedule-block h5 {
-    margin: 0 0 4.8px 0;
+    margin: 0 0 5px 0;
     font-size: 16px;
     color: #222222;
 }
@@ -492,9 +493,9 @@ header {
 .footer-bottom {
     background-color: var(--primary);
     border-top: 1px solid var(--primary-hover);
-    padding: 19.2px 0;
+    padding: 19px 0;
     color: #ffffff;
-    font-size: 13.6px;
+    font-size: 14px;
 }
 
 .footer-bottom-wrapper {
@@ -587,7 +588,7 @@ header {
     margin-top: 0;
     margin-bottom: 12px;
     color: #222222;
-    font-size: 25.6px;
+    font-size: 26px;
 }
 
 .modal-card p {
@@ -598,15 +599,15 @@ header {
 }
 
 .form-group {
-    margin-bottom: 19.2px;
+    margin-bottom: 19px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 12.8px 16px;
+    padding: 13px 16px;
     border: 2px solid var(--border);
     border-radius: 6px;
-    font-size: 17.6px;
+    font-size: 18px;
     box-sizing: border-box;
     outline: none;
     transition: border-color 0.15s;
@@ -621,9 +622,9 @@ header {
     background-color: var(--primary);
     color: #ffffff;
     border: none;
-    padding: 14.4px;
+    padding: 14px;
     border-radius: 6px;
-    font-size: 17.6px;
+    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 56, 179, 0.2);
@@ -656,7 +657,7 @@ header {
 
     .logo-text {
         font-family: 'Montserrat', sans-serif !important;
-        font-size: 25.6px !important;
+        font-size: 26px !important;
         font-weight: 800 !important;
         letter-spacing: 1px !important;
         margin: 0 !important;
@@ -672,7 +673,7 @@ header {
         flex-direction: column;
         align-items: stretch;
         text-align: center !important;
-        gap: 19.2px;
+        gap: 19px;
         padding: 0 16px !important;
     }
 
@@ -687,8 +688,8 @@ header {
     }
 
     .nav-link {
-        font-size: 16.8px !important;
-        padding: 3.2px 10px !important;
+        font-size: 17px !important;
+        padding: 3px 10px !important;
         font-weight: 600 !important;
         position: relative !important;
         display: inline-block !important;
@@ -714,7 +715,7 @@ header {
     }
 
     .phone-number {
-        font-size: 28.8px !important;
+        font-size: 29px !important;
         text-align: center !important;
         width: 100% !important;
         margin-bottom: 0 !important;
@@ -752,8 +753,8 @@ header {
         text-align: center !important;
     }
     .footer-wrapper .footer-phone {
-        font-size: 28.8px !important;
-        margin: 0 auto 9.6px auto !important;
+        font-size: 29px !important;
+        margin: 0 auto 10px auto !important;
         text-align: center !important;
         display: block !important;
     }
@@ -762,7 +763,7 @@ header {
         display: block !important;
     }
     .footer-address {
-        font-size: 18.4px !important;
+        font-size: 18px !important;
         line-height: 1.5 !important;
         text-align: center !important;
         display: block !important;
@@ -783,10 +784,10 @@ header {
     }
     .schedule-block h5 {
         font-size: 20px !important;
-        margin-bottom: 6.4px !important;
+        margin-bottom: 6px !important;
     }
     .schedule-block p {
-        font-size: 19.2px !important;
+        font-size: 19px !important;
         font-weight: 600 !important;
         color: #222222 !important;
     }
@@ -794,7 +795,7 @@ header {
     .footer-bottom-wrapper {
         flex-direction: column !important;
         text-align: center !important;
-        gap: 12.8px !important;
+        gap: 13px !important;
     }
 
     .container {
@@ -813,6 +814,43 @@ header {
         width: 100% !important;
         max-width: 300px !important;
     }
+
+    #seo-text p {
+        text-indent: 0 !important;
+        padding: 0 8px !important;
+    }
+
+    #seo-text div[style*="background"] {
+        padding: 24px 16px !important;
+    }
+
+    /* Дополнительные правила для секции с SEO-текстом на мобильных */
+    .section div[style*="background: var(--card-bg)"] {
+        padding: 24px 16px !important;
+    }
+
+    .section div[style*="display: flex"] {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .section div[style*="display: flex"] img {
+        float: none !important;
+        margin-right: 0 !important;
+        margin-bottom: 16px !important;
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    .section div[style*="display: flex"] p {
+        text-indent: 0 !important;
+        padding: 0 8px !important;
+    }
+
+    .section p[style*="text-indent"] {
+        text-indent: 0 !important;
+        padding: 0 8px !important;
+    }
 }
 /* Делаем ссылку-обертку блочной для сохранения сетки */
 .service-card-link {
@@ -822,6 +860,78 @@ header {
 
 .service-card-link .service-card {
     flex: 1;
+}
+
+/* ==================== DROPDOWN МЕНЮ ДЛЯ БРЕНДОВ СМАРТФОНОВ ==================== */
+.brand-dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    background-color: var(--primary);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    min-width: 200px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.dropdown-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f7fa;
+    color: var(--primary);
+}
+
+@media screen and (max-width: 600px) {
+    .brand-dropdown {
+        width: 100%;
+    }
+
+    .dropdown-btn {
+        width: 100%;
+    }
 }
 
 /* Подчеркивание текста "Подробнее" при наведении на любую часть карточки */
@@ -853,7 +963,7 @@ header {
     display: inline-block !important;
     margin: 24px auto 0 auto !important;
     width: auto !important;
-    padding: 9.6px 28.8px !important;
+    padding: 10px 29px !important;
 }
 
 @media screen and (max-width: 768px) {

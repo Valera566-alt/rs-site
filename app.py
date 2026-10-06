@@ -93,8 +93,8 @@ def direction_page(slug: str):
         "tagline"] = f"Услуги по {current_direction['seo_keyword']} в профессиональном сервисном центре на ул. Новая 8a. Звоните: {site_info.get('phone', '')}!"
     page_data["current_direction"] = current_direction
 
-    # Специальные данные для страницы "Профессиональный ремонт" и "Диагностика"
-    if slug in ["professionalnyj-remont", "diagnostika"]:
+    # Специальные данные для страницы "Профессиональный ремонт", "Диагностика" и "Ремонт компьютеров, ноутбуков, моноблоков"
+    if slug in ["professionalnyj-remont", "diagnostika", "remont-kompyuterov-noutbukov-monoblokov"]:
         page_data["steps"] = [
             {"num": "1", "title": "Диагностика", "text": "Мастер осматривает устройство, выявляет неисправность и определяет стоимость ремонта."},
             {"num": "2", "title": "Согласование цены", "text": "Сообщаем вам точную стоимость и сроки ремонта. Работаем только после вашего согласия."},

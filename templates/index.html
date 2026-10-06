@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="description" content="{{ tagline }}">
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -104,6 +104,7 @@
         <h2 class="section-title">НАШИ УСЛУГИ</h2>
         <div class="services-grid">
             {% for service in services %}
+            {% if service.get('show_in_list', True) %}
             <a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}" class="service-card-link" style="text-decoration: none; color: inherit;">
                 <div class="service-card">
                     <span class="service-icon">
@@ -120,6 +121,7 @@
                     <span class="service-more-link" style="color: var(--primary); font-weight: 600;">Подробнее</span>
                 </div>
             </a>
+            {% endif %}
             {% endfor %}
         </div>
     </section>
@@ -169,7 +171,9 @@
             <h4>Наши услуги</h4>
             <ul>
                 {% for service in services %}
-                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% if service.get('show_in_list', True) %}
+                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% elif service.slug == 'remont-kompyuterov' %}/directions/remont-kompyuterov-noutbukov-monoblokov{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </div>
