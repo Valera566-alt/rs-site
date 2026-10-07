@@ -297,6 +297,77 @@ def nastrojka_ecp_page():
     return render_template("nastrojka_ecp.html", **page_data)
 
 
+@app.route("/search")
+def search_page():
+    """Поиск по сайту: услуги и направления"""
+    query = request.args.get('q', '').strip().lower()
+    
+    # Если запрос пустой — редирект на главную
+    if not query:
+        return redirect('/')
+    
+    site_info = get_site_info()
+    results = []
+    
+    # Ищем по направлениям
+    for feature in site_info.get('features', []):
+        search_text = f"{feature['title']} {feature['seo_keyword']} {feature['text']}".lower()
+        if query in search_text:
+            results.append({
+                'type': 'Направление',
+                'title': feature['title'],
+                'url': f'/directions/{feature["slug"]}',
+                'description': feature['text']
+            })
+    
+    # Ищем по услугам
+    for service in site_info.get('services', []):
+        search_text = f"{service['title']} {service['seo_keyword']}".lower()
+        if query in search_text:
+            # Определяем правильный URL для услуги
+            if service['slug'] == 'nastrojka-ecp':
+                url = '/nastrojka-ecp'
+            elif service['slug'] == 'remont-kompyuterov':
+                url = '/directions/remont-kompyuterov-noutbukov-monoblokov'
+            else:
+                url = f'/services/{service["slug"]}'
+            
+            results.append({
+                'type': 'Услуга',
+                'title': service['title'],
+                'url': url,
+                'description': f"SEO: {service['seo_keyword']}"
+            })
+    
+    # Ищем на странице контактов
+    contact_search = f"контакты {site_info.get('address', '')} {site_info.get('phone', '')}".lower()
+    if query in contact_search:
+        results.append({
+            'type': 'Страница',
+            'title': 'Контакты сервисного центра',
+            'url': '/contacts',
+            'description': 'Адрес, телефон и график работы'
+        })
+    
+    # Ищем на странице настройки ЭЦП
+    ecp_search = "настройка эцп рутокен криптопро фнс".lower()
+    if query in ecp_search:
+        results.append({
+            'type': 'Страница',
+            'title': 'Настройка ЭЦП и Рутокенов',
+            'url': '/nastrojka-ecp',
+            'description': 'Профессиональные услуги по подключению и настройке ЭЦП'
+        })
+    
+    page_data = site_info.copy()
+    page_data['title'] = f"Результаты поиска: {query} — IT Сервис"
+    page_data['tagline'] = f"Поиск по запросу: {query}. Найдено результатов: {len(results)}"
+    page_data['search_query'] = query
+    page_data['search_results'] = results
+    
+    return render_template("search.html", **page_data)
+
+
 if __name__ == '__main__':
     # Слушаем порт 5001, так как его жестко требует прокси-конфиг Nginx на VPS
     app.run(host='0.0.0.0', port=5001, debug=True)

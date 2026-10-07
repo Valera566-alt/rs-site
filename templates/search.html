@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ tagline }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+<header>
+    <div class="header-wrapper">
+        <a href="/" class="logo-block">
+            <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
+            <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+        </a>
+        <nav class="main-nav">
+            <a href="/directions/diagnostika" class="nav-link">Диагностика</a>
+            <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
+            <a href="/directions/uslugi" class="nav-link">Услуги</a>
+            <a href="/contacts" class="nav-link">Контакты</a>
+        </nav>
+        <div class="header-actions">
+            <span class="phone-number">8 (903) 103-61-04</span>
+            <div class="header-bottom-row">
+                <span class="address">Балашиха, мкр. Железнодорожный,<br>Ул. Новая д.8а ТЦ "Корона"</span>
+                <a href="#" class="btn-call-to-action">Заказать звонок</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Вторичная навигация и поиск -->
+    <div class="secondary-nav-container">
+        <nav class="breadcrumbs">
+            <span class="breadcrumbs-item">
+                <a href="/" class="breadcrumbs-link">Главная</a>
+            </span>
+            <span class="breadcrumbs-item">
+                <span class="breadcrumbs-current">Поиск</span>
+            </span>
+        </nav>
+        <div class="search-wrapper">
+            <form action="/search" method="GET" style="display: flex; gap: 8px; align-items: center; width: 100%;">
+                <input type="text" name="q" placeholder="Поиск по сайту..." class="search-input" value="{{ search_query }}">
+                <button type="submit" class="search-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Результаты поиска -->
+    <section class="section" style="padding: 40px 16px;">
+        <h1 style="font-size: 26px; margin-bottom: 16px; text-align: center;">Результаты поиска по запросу: "{{ search_query }}"</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 32px; font-size: 16px;">Найдено результатов: {{ search_results|length }}</p>
+
+        {% if search_results %}
+        <div style="display: grid; gap: 20px; max-width: 800px; margin: 0 auto;">
+            {% for result in search_results %}
+            <div class="search-result-card">
+                <div class="search-result-header">
+                    <span class="search-type-badge">
+                        {{ result.type }}
+                    </span>
+                    <a href="{{ result.url }}" class="search-result-link">
+                        Перейти →
+                    </a>
+                </div>
+                <h3 class="search-result-title">
+                    <a href="{{ result.url }}" style="color: inherit; text-decoration: none;">
+                        {{ result.title }}
+                    </a>
+                </h3>
+                <p class="search-result-description">
+                    {{ result.description }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="text-align: center; margin-top: 32px;">
+            <a href="/" style="display: inline-block; background-color: var(--primary); color: #fff; padding: 13px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25); transition: background-color 0.15s;">Вернуться на главную</a>
+        </div>
+
+        {% else %}
+        <!-- Ничего не найдено -->
+        <div style="text-align: center; padding: 48px 24px; background: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <span style="font-size: 64px; display: block; margin-bottom: 16px;">🔍</span>
+            <h2 style="font-size: 24px; margin-bottom: 12px; color: #222;">Ничего не найдено</h2>
+            <p style="font-size: 16px; color: #666; margin-bottom: 24px; line-height: 1.5;">
+                По запросу "{{ search_query }}" ничего не найдено.<br>
+                Попробуйте изменить запрос или перейдите на главную страницу.
+            </p>
+            <a href="/" style="display: inline-block; background-color: var(--primary); color: #fff; padding: 13px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25); transition: background-color 0.15s;">Вернуться на главную</a>
+        </div>
+        {% endif %}
+    </section>
+</div>
+
+<!-- Модальное окно "Заказать звонок" -->
+{% include 'includes/_callback_modal.html' %}
+
+<footer class="site-footer">
+    <div class="footer-wrapper">
+        <div class="footer-col">
+            <h4>Наши направления</h4>
+            <ul>
+                {% for feature in features %}
+                <li><a href="/directions/{{ feature.slug }}">{{ feature.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Наши услуги</h4>
+            <ul>
+                {% for service in services %}
+                {% if service.get('show_in_list', True) %}
+                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% elif service.slug == 'remont-kompyuterov' %}/directions/remont-kompyuterov-noutbukov-monoblokov{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <p class="footer-phone">{{ phone }}</p>
+            <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
+            <p class="footer-address"><strong>{{ address }}</strong></p>
+        </div>
+        <div class="footer-col footer-brand-col">
+            <a href="#" class="logo-block footer-logo">
+                <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
+                <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
+            </a>
+            <div class="schedule-block">
+                <h5>График работы:</h5>
+                <p>{{ hours }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-wrapper">
+            <span>&copy; 2014-2026 Все права защищены. IT Сервис.</span>
+            <a href="/privacy" class="footer-link">Политика конфиденциальности</a>
+            <span class="footer-version">Версия сайта: {{ version }}</span>
+        </div>
+    </div>
+</footer>
+{% include 'includes/_callback_modal.html' %}
+</body>
+</html>

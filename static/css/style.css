@@ -193,6 +193,114 @@ header {
     top: 3px !important;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
+
+/* ==================== ВТОРИЧНАЯ НАВИГАЦИЯ И ПОИСК ==================== */
+.secondary-nav-container {
+    background: var(--card-bg);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1136px;
+    margin: 0 auto 20px auto;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+    border-top: none;
+    box-sizing: border-box;
+}
+
+.secondary-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.secondary-nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.secondary-nav-link:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.search-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    width: 200px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+}
+
+.search-btn {
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* ==================== ХЛЕБНЫЕ КРОШКИ ==================== */
+.breadcrumbs {
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumbs-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumbs-item:not(:last-child)::after {
+    content: "›";
+    margin: 0 8px;
+    color: #999;
+    font-size: 16px;
+}
+
+.breadcrumbs-link {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbs-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.breadcrumbs-current {
+    color: #333;
+    font-weight: 500;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -842,6 +950,14 @@ header {
         max-width: 300px !important;
     }
 
+    .brand-dropdown img {
+        max-width: 30px !important;
+        height: 18px !important;
+        object-fit: contain !important;
+        display: inline-block !important;
+        flex: 0 0 auto !important;
+    }
+
     .section div[style*="display: flex"] p {
         text-indent: 0 !important;
         padding: 0 8px !important;
@@ -850,6 +966,69 @@ header {
     .section p[style*="text-indent"] {
         text-indent: 0 !important;
         padding: 0 8px !important;
+    }
+
+    /* Адаптация вторичной навигации и поиска для мобильных */
+    .secondary-nav-container {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 16px;
+    }
+
+    .secondary-nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .secondary-nav-link {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .search-wrapper {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Исправление логотипов в дроп-кнопке на мобильных */
+    .brand-dropdown {
+        flex: 0 0 auto !important;
+        max-width: 250px !important;
+        display: inline-block !important;
+        flex-direction: row !important;
+    }
+    .brand-dropdown .dropdown-btn {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: auto !important;
+    }
+    .brand-dropdown .dropdown-content {
+        width: auto !important;
+    }
+    .brand-dropdown .dropdown-content.active {
+        display: block !important;
+    }
+    .brand-dropdown .dropdown-content a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: auto !important;
+    }
+    .brand-dropdown .dropdown-content a img {
+        width: 30px !important;
+        max-width: 30px !important;
+        height: 18px !important;
+        object-fit: contain !important;
+        display: inline-block !important;
+        flex: 0 0 auto !important;
     }
 }
 /* Делаем ссылку-обертку блочной для сохранения сетки */
@@ -924,15 +1103,6 @@ header {
     color: var(--primary);
 }
 
-@media screen and (max-width: 600px) {
-    .brand-dropdown {
-        width: 100%;
-    }
-
-    .dropdown-btn {
-        width: 100%;
-    }
-}
 
 /* Подчеркивание текста "Подробнее" при наведении на любую часть карточки */
 .service-card-link:hover .service-more-link {
@@ -1116,5 +1286,97 @@ header {
     #instruction ul,
     #instruction ol {
         font-size: 13px !important;
+    }
+}
+
+/* ==================== СТИЛИ ДЛЯ РЕЗУЛЬТАТОВ ПОИСКА ==================== */
+.search-result-card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+}
+
+.search-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 8px;
+}
+
+.search-type-badge {
+    background: var(--primary);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.search-result-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.search-result-title {
+    font-size: 20px;
+    margin: 0 0 12px 0;
+    color: #222;
+}
+
+.search-result-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ==================== АДАПТАЦИЯ РЕЗУЛЬТАТОВ ПОИСКА ДЛЯ МОБИЛЬНЫХ ==================== */
+@media screen and (max-width: 600px) {
+    /* Карточки результатов поиска */
+    .search-result-card {
+        padding: 20px 16px !important;
+    }
+
+    /* Блок с кнопкой типа и ссылкой - в одну строку, без переноса */
+    .search-result-header {
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        gap: 12px !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* Кнопка типа услуги */
+    .search-type-badge {
+        margin: 0 !important;
+        padding: 4px 10px !important;
+        font-size: 11px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Ссылка перейти - в одну строку с кнопкой */
+    .search-result-link {
+        margin: 0 !important;
+        font-size: 13px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Заголовок и описание - по центру */
+    .search-result-title {
+        text-align: center !important;
+        font-size: 18px !important;
+        margin: 0 0 10px 0 !important;
+    }
+
+    .search-result-description {
+        text-align: center !important;
+        font-size: 13px !important;
+        margin: 0 !important;
     }
 }

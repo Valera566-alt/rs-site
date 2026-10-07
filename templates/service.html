@@ -33,7 +33,27 @@
 </header>
 
 <div class="container">
-    <section class="section" style="text-align: center; padding: 80px 16px;">
+<!-- Вторичная навигация и поиск -->
+<div class="secondary-nav-container">
+    <nav class="breadcrumbs">
+        <span class="breadcrumbs-item">
+            <a href="/" class="breadcrumbs-link">Главная</a>
+        </span>
+        <span class="breadcrumbs-item">
+            <span class="breadcrumbs-current">{{ current_service.title }}</span>
+        </span>
+    </nav>
+    <form action="/search" method="GET" class="search-wrapper">
+        <input type="text" name="q" placeholder="Поиск по сайту..." class="search-input">
+        <button type="submit" class="search-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </button>
+    </form>
+</div>
+    <section class="section" style="text-align: center; padding: 20px 16px;">
         <span style="font-size: 64px; display: block; margin-bottom: 16px;">
             {# Вывод эмодзи или картинки услуги #}
             {% if '.webp' in current_service.icon %}
@@ -48,7 +68,7 @@
         <p style="font-size: 21px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
             {# Если в названии услуги есть слово Ремонт #}
             {% if "Ремонт" in current_service.title %}
-                Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
+                Профессиональные услуги по<br> {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
             {# Если это Продажа, Настройка или Сборка #}
             {% else %}
                 Профессиональные услуги по {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
@@ -60,16 +80,11 @@
         <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px;">
             <span style="font-size: 18px; font-weight: 600; color: #333;">Выберите какой смартфон Вам нужно отремонтировать:</span>
             <div class="brand-dropdown" style="position: relative;">
-                <button class="dropdown-btn" onclick="toggleDropdown(this)" style="background-color: var(--primary); color: #fff; padding: 12px 24px; border-radius: 8px; border: none; font-size: 16px; cursor: pointer; font-weight: 600; min-width: 200px; text-align: left; display: flex; justify-content: space-between; align-items: center;">
+                <button class="dropdown-btn" onclick="toggleDropdown(this, event)" style="background-color: var(--primary); color: #fff; padding: 12px 24px; border-radius: 8px; border: none; font-size: 16px; cursor: pointer; font-weight: 600; min-width: 200px; text-align: left; display: flex; justify-content: space-between; align-items: center;">
                     Выберите бренд
                     <span style="font-size: 12px;">▼</span>
                 </button>
                 <div class="dropdown-content" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; margin-top: 4px; overflow: hidden; text-align: center;">
-                <style>
-                    .dropdown-content a:hover {
-                        background-color: rgba(0, 86, 179, 0.15) !important;
-                    }
-                </style>
                     <a href="/services/remont-xiaomi" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/xiaomi.webp" alt="" style="height: 18px; width: auto;">Xiaomi</a>
                     <a href="/services/remont-redmi" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/redmi.webp" alt="" style="height: 18px; width: auto;">Redmi</a>
                     <a href="/services/remont-poco" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; transition: background 0.2s;"><img src="/static/img/poco.webp" alt="" style="height: 18px; width: auto;">POCO</a>
@@ -89,7 +104,7 @@
     </section>
 
     {% if current_service.slug == 'remont-smartfonov' %}
-    <section class="section" id="about" id="seo-text">
+    <section class="section" id="seo-text">
         <h2 class="section-title" style="margin-bottom: 16px;">РЕМОНТ СМАРТФОНОВ В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
         <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px;">
             <div style="display: flex; gap: 24px; align-items: flex-start;">
@@ -181,7 +196,7 @@
 </footer>
 
 <script>
-    function toggleDropdown(btn) {
+    function toggleDropdown(btn, event) {
         event.stopPropagation();
         const dropdown = btn.nextElementSibling;
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
