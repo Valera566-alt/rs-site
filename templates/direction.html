@@ -114,10 +114,10 @@
                         <span class="service-icon">
                             {% if service.icon.endswith('.webp') %}
                                 <img src="{{ url_for('static', filename='img/' + service.icon) }}"
-                                     style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
+                                     style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;"
                                      alt="{{ service.title }}">
                             {% else %}
-                                {{ service.icon }}
+                                <span style="font-size: 30px; display: block; margin-bottom: 12px;">{{ service.icon }}</span>
                             {% endif %}
                         </span>
                         <h3>{{ service.title }}</h3>

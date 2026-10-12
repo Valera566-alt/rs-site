@@ -9,7 +9,7 @@ def get_site_info():
         "hours": "с 09:00 до 20:00, без выходных",
         "features": [
             {
-                "icon": "🛠️",
+                "icon": "pc_rep.webp",
                 "title": "Профессиональный ремонт",
                 "slug": "professionalnyj-remont",
                 "seo_keyword": "профессиональному ремонту компьютеров, ноутбуков и телефонов в Балашихе, мкр. Железнодорожный",
@@ -41,15 +41,15 @@ def get_site_info():
                 "show_on_main": False
             },
             {
-                "icon": "🔐",
+                "icon": "web.webp",
                 "title": "Разработка и продвижение сайтов",
                 "slug": "razrabotka-i-prodvizhenie-sajtov",
                 "seo_keyword": "разработке и SEO продвижению сайтов в Балашихе и Железнодорожном под ключ",
-                "text": "Разработка сайтов любой сложности с нуля под ключ.",
+                "text": "Разработка сайтов любой сложности с нуля под ключ. Сайты с калькуляторами, конфигураторами и SEO оптимизацией на этапе проектировки, любые СУБД.",
                 "show_on_main": True
             },
             {
-                "icon": "🏷️",
+                "icon": "sellers.webp",
                 "title": "Помощь селлерам онлайн площадок",
                 "slug": "pomoshch-selleram-marketplejsov",
                 "seo_keyword": "настройке ЭЦП и принтеров этикеток для селлеров маркетплейсов в Железнодорожном",
@@ -57,7 +57,7 @@ def get_site_info():
                 "show_on_main": True
             },
             {
-                "icon": "📋",
+                "icon": "xerox.webp",
                 "title": "Копировальные услуги и распечатка документов",
                 "slug": "kopirovalnye-uslugi-i-pechat",
                 "seo_keyword": "копировальным услугам, распечатке документов и сканированию в Железнодорожном (ул. Новая 8а)",
@@ -93,7 +93,7 @@ def get_site_info():
             {"title": "Ремонт мониторов и телевизоров", "slug": "remont-televizorov",
              "seo_keyword": "ремонту мониторов и телевизоров", "icon": "📺"},
             {"title": "Ремонт ноутбуков", "slug": "remont-noutbukov", "seo_keyword": "ремонту ноутбуков", "icon": "💻"},
-            {"title": "Ремонт компьютеров", "slug": "remont-kompyuterov", "seo_keyword": "ремонту компьютеров", "icon": "🛠️"},
+            {"title": "Ремонт компьютеров", "slug": "remont-kompyuterov", "seo_keyword": "ремонту компьютеров", "icon": "pc_rep.webp"},
             {"title": "Ремонт приставок Xbox и Sony PS ", "slug": "remont-pristavok",
              "seo_keyword": "ремонту игровых приставок Xbox и PS", "icon": "🎮"},
             {"title": "Ремонт Наушников и гарнитур", "slug": "remont-naushnikov", "seo_keyword": "ремонту наушников и гарнитур",

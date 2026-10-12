@@ -148,7 +148,7 @@ header {
     color: #fff;
     display: block;
     line-height: 1;
-    letter-spacing: 0.02em;
+    letter-spacing: 1px;
     margin-bottom: 4px;
 }
 
@@ -508,7 +508,7 @@ header {
     margin-top: 0;
     margin-bottom: 19px;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 1px;
 }
 
 .footer-col ul {

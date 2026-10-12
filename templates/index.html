@@ -111,7 +111,15 @@
             {% if feature.show_on_main %}
             <!-- Ссылка сама является карточкой feature-card. Внутри только чистый текст -->
             <a href="/directions/{{ feature.slug }}" class="feature-card">
-                <h3>{{ feature.icon }} {{ feature.title }}</h3>
+                {# Проверяем, картинка это или текстовый эмодзи #}
+                {% if feature.icon.endswith('.webp') %}
+                    <img src="{{ url_for('static', filename='img/' + feature.icon) }}"
+                         style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;"
+                         alt="{{ feature.title }}">
+                {% else %}
+                    <span style="font-size: 30px; display: block; margin-bottom: 12px;">{{ feature.icon }}</span>
+                {% endif %}
+                <h3>{{ feature.title }}</h3>
                 <p>{{ feature.text }}</p>
             </a>
             {% endif %}
@@ -129,10 +137,10 @@
                         {# Проверяем, картинка это или текстовый эмодзи #}
                         {% if service.icon.endswith('.webp') %}
                             <img src="{{ url_for('static', filename='img/' + service.icon) }}"
-                                 style="height: 1.2em; width: auto; display: inline-block; vertical-align: middle;"
+                                 style="height: 70px; width: auto; display: block; margin: 0 auto 12px auto;"
                                  alt="{{ service.title }}">
                         {% else %}
-                            {{ service.icon }}
+                            <span style="font-size: 30px; display: block; margin-bottom: 12px;">{{ service.icon }}</span>
                         {% endif %}
                     </span>
                     <h3>{{ service.title }}</h3>
