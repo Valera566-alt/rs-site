@@ -308,7 +308,13 @@
     <!-- === ОБЫЧНАЯ СТРАНИЦА НАПРАВЛЕНИЯ === -->
     <section class="section" style="text-align: center; padding: 80px 16px;">
         <span style="font-size: 44px; display: block; margin-bottom: 16px;">
-            {{ current_direction.icon }}
+            {% if current_direction.icon.endswith('.webp') %}
+                <img src="{{ url_for('static', filename='img/' + current_direction.icon) }}"
+                     style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;"
+                     alt="{{ current_direction.title }}">
+            {% else %}
+                {{ current_direction.icon }}
+            {% endif %}
         </span>
         <h1 style="font-size: 30px; margin-bottom: 24px; color: #222;">{{ current_direction.title }}</h1>
        <p style="font-size: 21px; max-width: 800px; margin: 0 auto 40px auto; color: #555; line-height: 1.6;">
