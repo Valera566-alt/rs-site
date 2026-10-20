@@ -69,6 +69,7 @@ def service_page(slug: str):
     page_data["title"] = f"{current_service['title']} в Железнодорожном — IT Сервис"
     page_data["tagline"] = f"Профессиональный ремонт {current_service['seo_keyword']} в сервисном центре в Железнодорожном. Быстрая диагностика, честные цены и гарантия!"
     page_data["current_service"] = current_service
+    page_data["current_breadcrumb"] = current_service['title']
 
     return render_template("service.html", **page_data)
 
@@ -92,6 +93,7 @@ def direction_page(slug: str):
     page_data[
         "tagline"] = f"Услуги по {current_direction['seo_keyword']} в профессиональном сервисном центре на ул. Новая 8a. Звоните: {site_info.get('phone', '')}!"
     page_data["current_direction"] = current_direction
+    page_data["current_breadcrumb"] = current_direction['title']
 
     # Специальные данные для страницы "Профессиональный ремонт", "Диагностика" и "Ремонт компьютеров, ноутбуков, моноблоков"
     if slug in ["professionalnyj-remont", "diagnostika", "remont-kompyuterov-noutbukov-monoblokov"]:
@@ -267,6 +269,7 @@ def contacts_page():
     page_data["title"] = "Контакты сервисного центра в Железнодорожном — ул. Новая 8а"
     page_data[
         "tagline"] = f"Адрес: {site_info.get('address', '')} (ТЦ 'Корона'). Телефон: {site_info.get('phone', '')}. График работы: {site_info.get('hours', '')}. Схема проезда и контакты."
+    page_data["current_breadcrumb"] = "Контакты"
 
     return render_template("contacts.html", **page_data)
 
@@ -280,6 +283,7 @@ def privacy_page():
     # Формируем SEO-метатеги для страницы политики конфиденциальности
     page_data["title"] = "Политика конфиденциальности и обработки персональных данных — IT Сервис"
     page_data["tagline"] = "Политика конфиденциальности IT Сервис. Сбор и обработка персональных данных клиентов сервисного центра в Железнодорожном."
+    page_data["current_breadcrumb"] = "Политика конфиденциальности"
 
     return render_template("privacy.html", **page_data)
 
@@ -293,6 +297,7 @@ def nastrojka_ecp_page():
     # Формируем SEO-метатеги для страницы настройки ЭЦП
     page_data["title"] = "Настройка ЭЦП и Рутокенов в Железнодорожном — IT Сервис"
     page_data["tagline"] = "Профессиональные услуги по подключению и настройке ЭЦП и Рутокен в Железнодорожном. Установка КриптоПро, настройка сертификатов."
+    page_data["current_breadcrumb"] = "Настройка ЭЦП и Рутокенов"
 
     return render_template("nastrojka_ecp.html", **page_data)
 
@@ -364,7 +369,8 @@ def search_page():
     page_data['tagline'] = f"Поиск по запросу: {query}. Найдено результатов: {len(results)}"
     page_data['search_query'] = query
     page_data['search_results'] = results
-    
+    page_data['current_breadcrumb'] = 'Поиск'
+
     return render_template("search.html", **page_data)
 
 

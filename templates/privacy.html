@@ -1,38 +1,7 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Политика конфиденциальности и обработки персональных данных — IT Сервис</title>
-    <meta name="description" content="Политика конфиденциальности IT Сервис. Сбор и обработка персональных данных клиентов сервисного центра в Железнодорожном.">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/png" href="/favicon.png">
-</head>
+{% extends 'base.html' %}
 
-<body>
-<header>
-    <div class="header-wrapper">
-        <a href="/" class="logo-block">
-            <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
-            <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
-        </a>
-        <nav class="main-nav">
-            <a href="/directions/diagnostika" class="nav-link">Диагностика</a>
-            <a href="/directions/professionalnyj-remont" class="nav-link">Ремонт</a>
-            <a href="/directions/uslugi" class="nav-link">Услуги</a>
-            <a href="/contacts" class="nav-link">Контакты</a>
-        </nav>
-        <div class="header-actions">
-            <span class="phone-number">8 (903) 103-61-04</span>
-            <div class="header-bottom-row">
-                <span class="address">Балашиха, мкр. Железнодорожный,<br>Ул. Новая д.8а ТЦ "Корона"</span>
-                <a href="#" class="btn-call-to-action">Заказать звонок</a>
-            </div>
-        </div>
-    </div>
-</header>
+{% block content %}
 
-<div class="container">
     <section class="section">
         <h1 style="font-size: 25px; margin-bottom: 32px; color: #222; text-align: center;">Политика конфиденциальности и обработки персональных данных</h1>
 
@@ -118,51 +87,4 @@
     </section>
 </div>
 
-<footer class="site-footer">
-    <div class="footer-wrapper">
-        <div class="footer-col">
-            <h4>Наши направления</h4>
-            <ul>
-                {% for feature in features %}
-                <li><a href="/directions/{{ feature.slug }}">{{ feature.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Наши услуги</h4>
-            <ul>
-                {% for service in services %}
-                <li><a href="{% if service.slug == 'nastrojka-ecp' %}/nastrojka-ecp{% else %}/services/{{ service.slug }}{% endif %}">{{ service.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Контакты</h4>
-            <p class="footer-phone">{{ phone }}</p>
-            <p class="footer-email"><a href="mailto:{{ email }}">{{ email }}</a></p>
-            <p class="footer-address"><strong>{{ address }}</strong></p>
-        </div>
-        <div class="footer-col footer-brand-col">
-            <a href="#" class="logo-block footer-logo">
-                <img src="{{ url_for('static', filename='img/logo13.webp') }}" alt="Логотип" class="logo-img">
-                <span class="logo-text">ЦИФРОВОЙ СЕРВИС</span>
-            </a>
-            <div class="schedule-block">
-                <h5>График работы:</h5>
-                <p>{{ hours }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="footer-bottom-wrapper">
-            <span>&copy; 2014-2026 Все права защищены. IT Сервис.</span>
-            <a href="/privacy" class="footer-link">Политика конфиденциальности</a>
-            <span class="footer-version">Версия сайта: {{ version }}</span>
-        </div>
-    </div>
-</footer>
-
-{% include 'includes/_callback_modal.html' %}
-
-</body>
-</html>
+{% endblock %}
