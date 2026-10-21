@@ -52,6 +52,27 @@
     </section>
 
     {% if current_service.slug == 'remont-smartfonov' %}
+    <!-- Блок 50/50: левый с текстом разблокировки, правый - заголовок страницы -->
+    <section class="section" style="padding: 16px 0 32px;">
+        <div style="display: flex; gap: 16px; max-width: 1200px; margin: 0 auto; align-items: stretch;">
+            <!-- Левый блок: разблокировка -->
+            <a href="/unlock-smartphones" style="flex: 1; text-decoration: none; color: inherit; display: block; background: var(--card-bg); padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); transition: box-shadow 0.2s;">
+                <img src="/static/img/unlocked1.webp" alt="Разблокировка смартфонов" style="width: 120px; height: auto; float: left; margin-right: 16px; margin-bottom: 8px; border-radius: 8px;">
+                <h3 style="font-size: 20px; margin-bottom: 12px; color: #222;">Разблокировка смартфонов</h3>
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; font-size: 16px; text-indent: 0;">Забыли графический ключ или пароль от телефона? В сервисном центре «IT Сервис» в Железнодорожном профессионально снимаем блокировки экрана, FRP и аккаунты (Google, Mi, Huawei, Apple ID). Работаем на сертифицированном оборудовании. Услуга предоставляется только при подтверждении права владения устройством.</p>
+                <span style="color: var(--primary); font-weight: 600; font-size: 16px;">Подробнее →</span>
+            </a>
+            <!-- Правый блок: заголовок и подзаголовок -->
+            <div style="flex: 1; background: var(--card-bg); padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+                <img src="/static/img/{{ current_service.icon }}" alt="{{ current_service.title }}" style="width: 120px; height: auto; float: left; margin-right: 16px; margin-bottom: 8px; border-radius: 8px;">
+                <h3 style="font-size: 20px; margin-bottom: 12px; color: #222;">{{ current_service.title }}</h3>
+                <p style="line-height: 1.6; color: #555; margin-bottom: 16px; font-size: 16px; text-indent: 0;">
+                    Профессиональные услуги по<br> {{ current_service.seo_keyword }} в мкр. Железнодорожный.<br>
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="seo-text">
         <h2 class="section-title" style="margin-bottom: 16px;">РЕМОНТ СМАРТФОНОВ В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
         <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px;">

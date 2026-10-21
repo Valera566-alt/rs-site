@@ -65,12 +65,25 @@
 <!-- Вторичная навигация и поиск -->
 <div class="secondary-nav-container">
     <nav class="breadcrumbs">
+        {% if current_breadcrumb == 'Главная' %}
+        <span class="breadcrumbs-item">
+            <span class="breadcrumbs-current">Главная</span>
+        </span>
+        {% else %}
         <span class="breadcrumbs-item">
             <a href="/" class="breadcrumbs-link">Главная</a>
         </span>
+        {% for bc in breadcrumbs %}
+        {% if bc.url != '/' %}
+        <span class="breadcrumbs-item">
+            <a href="{{ bc.url }}" class="breadcrumbs-link">{{ bc.title }}</a>
+        </span>
+        {% endif %}
+        {% endfor %}
         <span class="breadcrumbs-item">
             <span class="breadcrumbs-current">{{ current_breadcrumb }}</span>
         </span>
+        {% endif %}
     </nav>
     <form action="/search" method="GET" class="search-wrapper">
         <input type="text" name="q" placeholder="Поиск по сайту..." class="search-input">

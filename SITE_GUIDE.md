@@ -132,6 +132,36 @@ def redirect_to_main_domain():
 
 ---
 
+## 🧭 Навигация (Хлебные крошки)
+
+### Как работает
+Динамическая система хлебных крошек отслеживает реальный путь пользователя по сайту через **Flask-сессии**.
+
+**Логика работы:**
+1. `track_breadcrumb_path()` — `@app.before_request` функция, которая добавляет каждый посещённый URL в сессию `session['breadcrumb_path']`
+2. Сессия хранится в куках браузера (SECRET_KEY для шифрования)
+3. `inject_breadcrumbs()` — `@app.context_processor`, который передаёт breadcrumbs во все шаблоны
+4. `BREADCRUMB_MAP` — словарь, сопоставляющий URL с текстом для отображения
+
+**Правила:**
+- При переходе на главную `/` — история сбрасывается
+- Текущая страница не дублируется (показывается некликабельной)
+- Главная всегда показывается первой (кликабельной, кроме главной страницы)
+- История ограничена 10 последними страницами
+- Не кликабельные страницы пропускаются из кликабельного списка
+
+**Примеры:**
+- Главная: `Главная`
+- `/services/remont-smartfonov`: `Главная › Ремонт смартфонов`
+- `/unlock-smartphones` (через ремонт): `Главная › Ремонт смартфонов › Разблокировка смартфонов`
+
+**Файлы:**
+- `app.py` — логика (track_breadcrumb_path, inject_breadcrumbs, BREADCRUMB_MAP)
+- `base.html` — шаблон рендеринга
+- `style.css` — стили `.breadcrumbs`, `.breadcrumbs-item`, `.breadcrumbs-link`, `.breadcrumbs-current`
+
+---
+
 ## 📄 Динамические страницы
 
 ### Направления (`/directions/<slug>`)
@@ -178,11 +208,43 @@ Slug из `services.py` → ищется в `services` → генерирует�
 
 ---
 
+## 🎨 Стили контента
+
+### Блок «Важно!»
+Используется для выделения критически важной информации. Применяется к абзацам, начинающимся с `<strong>Важно:</strong>`.
+
+**Стиль:**
+```html
+<p style="line-height: 1.6; color: #555; background: #fff3cd; padding: 16px; border-radius: 4px; border-left: 4px solid #ffc107;">
+    <strong>Важно:</strong> текст...
+</p>
+```
+
+**Параметры:**
+- `background: #fff3cd` — песочный (светло-жёлтый) фон
+- `border-left: 4px solid #ffc107` — оранжевая левая рамка (4px)
+- `border-radius: 4px` — скругление углов
+- `padding: 16px` — внутренние отступы
+- `color: #555` — серый цвет текста
+- `line-height: 1.6` — межстрочный интервал
+
+**Где используется:**
+- `nastrojka_ecp.html` — предупреждения про ФНС, сроки
+- `unlock_smartphones.html` — предупреждение про подтверждение права владения
+
+---
+
 ## 📈 Аналитика
 
+Оба счётчика добавлены в `base.html` → работают на **всех** страницах автоматически.
+
 ### Google Analytics (gtag.js)
-Добавлен в `base.html` → работает на **всех** страницах:
+**ID:** `G-PHETFPKE6X`  
+**Файл:** `templates/base.html` (в `<head>`)  
+**Что собирает:** просмотры страниц, источники трафика, время на сайте, события, демография
+
 ```html
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PHETFPKE6X"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -193,7 +255,40 @@ Slug из `services.py` → ищется в `services` → генерирует�
 ```
 
 ### Яндекс.Метрика
-Упоминается в `privacy.html` (упоминается в тексте политики).
+**ID:** `60302227`  
+**Файл:** `templates/base.html` (в `<head>`, после Google-тега)  
+**Что собирает:** просмотры страниц, карта кликов, вебвизор (запись визитов), источники трафика, поиск по сайту
+
+```html
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(i),a=e.getElementsByTagName(i)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(60302227, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/60302227" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+```
+
+**Включённые опции:**
+- `clickmap` — карта кликов (куда нажимают пользователи)
+- `trackLinks` — отслеживание переходов по ссылкам
+- `accurateTrackBounce` — точный подсчёт отказов
+- `webvisor` — запись визитов (видеоплеер сессий пользователей)
+
+**Как проверить:**
+- Google Analytics: открыть сайт → F12 → Console → ввести `gtag('config', 'G-PHETFPKE6X')`
+- Яндекс.Метрика: открыть сайт → F12 → Console → ввести `ym(60302227, 'init')`
+- Или установить расширение **Google Tag Assistant** для Chrome
 
 ---
 

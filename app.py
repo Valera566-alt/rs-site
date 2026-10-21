@@ -1,11 +1,12 @@
 import os
 import requests
 from typing import Dict, Any, Optional
-from flask import Flask, render_template, abort, request, jsonify, redirect, send_from_directory
+from flask import Flask, render_template, abort, request, jsonify, redirect, send_from_directory, session, g
 from services import get_site_info
 
 
 app = Flask(__name__)
+app.secret_key = 'it150-secret-key-change-in-production'
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
@@ -42,13 +43,108 @@ def redirect_to_main_domain():
 
     return None
 
+# Словарь slug -> breadcrumb text для хлебных крошек
+BREADCRUMB_MAP = {
+    '/': 'Главная',
+    '/directions/professionalnyj-remont': 'Профессиональный ремонт',
+    '/directions/remont-kompyuterov-noutbukov-monoblokov': 'Ремонт компьютеров, ноутбуков, моноблоков',
+    '/directions/diagnostika': 'Диагностика',
+    '/directions/uslugi': 'Услуги',
+    '/directions/razrabotka-i-prodvizhenie-sajtov': 'Разработка и продвижение сайтов',
+    '/directions/pomoshch-selleram-marketplejsov': 'Помощь селлерам маркетплейсов',
+    '/directions/kopirovalnye-uslugi-i-pechat': 'Копировальные услуги и распечатка',
+    '/services/remont-smartfonov': 'Ремонт смартфонов',
+    '/services/remont-xiaomi': 'Ремонт Xiaomi',
+    '/services/remont-redmi': 'Ремонт Redmi',
+    '/services/remont-poco': 'Ремонт POCO',
+    '/services/remont-samsung': 'Ремонт Samsung',
+    '/services/remont-apple': 'Ремонт Apple',
+    '/services/remont-realme': 'Ремонт Realme',
+    '/services/remont-huawei': 'Ремонт Huawei',
+    '/services/remont-honor': 'Ремонт Honor',
+    '/services/remont-tecno': 'Ремонт Tecno',
+    '/services/remont-infinix': 'Ремонт Infinix',
+    '/services/remont-monoblokov': 'Ремонт моноблоков',
+    '/services/remont-televizorov': 'Ремонт телевизоров',
+    '/services/remont-noutbukov': 'Ремонт ноутбуков',
+    '/services/remont-kompyuterov': 'Ремонт компьютеров',
+    '/services/remont-pristavok': 'Ремонт приставок',
+    '/services/remont-naushnikov': 'Ремонт наушников',
+    '/services/nastrojka-ecp': 'Настройка ЭЦП',
+    '/services/nastrojka-crypto-pro': 'Настройка Crypto Pro',
+    '/services/nastrojka-printerov-etiketok': 'Настройка принтеров этикеток',
+    '/services/sborka-pk-na-zakaz': 'Сборка ПК на заказ',
+    '/services/prodazha_materinskikh_plat_i_videokart_asus': 'Продажа материнских плат',
+    '/services/chistka-ot-pyli-i-zamena-termo-pasty': 'Чистка от пыли',
+    '/services/prodazha-lazernyh-kartridzhej': 'Продажа лазерных картриджей',
+    '/services/prodazha-i-skupka-bu-kompyuterov': 'БУ компьютеры',
+    '/unlock-smartphones': 'Разблокировка смартфонов',
+    '/contacts': 'Контакты',
+    '/privacy': 'Политика конфиденциальности',
+    '/nastrojka-ecp': 'Настройка ЭЦП',
+    '/search': 'Поиск',
+}
+
+@app.before_request
+def track_breadcrumb_path():
+    """Отслеживает путь пользователя для хлебных крошек"""
+    if request.path in ['/robots.txt', '/sitemap.xml', '/favicon.png', '/yandex_093274bd8c7e1538.html', '/google969b44c74adecf16.html']:
+        return
+    
+    # Сбрасываем историю при переходе на главную
+    if request.path == '/':
+        if 'breadcrumb_path' not in session or session['breadcrumb_path'] != ['/']:
+            session['breadcrumb_path'] = ['/']
+            session.modified = True
+        return
+    
+    if 'breadcrumb_path' not in session:
+        session['breadcrumb_path'] = []
+    
+    # Если текущий путь уже есть в истории - не дублируем
+    if session['breadcrumb_path'] and session['breadcrumb_path'][-1] == request.path:
+        return
+    
+    # Добавляем текущий путь в историю
+    session['breadcrumb_path'].append(request.path)
+    session.modified = True
+    
+    # Ограничиваем историю 10 последними страницами
+    if len(session['breadcrumb_path']) > 10:
+        session['breadcrumb_path'] = session['breadcrumb_path'][-10:]
+        session.modified = True
+
+@app.context_processor
+def inject_breadcrumbs():
+    """Передаёт хлебные крошки во все шаблоны (без дублирования текущей и без 'Главная')"""
+    breadcrumbs = []
+    path_history = session.get('breadcrumb_path', [])
+    seen = set()
+    
+    for path in path_history:
+        if path in BREADCRUMB_MAP and path not in seen and path != '/':
+            breadcrumbs.append({
+                'url': path,
+                'title': BREADCRUMB_MAP[path]
+            })
+            seen.add(path)
+    
+    # Убираем текущую страницу из breadcrumbs (она будет добавлена отдельно)
+    current_path = request.path
+    if current_path in seen:
+        breadcrumbs = [bc for bc in breadcrumbs if bc['url'] != current_path]
+    
+    return {'breadcrumbs': breadcrumbs}
+
 @app.route('/favicon.png')
 def favicon():
     return send_from_directory(os.getcwd(), 'favicon.png', mimetype='image/png')
 @app.route("/")
 def index():
     # Главная страница: распаковываем все базовые данные
-    return render_template("index.html", **get_site_info())
+    site_info = get_site_info()
+    site_info["current_breadcrumb"] = "Главная"
+    return render_template("index.html", **site_info)
 
 
 @app.route("/services/<slug>")
@@ -72,6 +168,17 @@ def service_page(slug: str):
     page_data["current_breadcrumb"] = current_service['title']
 
     return render_template("service.html", **page_data)
+
+
+@app.route("/unlock-smartphones")
+def unlock_smartphones_page():
+    """Страница разблокировки смартфонов"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Разблокировка смартфонов в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональная разблокировка смартфонов и планшетов в мкр. Железнодорожный. Снятие блокировок экрана, FRP, аккаунтов."
+    page_data["current_breadcrumb"] = "Разблокировка смартфонов"
+    return render_template("unlock_smartphones.html", **page_data)
 
 
 @app.route("/directions/<slug>")
