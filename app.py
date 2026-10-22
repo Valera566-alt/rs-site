@@ -67,6 +67,8 @@ BREADCRUMB_MAP = {
     '/services/remont-monoblokov': 'Ремонт моноблоков',
     '/services/remont-televizorov': 'Ремонт телевизоров',
     '/services/remont-noutbukov': 'Ремонт ноутбуков',
+    '/services/remont-systemnyh-blokov': 'Ремонт системных блоков',
+    '/services/remont-statsionarnyh-kompyuterov': 'Ремонт стационарных компьютеров',
     '/services/remont-kompyuterov': 'Ремонт компьютеров',
     '/services/remont-pristavok': 'Ремонт приставок',
     '/services/remont-naushnikov': 'Ремонт наушников',
@@ -179,6 +181,39 @@ def unlock_smartphones_page():
     page_data["tagline"] = "Профессиональная разблокировка смартфонов и планшетов в мкр. Железнодорожный. Снятие блокировок экрана, FRP, аккаунтов."
     page_data["current_breadcrumb"] = "Разблокировка смартфонов"
     return render_template("unlock_smartphones.html", **page_data)
+
+
+@app.route("/services/diagnostika-systemnyh-blokov")
+def diagnostika_systemnyh_blokov_page():
+    """Страница диагностики системных блоков"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Диагностика системных блоков в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональная диагностика системных блоков в мкр. Железнодорожный. Аппаратная и программная проверка ПК, точная смета ремонта."
+    page_data["current_breadcrumb"] = "Диагностика системных блоков"
+    return render_template("diagnostika_systemnyh_blokov.html", **page_data)
+
+
+@app.route("/services/remont-statsionarnyh-kompyuterov")
+def remont_statsionarnyh_kompyuterov_page():
+    """Страница ремонта стационарных компьютеров"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Ремонт стационарных компьютеров в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональный ремонт стационарных компьютеров в мкр. Железнодорожный. Замена комплектующих, пайка материнских плат, восстановление после залития."
+    page_data["current_breadcrumb"] = "Ремонт стационарных компьютеров"
+    return render_template("remont_systemnyh_blokov.html", **page_data)
+
+
+@app.route("/services/remont-smartfonov-detail")
+def remont_smartfonov_detail_page():
+    """Страница ремонта смартфонов"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Ремонт смартфонов и планшетов в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональный ремонт смартфонов и планшетов в мкр. Железнодорожный. Замена экранов, аккумуляторов, пайка материнских плат."
+    page_data["current_breadcrumb"] = "Ремонт смартфонов и планшетов"
+    return render_template("remont_smartfonov_detail.html", **page_data)
 
 
 @app.route("/directions/<slug>")

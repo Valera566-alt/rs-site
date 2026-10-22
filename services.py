@@ -93,6 +93,7 @@ def get_site_info():
             {"title": "Ремонт мониторов и телевизоров", "slug": "remont-televizorov",
              "seo_keyword": "ремонту мониторов и телевизоров", "icon": "monitor1.webp"},
             {"title": "Ремонт ноутбуков", "slug": "remont-noutbukov", "seo_keyword": "ремонту ноутбуков", "icon": "laptop2.webp"},
+            {"title": "Ремонт системных блоков", "slug": "remont-systemnyh-blokov", "seo_keyword": "ремонту системных блоков", "icon": "systems_block.webp"},
             {"title": "Ремонт компьютеров", "slug": "remont-kompyuterov", "seo_keyword": "ремонту компьютеров", "icon": "pc_rep.webp"},
             {"title": "Ремонт приставок Xbox и Sony PS ", "slug": "remont-pristavok",
              "seo_keyword": "ремонту игровых приставок Xbox и PS", "icon": "gamepad1.webp"},
