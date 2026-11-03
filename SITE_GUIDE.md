@@ -17,6 +17,7 @@ rs-site/
 ├── app.py              ← Маршруты (URL → функции → шаблоны)
 ├── services.py         ← Данные для всех страниц (JSON-структура)
 ├── ai_rules.md         ← Правила для ИИ-разработчика
+├── SITE_GUIDE.md       ← Эта памятка
 ├── requirements.txt    ← Python-зависимости
 ├── static/
 │   ├── css/style.css   ← Все стили сайта
@@ -24,7 +25,7 @@ rs-site/
 │   ├── robots.txt      ← Запреты для поисковиков
 │   └── yandex_*.html   ← Файлы верификации
 ├── templates/
-│   ├── base.html       ← БАЗОВЫЙ ШАБЛОН (общий head, header, footer, Google-тег)
+│   ├── base.html       ← БАЗОВЫЙ ШАБЛОН (общий head, header, footer, счётчики аналитики)
 │   ├── index.html      ← Главная страница
 │   ├── direction.html  ← Страницы направлений (/directions/...)
 │   ├── service.html    ← Страницы услуг (/services/...)
@@ -32,6 +33,10 @@ rs-site/
 │   ├── privacy.html    ← Политика конфиденциальности
 │   ├── nastrojka_ecp.html ← Настройка ЭЦП
 │   ├── search.html     ← Поиск по сайту
+│   ├── unlock_smartphones.html ← Разблокировка смартфонов
+│   ├── diagnostika_systemnyh_blokov.html ← Диагностика системных блоков
+│   ├── remont_systemnyh_blokov.html ← Ремонт стационарных компьютеров
+│   ├── remont_smartfonov_detail.html ← Ремонт смартфонов и планшетов
 │   └── includes/
 │       └── _callback_modal.html ← Модальное окно "Заказать звонок"
 └── yandex_*.html       ← Файл верификации Яндекса (корень)
@@ -55,6 +60,10 @@ Flask запускает локальный сервер на **http://localhost
 | `/` | `index()` | `index.html` | `get_site_info()` |
 | `/directions/<slug>` | `direction_page(slug)` | `direction.html` | `get_site_info()` + slug |
 | `/services/<slug>` | `service_page(slug)` | `service.html` | `get_site_info()` + slug |
+| `/unlock-smartphones` | `unlock_smartphones_page()` | `unlock_smartphones.html` | `get_site_info()` |
+| `/services/diagnostika-systemnyh-blokov` | `diagnostika_systemnyh_blokov_page()` | `diagnostika_systemnyh_blokov.html` | `get_site_info()` |
+| `/services/remont-statsionarnyh-kompyuterov` | `remont_statsionarnyh_kompyuterov_page()` | `remont_systemnyh_blokov.html` | `get_site_info()` |
+| `/services/remont-smartfonov-detail` | `remont_smartfonov_detail_page()` | `remont_smartfonov_detail.html` | `get_site_info()` |
 | `/contacts` | `contacts_page()` | `contacts.html` | `get_site_info()` |
 | `/privacy` | `privacy_page()` | `privacy.html` | `get_site_info()` |
 | `/nastrojka-ecp` | `nastrojka_ecp_page()` | `nastrojka_ecp.html` | `get_site_info()` |
@@ -65,7 +74,7 @@ Flask запускает локальный сервер на **http://localhost
 ### 3. Генерация данных (services.py)
 Функция `get_site_info()` возвращает **словарь со всеми данными**:
 - `features` — направления (иконка, заголовок, slug, SEO-ключ, текст)
-- `services` — услуги
+- `services` — услуги (включая вложенные: ремонт Xiaomi, Redmi, POCO и т.д.)
 - `steps` — этапы работы
 - `faq` — вопросы-ответы
 - Метаданные (phone, email, address, hours)
@@ -85,7 +94,7 @@ Jinja2 подставляет переменные (`{{ title }}`, `{{ phone }}`
 
 ### base.html — БАЗОВЫЙ ШАБЛОН (родитель)
 Содержит **общий код для всех страниц**:
-- `<head>` — meta-теги, Google Analytics (gtag), шрифты, CSS
+- `<head>` — meta-теги, Google Analytics (gtag), Яндекс.Метрика, шрифты, CSS
 - `<header>` — логотип, навигация, телефон, адрес, кнопка "Заказать звонок"
 - Вторичная навигация — хлебные крошки + поиск
 - `<footer>` — 4 колонки: направления, услуги, контакты, логотип
@@ -104,11 +113,15 @@ Jinja2 подставляет переменные (`{{ title }}`, `{{ phone }}`
 **Наследуемые шаблоны:**
 - `index.html` — главная
 - `direction.html` — направления
-- `service.html` — услуги
+- `service.html` — услуги (ремонт смартфонов, системных блоков и др.)
 - `contacts.html` — контакты
 - `privacy.html` — политика
 - `nastrojka_ecp.html` — настройка ЭЦП
 - `search.html` — поиск
+- `unlock_smartphones.html` — разблокировка смартфонов
+- `diagnostika_systemnyh_blokov.html` — диагностика системных блоков
+- `remont_systemnyh_blokov.html` — ремонт стационарных компьютеров
+- `remont_smartfonov_detail.html` — ремонт смартфонов и планшетов
 
 **Правило:** Изменил что-то в `base.html` → обновилось на всех страницах.
 
@@ -154,6 +167,8 @@ def redirect_to_main_domain():
 - Главная: `Главная`
 - `/services/remont-smartfonov`: `Главная › Ремонт смартфонов`
 - `/unlock-smartphones` (через ремонт): `Главная › Ремонт смартфонов › Разблокировка смартфонов`
+- `/services/remont-systemnyh-blokov`: `Главная › Ремонт системных блоков`
+- `/services/remont-statsionarnyh-kompyuterov`: `Главная › Ремонт стационарных компьютеров`
 
 **Файлы:**
 - `app.py` — логика (track_breadcrumb_path, inject_breadcrumbs, BREADCRUMB_MAP)
@@ -176,12 +191,17 @@ Slug берётся из `services.py` → ищется в `features` → ген
 - `/directions/professionalnyj-remont` — этапы ремонта, FAQ
 - `/directions/diagnostika` — диагностика разных типов техники
 - `/directions/uslugi` — сетка услуг
-- `/directions/remont-kompyuterov-noutbukov-monoblokov` — ремонт ПК
+- `/directions/remont-kompyuterov-noutbukov-monoblokov` — ремонт ПК (с кликабельными карточками)
 
 ### Услуги (`/services/<slug>`)
 Slug из `services.py` → ищется в `services` → генерируется страница.
 
-**Особенность:** `/services/remont-smartfonov` — содержит dropdown с брендами.
+**Особенности:**
+- `/services/remont-smartfonov` — содержит dropdown с брендами (Xiaomi, Redmi, POCO, Samsung, Apple и др.) и двумя блоками 50/50 (разблокировка + ремонт)
+- `/services/remont-systemnyh-blokov` — страница генерируется автоматически из services.py (с SEO-текстом, этапами ремонта и FAQ)
+- `/services/remont-statsionarnyh-kompyuterov` — ручная страница с детальным описанием замены комплектующих и реальными случаями
+- `/services/remont-smartfonov-detail` — ручная страница с описанием ремонта смартфонов
+- `/services/diagnostika-systemnyh-blokov` — ручная страница с описанием диагностики ПК
 
 ---
 
@@ -197,8 +217,10 @@ Slug из `services.py` → ищется в `services` → генерирует�
 `/sitemap.xml` → генерируется из данных `get_site_info()`. Содержит:
 - Главная (priority 1.0)
 - Все направления (priority 0.8)
-- Все услуги (priority 0.8)
+- Все услуги из services.py (priority 0.8)
 - `/privacy`, `/nastrojka-ecp` (priority 0.3/0.8)
+
+**Важно:** Все новые страницы из `services.py` автоматически добавляются в sitemap.
 
 ### Schema.org (JSON-LD)
 На главной странице (`index.html`) встроена микроразметка `LocalBusiness`:
@@ -355,11 +377,16 @@ Slug из `services.py` → ищется в `services` → генерирует�
 
 | Файл | Назначение |
 |------|------------|
-| `app.py` | Маршруты, редиректы, SEO-генераторы |
+| `app.py` | Маршруты, редиректы, SEO-генераторы, хлебные крошки |
 | `services.py` | Все данные сайта (направления, услуги, FAQ) |
-| `base.html` | Базовый шаблон (общий head, header, footer) |
+| `base.html` | Базовый шаблон (общий head, header, footer, счётчики) |
 | `style.css` | Все стили |
 | `_callback_modal.html` | Модальное окно + маска телефона |
+| `service.html` | Шаблон страниц услуг (с dropdown брендов, блоками 50/50, этапами ремонта, FAQ) |
+| `direction.html` | Шаблон страниц направлений (с кликабельными карточками) |
+| `diagnostika_systemnyh_blokov.html` | Страница диагностики системных блоков |
+| `remont_systemnyh_blokov.html` | Страница ремонта стационарных компьютеров |
+| `remont_smartfonov_detail.html` | Страница ремонта смартфонов и планшетов |
 
 ---
 
@@ -368,6 +395,36 @@ Slug из `services.py` → ищется в `services` → генерирует�
 1. **Изменить текст/данные** → `services.py`
 2. **Изменить дизайн шапки/подвала** → `base.html`
 3. **Изменить стили** → `static/css/style.css`
-4. **Добавить новую страницу** → `app.py` (маршрут) + новый шаблон
-5. **Изменить SEO-теги** → `app.py` (title, tagline)
-6. **Добавить аналитику** → `base.html` (в `<head>`)
+4. **Добавить новую услугу в каталог** → `services.py` (добавить в `services`) + `app.py` (breadcrumb)
+5. **Добавить новую страницу с уникальным дизайном** → `app.py` (маршрут) + новый шаблон
+6. **Изменить SEO-теги** → `app.py` (title, tagline)
+7. **Добавить аналитику** → `base.html` (в `<head>`)
+
+---
+
+## 🆕 Новые страницы (последние изменения)
+
+### `/services/remont-systemnyh-blokov`
+- **Источник:** автоматически из `services.py`
+- **Контент:** Hero-секция, два блока 50/50 (диагностика + ремонт), SEO-текст, этапы ремонта, FAQ
+- **Особенность:** Карточка на `/directions/remont-kompyuterov-noutbukov-monoblokov` теперь кликабельная
+
+### `/services/diagnostika-systemnyh-blokov`
+- **Источник:** ручная страница `diagnostika_systemnyh_blokov.html`
+- **Контент:** Описание диагностики ПК, 4 этапа диагностики, 6 FAQ-вопросов
+- **URL:** `/services/diagnostika-systemnyh-blokov`
+
+### `/services/remont-statsionarnyh-kompyuterov`
+- **Источник:** ручная страница `remont_systemnyh_blokov.html`
+- **Контент:** Замена комплектующих (материнская плата, процессор, ОЗУ, SSD, БП, видеокарта), 3 реальных случая из практики, 4 этапа ремонта, 6 FAQ-вопросов
+- **URL:** `/services/remont-statsionarnyh-kompyuterov`
+
+### `/services/remont-smartfonov-detail`
+- **Источник:** ручная страница `remont_smartfonov_detail.html`
+- **Контент:** Описание ремонта смартфонов и планшетов, 4 этапа ремонта, 6 FAQ-вопросов
+- **URL:** `/services/remont-smartfonov-detail`
+
+### `/unlock-smartphones`
+- **Источник:** ручная страница `unlock_smartphones.html`
+- **Контент:** Разблокировка смартфонов (снятие паролей, FRP, аккаунтов), SEO-текст
+- **URL:** `/unlock-smartphones`

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' %}
+{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' or current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' %}
 
     <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ и страница ДИАГНОСТИКА» === -->
 
@@ -12,6 +12,8 @@
         <img src="{{ url_for('static', filename='img/diagnostika.webp') }}" alt="Диагностика техники" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% elif current_direction.slug == 'uslugi' %}
         <img src="{{ url_for('static', filename='img/digital_services.webp') }}" alt="Услуги по ремонту техники" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' %}
+        <img src="{{ url_for('static', filename='img/web.webp') }}" alt="Разработка и продвижение сайтов" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% else %}
         <img src="{{ url_for('static', filename='img/pc_repair.webp') }}" alt="Ремонт компьютеров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% endif %}
@@ -215,6 +217,28 @@
         {% endif %}
     </section>
 
+    <!-- SEO-текст для razrabotka-i-prodvizhenie-sajtov -->
+    {% if current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' %}
+    <section class="section" id="seo-text" style="margin-bottom: 32px;">
+        <h2 class="section-title" style="margin-bottom: 16px;">РАЗРАБОТКА САЙТОВ ПОД КЛЮЧ В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <img src="/static/img/web1.webp" alt="Разработка сайтов в Железнодорожном" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Разработка сайтов под ключ в Железнодорожном (Балашиха): создаём лендинги, корпоративные сайты и интернет‑магазины, которые решают задачи бизнеса и приносят заявки. Работаем по прозрачному процессу: сначала проводим анализ задач и формируем структуру сайта, затем согласовываем прототип и дизайн, после чего выполняем вёрстку и программирование с интеграциями.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы делаем адаптивную вёрстку, оптимизируем скорость загрузки, настраиваем базовую SEO‑подготовку страниц и подключаем необходимые инструменты: формы заявок, CRM, онлайн‑оплату, сервисы доставки и другие. Сайт будет корректно отображаться на смартфонах и компьютерах, быстро загружаться и соответствовать требованиям поисковых систем.</p>
+            <img src="/static/img/web2.webp" alt="Продвижение сайтов в Железнодорожном" style="width: 200px; height: auto; float: left; margin-right: 24px; margin-bottom: 12px; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin: 24px 0 16px; color: #222;">Условия работы</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Фиксированная стоимость проекта</strong> по ТЗ, без скрытых доплат.</li>
+                <li style="margin-bottom: 8px;"><strong>Внесение 50 % предоплаты</strong> перед стартом работ — это фиксирует сроки и резервирует команду под ваш проект. Оставшиеся 50 % оплачиваются после согласования финальной версии и перед передачей доступов.</li>
+                <li style="margin-bottom: 8px;"><strong>Срок разработки</strong> — от 10 рабочих дней, зависит от сложности и объёма контента.</li>
+                <li style="margin-bottom: 8px;"><strong>Все правки на этапе прототипа и дизайна</strong> включены в стоимость; финальные корректировки фиксируются отдельным актом.</li>
+                <li style="margin-bottom: 8px;"><strong>Передача сайта:</strong> доступы к CMS/хостингу, архив файлов, инструкция по работе, базовая настройка аналитики и счётчиков.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; text-indent: 24px;">Офис находится по адресу: ул. Новая, 8а. Работаем с ИП, ООО и самозанятыми, оформляем договор и акты выполненных работ.</p>
+        </div>
+    </section>
+    {% endif %}
+
 
     <!-- Секция «Как мы работаем» -->
     <section class="section" id="about">
@@ -224,9 +248,35 @@
         <h2 class="section-title">ЭТАПЫ РЕМОНТА ТЕХНИКИ</h2>
         {% elif current_direction.slug == 'uslugi' %}
         <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
+        {% elif current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' %}
+        <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
         {% else %}
         <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
         {% endif %}
+        {% if current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём заявки и брифование</h3>
+                <p>Вы оставляете заявку на сайте или по телефону — мы фиксируем базовые задачи и назначаем консультацию. На встрече разбираем цели проекта, целевую аудиторию и ключевые метрики эффективности сайта.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Проектирование и прототипирование</h3>
+                <p>Разрабатываем структуру сайта и прототип страниц: определяем логику переходов, расположение блоков и CTA‑элементов. Согласовываем с вами прототип до перехода к дизайну.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Дизайн, вёрстка и программирование</h3>
+                <p>Создаём адаптивный дизайн под мобильные и десктопные устройства, выполняем вёрстку и программирование с интеграциями (формы, CRM, онлайн‑оплата, сервисы доставки). Оптимизируем скорость загрузки и базовую SEO‑подготовку страниц.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Тестирование, запуск и передача</h3>
+                <p>Проводим тестирование функционала и кроссбраузерную проверку, настраиваем базовые счётчики аналитики. Передаём доступы к CMS/хостингу, архив файлов, инструкцию по работе и акт выполненных работ.</p>
+            </div>
+        </div>
+        {% else %}
         <div class="steps">
             {% for step in steps %}
             <div class="step-item">
@@ -236,11 +286,40 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
     </section>
 
     <!-- FAQ -->
     <section class="section" id="faq">
         <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+        {% if current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Нужно ли приезжать в офис для старта проекта?</h3>
+                <p>Нет. Старт проекта возможен удалённо: вы заполняете бриф на сайте или в мессенджере, далее проводим онлайн‑встречу для уточнения деталей. Офис в Балашихе (мкрн. Железнодорожный, ул. Новая, 8а) доступен для личных встреч по предварительной договорённости.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Делаете ли настройку аналитики и сквозной отчётности?</h3>
+                <p>Да. Настраиваем Яндекс Метрику и Google Analytics, размечаем цели и события, подключаем UTM‑метки. По запросу интегрируем сквозную аналитику и выгрузку данных в CRM или таблицы для контроля лидов и ROI.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Настраиваете ли домен, хостинг и SSL?</h3>
+                <p>Да. Помогаем с выбором и регистрацией домена, подбираем хостинг под задачи проекта, настраиваем DNS‑записи, устанавливаем SSL‑сертификат и базовую защиту от DDoS.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Помогаете ли с контентом и наполнением сайта?</h3>
+                <p>Да. Предлагаем услуги по подготовке структуры контента, написанию текстов, подбору и оптимизации изображений. По согласованию привлекаем копирайтеров и фотографов, адаптируем материалы под SEO и UX.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какая даётся гарантия на разработку сайта?</h3>
+                <p>Выдаём гарантийное обязательство на устранение ошибок вёрстки и функционала в течение 30 дней после сдачи проекта. Срок и объём гарантий фиксируются в договоре.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени занимает разработка сайта?</h3>
+                <p>Лендинг — от 10 рабочих дней, многостраничный сайт — от 20 рабочих дней, интернет‑магазин — от 30 рабочих дней. Срок зависит от сложности дизайна, объёма контента и количества интеграций. Точные сроки фиксируем в ТЗ и договоре.</p>
+            </div>
+        </div>
+        {% else %}
         <div class="faq">
             {% for item in faq %}
             <div class="faq-item">
@@ -249,6 +328,7 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
     </section>
 
 {% else %}
