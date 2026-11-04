@@ -127,6 +127,35 @@ Jinja2 подставляет переменные (`{{ title }}`, `{{ phone }}`
 
 ---
 
+## 🔍 Поиск по сайту
+
+### Как работает
+Функция `search_page()` в `app.py` ищет запрос пользователя по нескольким источникам:
+
+**1. Направления (features из services.py):**
+- Ищется в: `title`, `seo_keyword`, `text`
+
+**2. Услуги (services из services.py):**
+- Ищется в: `title`, `seo_keyword`
+- Корректные URL для специальных страниц (nastrojka-ecp, remont-kompyuterov)
+
+**3. Статические страницы с ручным поисковым текстом:**
+- `/contacts` — контакты, адрес, телефон
+- `/nastrojka-ecp` — настройка ЭЦП, Рутокен, КриптоПро, ФНС
+- `/unlock-smartphones` — разблокировка смартфонов, пароль, FRP, iPhone, Samsung, Xiaomi
+- `/directions/pomoshch-selleram-marketplejsov` — помощь селлерам, Wildberries, Ozon, КриптоПро
+- `/directions/razrabotka-i-prodvizhenie-sajtov` — разработка сайтов, лендинг, SEO
+- `/directions/kopirovalnye-uslugi-i-pechat` — копировальные услуги, печать, ксерокопия
+- `/services/remont-systemnyh-blokov` — ремонт системных блоков, компьютеров, диагностика
+- `/services/remont-smartfonov` — ремонт смартфонов, замена экрана, аккумулятора
+
+**Правила:**
+- Поиск регистронезависимый (`.lower()`)
+- Поиск по подстроке (`if query in search_text`)
+- При пустом запросе — редирект на главную
+
+---
+
 ## 🔄 Редиректы и SEO
 
 ### 301 редирект зеркал (в коде app.py)
@@ -187,11 +216,14 @@ Slug берётся из `services.py` → ищется в `features` → ген
 - `/directions/pomoshch-selleram-marketplejsov` — помощь селлерам
 - `/directions/kopirovalnye-uslugi-i-pechat` — копировальные услуги
 
-**Особенные страницы направлений** (уникальный контент):
+**Особенные страницы направлений** (уникальный контент в `direction.html`):
 - `/directions/professionalnyj-remont` — этапы ремонта, FAQ
 - `/directions/diagnostika` — диагностика разных типов техники
 - `/directions/uslugi` — сетка услуг
 - `/directions/remont-kompyuterov-noutbukov-monoblokov` — ремонт ПК (с кликабельными карточками)
+- `/directions/razrabotka-i-prodvizhenie-sajtov` — SEO-текст, этапы разработки, FAQ
+- `/directions/pomoshch-selleram-marketplejsov` — SEO-текст, настройка КриптоПро/Рутокен, FAQ
+- `/directions/kopirovalnye-uslugi-i-pechat` — SEO-текст, цены, этапы работы, FAQ
 
 ### Услуги (`/services/<slug>`)
 Slug из `services.py` → ищется в `services` → генерируется страница.
@@ -377,13 +409,14 @@ Slug из `services.py` → ищется в `services` → генерирует�
 
 | Файл | Назначение |
 |------|------------|
-| `app.py` | Маршруты, редиректы, SEO-генераторы, хлебные крошки |
+| `app.py` | Маршруты, редиректы, SEO-генераторы, хлебные крошки, поиск |
 | `services.py` | Все данные сайта (направления, услуги, FAQ) |
 | `base.html` | Базовый шаблон (общий head, header, footer, счётчики) |
 | `style.css` | Все стили |
 | `_callback_modal.html` | Модальное окно + маска телефона |
 | `service.html` | Шаблон страниц услуг (с dropdown брендов, блоками 50/50, этапами ремонта, FAQ) |
-| `direction.html` | Шаблон страниц направлений (с кликабельными карточками) |
+| `direction.html` | Шаблон страниц направлений (с кликабельными карточками, SEO-текстами для special directions) |
+| `unlock_smartphones.html` | Страница разблокировки смартфонов |
 | `diagnostika_systemnyh_blokov.html` | Страница диагностики системных блоков |
 | `remont_systemnyh_blokov.html` | Страница ремонта стационарных компьютеров |
 | `remont_smartfonov_detail.html` | Страница ремонта смартфонов и планшетов |
@@ -399,15 +432,52 @@ Slug из `services.py` → ищется в `services` → генерирует�
 5. **Добавить новую страницу с уникальным дизайном** → `app.py` (маршрут) + новый шаблон
 6. **Изменить SEO-теги** → `app.py` (title, tagline)
 7. **Добавить аналитику** → `base.html` (в `<head>`)
+8. **Добавить страницу в поиск** → `app.py` (`search_page()` — добавить блок поиска с ключевыми словами)
+
+---
+
+## 📝 Обновление поиска (search_page)
+
+### Структура добавления поиска для новой страницы:
+```python
+# Ищем на странице [название страницы]
+page_search = "ключевое слово 1 ключевое слово 2 ...".lower()
+if query in page_search:
+    results.append({
+        'type': 'Страница'|'Направление'|'Услуга',
+        'title': 'Отображаемый заголовок',
+        'url': '/url-страницы',
+        'description': 'Краткое описание'
+    })
+```
+
+### Где добавлять:
+В `app.py`, функция `search_page()`, после блока поиска по услугам, перед `page_data = site_info.copy()`
 
 ---
 
 ## 🆕 Новые страницы (последние изменения)
 
+### `/unlock-smartphones`
+- **Источник:** ручная страница `unlock_smartphones.html`
+- **Контент:** Hero-секция, SEO-текст "Разблокировка смартфонов в Железнодорожном", 4 этапа разблокировки, 6 FAQ-вопросов
+- **SEO-текст:** Снятие PIN/графического ключа, FRP, Mi Account, Huawei ID, подтверждение права владения
+- **Поиск:** Индексируется по ключевым словам: разблокировка, пароль, FRP, iPhone, Samsung, Xiaomi и т.д.
+- **URL:** `/unlock-smartphones`
+
+### `/services/remont-smartfonov`
+- **Источник:** автоматически из `services.py` + шаблон `service.html`
+- **Контент:** Hero-секция, dropdown брендов (Xiaomi, Redmi, POCO, Samsung, Apple и др.), два блока 50/50 (разблокировка + ремонт), SEO-текст, 4 этапа ремонта, 6 FAQ-вопросов
+- **Поиск:** Индексируется по ключевым словам: ремонт смартфонов, замена экрана, аккумулятора, iPhone, Samsung, Xiaomi и т.д.
+- **URL:** `/services/remont-smartfonov`
+
 ### `/services/remont-systemnyh-blokov`
-- **Источник:** автоматически из `services.py`
-- **Контент:** Hero-секция, два блока 50/50 (диагностика + ремонт), SEO-текст, этапы ремонта, FAQ
+- **Источник:** автоматически из `services.py` + шаблон `service.html`
+- **Контент:** Hero-секция, два блока 50/50 (диагностика + ремонт), SEO-текст, 4 этапа ремонта, 6 FAQ-вопросов
+- **SEO-текст:** Ремонт ПК всех производителей, замена комплектующих, пайка материнских плат, восстановление после залития
+- **Поиск:** Индексируется по ключевым словам: ремонт системных блоков, компьютеров, диагностика, блок питания, материнская плата и т.д.
 - **Особенность:** Карточка на `/directions/remont-kompyuterov-noutbukov-monoblokov` теперь кликабельная
+- **URL:** `/services/remont-systemnyh-blokov`
 
 ### `/services/diagnostika-systemnyh-blokov`
 - **Источник:** ручная страница `diagnostika_systemnyh_blokov.html`
@@ -424,7 +494,24 @@ Slug из `services.py` → ищется в `services` → генерирует�
 - **Контент:** Описание ремонта смартфонов и планшетов, 4 этапа ремонта, 6 FAQ-вопросов
 - **URL:** `/services/remont-smartfonov-detail`
 
-### `/unlock-smartphones`
-- **Источник:** ручная страница `unlock_smartphones.html`
-- **Контент:** Разблокировка смартфонов (снятие паролей, FRP, аккаунтов), SEO-текст
-- **URL:** `/unlock-smartphones`
+### `/directions/pomoshch-selleram-marketplejsov`
+- **Источник:** шаблон `direction.html` (special section)
+- **Контент:** Hero-секция, SEO-текст "Помощь селлерам маркетплейсов", 6 блоков услуг (КриптоПро, ЭЦП, офисное ПО, этикетки, оборудование), 4 этапа работы, 6 FAQ-вопросов
+- **SEO-текст:** Настройка рабочих мест под Wildberries, Ozon, Яндекс Маркет, ФНС, Честный ЗНАК
+- **Поиск:** Индексируется по ключевым словам: селлеры, маркетплейсы, Wildberries, Ozon, КриптоПро, этикетки, термопринтер
+- **URL:** `/directions/pomoshch-selleram-marketplejsov`
+
+### `/directions/razrabotka-i-prodvizhenie-sajtov`
+- **Источник:** шаблон `direction.html` (special section)
+- **Контент:** Hero-секция, SEO-текст "Разработка сайтов под ключ", 4 этапа разработки, 6 FAQ-вопросов
+- **SEO-текст:** Лендинги, корпоративные сайты, интернет-магазины, адаптивная вёрстка, SEO-подготовка
+- **Условия:** Фиксированная стоимость, 50% предоплата, срок от 10 рабочих дней
+- **Поиск:** Индексируется по ключевым словам: разработка сайтов, лендинг, корпоративный сайт, SEO, вёрстка
+- **URL:** `/directions/razrabotka-i-prodvizhenie-sajtov`
+
+### `/directions/kopirovalnye-uslugi-i-pechat`
+- **Источник:** шаблон `direction.html` (special section)
+- **Контент:** Hero-секция, SEO-текст "Копировальные услуги и печать", цены (копия 20р, скан 30р, цвет 60р, ламинирование 100р), 4 этапа работы, 6 FAQ-вопросов
+- **SEO-текст:** Чёрно-белая и цветная печать, ксерокопирование, сканирование, ламинирование, подготовка к сдаче
+- **Поиск:** Индексируется по ключевым словам: копировальные услуги, печать, ксерокопия, сканирование, ламинирование
+- **URL:** `/directions/kopirovalnye-uslugi-i-pechat`

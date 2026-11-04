@@ -53,6 +53,7 @@ BREADCRUMB_MAP = {
     '/directions/razrabotka-i-prodvizhenie-sajtov': 'Разработка и продвижение сайтов',
     '/directions/pomoshch-selleram-marketplejsov': 'Помощь селлерам маркетплейсов',
     '/directions/kopirovalnye-uslugi-i-pechat': 'Копировальные услуги и распечатка',
+    '/directions/diagnostika-kompyuterov': 'Диагностика компьютеров',
     '/services/remont-smartfonov': 'Ремонт смартфонов',
     '/services/remont-xiaomi': 'Ремонт Xiaomi',
     '/services/remont-redmi': 'Ремонт Redmi',
@@ -504,6 +505,76 @@ def search_page():
             'title': 'Настройка ЭЦП и Рутокенов',
             'url': '/nastrojka-ecp',
             'description': 'Профессиональные услуги по подключению и настройке ЭЦП'
+        })
+    
+    # Ищем на странице разблокировки смартфонов
+    unlock_search = "разблокировка смартфонов блокировка пароль графический ключ frp mi account huawei id google аккаунт сброс пароля unlock iphone samsung xiaomi honor infinix tecno realme планшет".lower()
+    if query in unlock_search:
+        results.append({
+            'type': 'Страница',
+            'title': 'Разблокировка смартфонов',
+            'url': '/unlock-smartphones',
+            'description': 'Профессиональная разблокировка смартфонов и планшетов в мкр. Железнодорожный'
+        })
+    
+    # Ищем на странице диагностики компьютеров
+    pc_diag_search = "диагностика компьютеров системных блоков проверка блока питания материнской платы оперативной памяти hdd ssd видеокарта bsod синий экран перегрев зависание железнодорочный балашиха".lower()
+    if query in pc_diag_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Диагностика компьютеров',
+            'url': '/directions/diagnostika-kompyuterov',
+            'description': 'Профессиональная аппаратная и программная диагностика ПК в Железнодорожном'
+        })
+    
+    # Ищем на странице помощи селлерам
+    seller_search = "помощь селлерам маркетплейсов wildberries ozon криптопро рутокен эцп этикетки термопринтер рабочее место фбо фбс маркировка честный знак".lower()
+    if query in seller_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Помощь селлерам маркетплейсов',
+            'url': '/directions/pomoshch-selleram-marketplejsov',
+            'description': 'Комплексная техническая поддержка селлеров для выхода и стабильной работы на маркетплейсах'
+        })
+    
+    # Ищем на странице разработки сайтов
+    webdev_search = "разработка сайтов лендинг корпоративный сайт интернет магазин seo вёрстка программирование продвижение балашиха железнодорочный".lower()
+    if query in webdev_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Разработка и продвижение сайтов',
+            'url': '/directions/razrabotka-i-prodvizhenie-sajtov',
+            'description': 'Разработка сайтов под ключ в Железнодорожном (Балашиха)'
+        })
+    
+    # Ищем на странице копировальных услуг
+    copy_search = "копировальные услуги печать ксерокопия сканирование ламинирование печать а4 цветная чёрно белая этикетки тираж балашиха железнодорочный".lower()
+    if query in copy_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Копировальные услуги и печать',
+            'url': '/directions/kopirovalnye-uslugi-i-pechat',
+            'description': 'Копировальные услуги и печать в Балашихе (мкр. Железнодорожный)'
+        })
+    
+    # Ищем на странице ремонта системных блоков
+    pc_repair_search = "ремонт системных блоков ремонт компьютеров диагностика блока питания материнской платы видеокарты оперативной памяти замена термопасты чистка от пыли залитие балашиха железнодорочный".lower()
+    if query in pc_repair_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт системных блоков',
+            'url': '/services/remont-systemnyh-blokov',
+            'description': 'Профессиональный ремонт системных блоков в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта смартфонов
+    phone_repair_search = "ремонт смартфонов замена экрана аккумулятора разъём зарядки water face id стекло дисплей модуль iphone samsung xiaomi redmi poco honor huawei realme infinix tecno".lower()
+    if query in phone_repair_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт смартфонов и планшетов',
+            'url': '/services/remont-smartfonov',
+            'description': 'Профессиональный ремонт смартфонов и планшетов в Железнодорожном'
         })
     
     page_data = site_info.copy()
