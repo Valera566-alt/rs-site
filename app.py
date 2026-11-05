@@ -54,6 +54,7 @@ BREADCRUMB_MAP = {
     '/directions/pomoshch-selleram-marketplejsov': 'Помощь селлерам маркетплейсов',
     '/directions/kopirovalnye-uslugi-i-pechat': 'Копировальные услуги и распечатка',
     '/directions/diagnostika-kompyuterov': 'Диагностика компьютеров',
+    '/directions/diagnostika-smartfonov': 'Диагностика смартфонов',
     '/services/remont-smartfonov': 'Ремонт смартфонов',
     '/services/remont-xiaomi': 'Ремонт Xiaomi',
     '/services/remont-redmi': 'Ремонт Redmi',
@@ -525,6 +526,16 @@ def search_page():
             'title': 'Диагностика компьютеров',
             'url': '/directions/diagnostika-kompyuterov',
             'description': 'Профессиональная аппаратная и программная диагностика ПК в Железнодорожном'
+        })
+    
+    # Ищем на странице диагностики смартфонов
+    phone_diag_search = "диагностика смартфонов мобильных телефонов аккумулятор контроллер питания дисплейный модуль шлейфы iphone samsung xiaomi honor huawei realme poco tecno infinix железнодорочный балашиха".lower()
+    if query in phone_diag_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Диагностика смартфонов',
+            'url': '/directions/diagnostika-smartfonov',
+            'description': 'Профессиональная диагностика мобильных телефонов и смартфонов в Железнодорожном'
         })
     
     # Ищем на странице помощи селлерам
