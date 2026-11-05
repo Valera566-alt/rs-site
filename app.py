@@ -55,6 +55,7 @@ BREADCRUMB_MAP = {
     '/directions/kopirovalnye-uslugi-i-pechat': 'Копировальные услуги и распечатка',
     '/directions/diagnostika-kompyuterov': 'Диагностика компьютеров',
     '/directions/diagnostika-smartfonov': 'Диагностика смартфонов',
+    '/directions/diagnostika-monitorov-i-televizorov': 'Диагностика мониторов и телевизоров',
     '/services/remont-smartfonov': 'Ремонт смартфонов',
     '/services/remont-xiaomi': 'Ремонт Xiaomi',
     '/services/remont-redmi': 'Ремонт Redmi',
@@ -154,6 +155,24 @@ def index():
 @app.route("/services/<slug>")
 def service_page(slug: str):
     site_info = get_site_info()
+
+    # Специальная обработка для remont-kompyuterov — используем direction.html
+    if slug == 'remont-kompyuterov':
+        current_direction: Optional[Dict[str, Any]] = None
+        for feature in site_info.get('features', []):
+            if feature['slug'] == slug:
+                current_direction = feature
+                break
+        if not current_direction:
+            abort(404)
+        assert current_direction is not None
+        page_data = site_info.copy()
+        page_data["title"] = f"{current_direction['title']} в Железнодорожном | IT Сервис"
+        page_data["tagline"] = f"Услуги по {current_direction['seo_keyword']} в профессиональном сервисном центре на ул. Новая 8a. Звоните: {site_info.get('phone', '')}!"
+        page_data["current_direction"] = current_direction
+        page_data["current_breadcrumb"] = current_direction['title']
+        return render_template("direction.html", **page_data)
+
     current_service: Optional[Dict[str, Any]] = None
     for service in site_info.get('services', []):
         if service['slug'] == slug:
@@ -536,6 +555,26 @@ def search_page():
             'title': 'Диагностика смартфонов',
             'url': '/directions/diagnostika-smartfonov',
             'description': 'Профессиональная диагностика мобильных телефонов и смартфонов в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта компьютеров
+    pc_repair_search = "ремонт компьютеров системных блоков замена видеокарты процессора блока питания ремонт материнской платы чистка от пыли замена термопасты ремонт ПК железнодорочный балашиха".lower()
+    if query in pc_repair_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Ремонт компьютеров',
+            'url': '/directions/remont-kompyuterov',
+            'description': 'Профессиональный ремонт компьютеров и системных блоков в Железнодорожном'
+        })
+    
+    # Ищем на странице диагностики мониторов и телевизоров
+    monitor_search = "диагностика мониторов телевизоров жк led oled проверка блока питания инвертор подсветки матрица материнская плата нет изображения полосы помехи балашиха железнодорочный".lower()
+    if query in monitor_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Диагностика мониторов и телевизоров',
+            'url': '/directions/diagnostika-monitorov-i-televizorov',
+            'description': 'Профессиональная диагностика мониторов и телевизоров в Железнодорожном'
         })
     
     # Ищем на странице помощи селлерам
