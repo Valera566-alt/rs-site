@@ -56,6 +56,7 @@ BREADCRUMB_MAP = {
     '/directions/diagnostika-kompyuterov': 'Диагностика компьютеров',
     '/directions/diagnostika-smartfonov': 'Диагностика смартфонов',
     '/directions/diagnostika-monitorov-i-televizorov': 'Диагностика мониторов и телевизоров',
+    '/directions/diagnostika-naushnikov-i-garitur': 'Диагностика наушников и гарнитур',
     '/services/remont-smartfonov': 'Ремонт смартфонов',
     '/services/remont-xiaomi': 'Ремонт Xiaomi',
     '/services/remont-redmi': 'Ремонт Redmi',
@@ -575,6 +576,16 @@ def search_page():
             'title': 'Диагностика мониторов и телевизоров',
             'url': '/directions/diagnostika-monitorov-i-televizorov',
             'description': 'Профессиональная диагностика мониторов и телевизоров в Железнодорожном'
+        })
+    
+    # Ищем на странице диагностики наушников и гарнитур
+    headphones_search = "диагностика наушников гарнитур bluetooth airpods jbl sony marshall проверка динамиков микрофонов зарядки разъёмов плат сопряжения балашиха железнодорочный".lower()
+    if query in headphones_search:
+        results.append({
+            'type': 'Направление',
+            'title': 'Диагностика наушников и гарнитур',
+            'url': '/directions/diagnostika-naushnikov-i-garitur',
+            'description': 'Профессиональная диагностика наушников и гарнитур в Железнодорожном'
         })
     
     # Ищем на странице помощи селлерам
