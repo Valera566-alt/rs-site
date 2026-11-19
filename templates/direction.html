@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' or current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' or current_direction.slug == 'pomoshch-selleram-marketplejsov' or current_direction.slug == 'kopirovalnye-uslugi-i-pechat' or current_direction.slug == 'diagnostika-kompyuterov' or current_direction.slug == 'diagnostika-smartfonov' or current_direction.slug == 'remont-kompyuterov' or current_direction.slug == 'diagnostika-monitorov-i-televizorov' or current_direction.slug == 'diagnostika-naushnikov-i-garitur' %}
+{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' or current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' or current_direction.slug == 'pomoshch-selleram-marketplejsov' or current_direction.slug == 'kopirovalnye-uslugi-i-pechat' or current_direction.slug == 'diagnostika-kompyuterov' or current_direction.slug == 'diagnostika-smartfonov' or current_direction.slug == 'remont-kompyuterov' or current_direction.slug == 'diagnostika-monitorov-i-televizorov' or current_direction.slug == 'diagnostika-naushnikov-i-garitur' or current_direction.slug == 'remont-xiaomi' or current_direction.slug == 'remont-redmi' or current_direction.slug == 'remont-poco' or current_direction.slug == 'remont-samsung' %}
 
     <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ и страница ДИАГНОСТИКА» === -->
 
@@ -28,6 +28,14 @@
         <img src="{{ url_for('static', filename='img/remont_tv.webp') }}" alt="Диагностика мониторов и телевизоров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% elif current_direction.slug == 'diagnostika-naushnikov-i-garitur' %}
         <img src="{{ url_for('static', filename='img/headphones.webp') }}" alt="Диагностика наушников и гарнитур в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-xiaomi' %}
+        <img src="{{ url_for('static', filename='img/xiaomi.webp') }}" alt="Ремонт Xiaomi в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-redmi' %}
+        <img src="{{ url_for('static', filename='img/redmi.webp') }}" alt="Ремонт Redmi в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-poco' %}
+        <img src="{{ url_for('static', filename='img/poco.webp') }}" alt="Ремонт POCO в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-samsung' %}
+        <img src="{{ url_for('static', filename='img/samsung.webp') }}" alt="Ремонт Samsung в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% else %}
         <img src="{{ url_for('static', filename='img/pc_repair.webp') }}" alt="Ремонт компьютеров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% endif %}
@@ -335,6 +343,185 @@
             </ul>
             <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">После завершения обследования в ТЦ «Корона» вы получаете исчерпывающую информацию о состоянии вашей гарнитуры. Мастер подробно объяснит, какой именно узел (кабель, аккумулятор, разъем или шлейф) поврежден, назовет фиксированную стоимость работы по его замене и сориентирует по срокам. Мы не навязываем скрытых услуг, используем только надежные новые комплектующие и приступаем к ремонту строго после вашего личного согласия.</p>
         </div>
+        {% elif current_direction.slug == 'remont-xiaomi' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ XIAOMI В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт смартфонов Xiaomi в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Профессиональный ремонт смартфонов Xiaomi в Железнодорожном — мастерская «IT Сервис» решает любые неисправности устройств этого бренда. Если ваш Xiaomi перестал заряжаться, экран покрылся трещинами, камера выдаёт размытые снимки или телефон завис в цикле перезагрузки — не рискуйте самостоятельным ремонтом: ошибка может усугубить поломку и увеличить итоговую стоимость восстановления.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">У наших мастеров большой опыт ремонта смартфонов Xiaomi: знаем особенности каждой линейки, типичные слабые места моделей и правильные сервисные процедуры. В работе используем профессиональное оборудование для пайки, замены модулей и диагностики — это позволяет точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с программными блокировками и восстановлением доступа:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Разблокировка смартфона</strong> при забытом пароле, графическом ключе, PIN‑коде.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> (в рамках допустимых сервисных процедур).</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с блокировками Xiaomi My Account</strong> — подбор корректных сервисных методов под конкретную модель и версию прошивки.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для проведения любых работ по снятию блокировок обязательно требуется подтверждение права владения устройством. Мы действуем строго в рамках законодательства РФ и соблюдаем правила производителей: не выполняем процедуры, которые могут расцениваться как обход защитных механизмов или нарушение пользовательского соглашения.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> Диагностика смартфона проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»). </p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели Xiaomi, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Mi 9, Mi 9T, Mi 9 Lite</li>
+                <li style="margin-bottom: 8px;">Mi 10, Mi 10T, Mi 10 Pro, Mi 10 Lite</li>
+                <li style="margin-bottom: 8px;">Mi 11, Mi 11 Lite, Mi 11 Lite 5G NE, Mi 11i, Mi 11 Pro, Mi 11 Ultra</li>
+                <li style="margin-bottom: 8px;">Xiaomi 11T, Xiaomi 11T Pro</li>
+                <li style="margin-bottom: 8px;">Xiaomi 12, Xiaomi 12 Pro, Xiaomi 12X, Xiaomi 12T, Xiaomi 12T Pro, Xiaomi 12 Lite</li>
+                <li style="margin-bottom: 8px;">Xiaomi 13, Xiaomi 13 Pro, Xiaomi 13 Lite, Xiaomi 13T, Xiaomi 13T Pro</li>
+                <li style="margin-bottom: 8px;">Xiaomi 14, Xiaomi 14 Ultra, Xiaomi 14T, Xiaomi 14T Pro</li>
+                <li style="margin-bottom: 8px;">Xiaomi 15, Xiaomi 15 Ultra, Xiaomi 15T, Xiaomi 15T Pro</li>
+                <li style="margin-bottom: 8px;">Xiaomi 17, Xiaomi 17 Ultra, Xiaomi 17T, Xiaomi 17T Pro</li>
+                <li style="margin-bottom: 8px;">Xiaomi MIX Fold 2, Xiaomi MIX Fold 3, Xiaomi MIX Flip, Xiaomi MIX Flip 2</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для складных моделей серии MIX Fold и MIX Flip работаем с оригинальными шарнирами и гибкими дисплеями — такие устройства требуют особой аккуратности при разборке, и мы располагаем всем необходимым оборудованием и опытом для их восстановления.</p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Чаще всего к нам приносят смартфоны Xiaomi со следующими проблемами</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули на совместимые с конкретной моделью Xiaomi — подбираем так, чтобы сохранить корректную работу сенсора, автояркости и датчика приближения.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если телефон выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки.</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем смартфон, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте устройство, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+        </div>
+        {% elif current_direction.slug == 'remont-redmi' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ REDMI В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт смартфонов Redmi в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Профессиональный ремонт смартфонов Redmi в Железнодорожном — мастерская «IT Сервис» решает любые неисправности устройств этого бренда. Если ваш Redmi перестал заряжаться, экран покрылся трещинами, камера выдаёт размытые снимки или телефон завис в цикле перезагрузки — не рискуйте самостоятельным ремонтом: ошибка может усугубить поломку и увеличить итоговую стоимость восстановления.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы специализируемся на смартфонах Redmi и знаем особенности каждой линейки — от популярных бюджетных моделей серии Note до производительных устройств серии K. Типичные слабые места моделей и правильные сервисные процедуры для нас не секрет: диагностику проводим на профессиональном оборудовании, чтобы точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с программными блокировками и восстановлением доступа:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Разблокировка смартфона</strong> при забытом пароле, графическом ключе, PIN‑коде.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> (в рамках допустимых сервисных процедур).</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с блокировками Mi Account</strong> — подбор корректных сервисных методов под конкретную модель Redmi и версию прошивки.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для проведения любых работ по снятию блокировок обязательно требуется подтверждение права владения устройством. Мы действуем строго в рамках законодательства РФ и соблюдаем правила производителей: не выполняем процедуры, которые могут расцениваться как обход защитных механизмов или нарушение пользовательского соглашения.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> Диагностика смартфона проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»). </p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели Redmi, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Redmi 7, Redmi 7A, Redmi 8, Redmi 8A</li>
+                <li style="margin-bottom: 8px;">Redmi 9, Redmi 9A, Redmi 9C, Redmi 9T</li>
+                <li style="margin-bottom: 8px;">Redmi 10, Redmi 10A, Redmi 10C, Redmi 12C</li>
+                <li style="margin-bottom: 8px;">Redmi 12, Redmi 13, Redmi 13C, Redmi 14C</li>
+                <li style="margin-bottom: 8px;">Redmi 15, Redmi 15C, Redmi 17C</li>
+                <li style="margin-bottom: 8px;">Redmi A1, Redmi A2, Redmi A2+, Redmi A3, Redmi A3x, Redmi A5</li>
+                <li style="margin-bottom: 8px;">Redmi Note 7, Note 7 Pro, Note 8, Note 8T, Note 8 Pro</li>
+                <li style="margin-bottom: 8px;">Redmi Note 9, Note 9S, Note 9 Pro</li>
+                <li style="margin-bottom: 8px;">Redmi Note 10, Note 10S, Note 10 Pro</li>
+                <li style="margin-bottom: 8px;">Redmi Note 11, Note 11S, Note 11 Pro, Note 11 Pro+</li>
+                <li style="margin-bottom: 8px;">Redmi Note 12, Note 12S, Note 12 Pro, Note 12 Pro+</li>
+                <li style="margin-bottom: 8px;">Redmi Note 13, Note 13 Pro, Note 13 Pro+</li>
+                <li style="margin-bottom: 8px;">Redmi Note 14, Note 14S, Note 14 Pro, Note 14 Pro+</li>
+                <li style="margin-bottom: 8px;">Redmi Note 15, Note 15 Pro, Note 15 Pro+</li>
+                <li style="margin-bottom: 8px;">Redmi Note 17, Note 17 Pro, Note 17 Pro Max</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Если вашей модели нет в списке — не проблема: приносите устройство, мастер примет его в ремонт независимо от поколения и версии.</p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Чаще всего к нам приносят смартфоны Redmi со следующими проблемами</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули на совместимые с конкретной моделью Redmi — подбираем так, чтобы сохранить корректную работу сенсора, автояркости и датчика приближения.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если телефон выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки.</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем смартфон, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте устройство, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+        </div>
+        {% elif current_direction.slug == 'remont-poco' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ POCO В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт смартфонов POCO в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Профессиональный ремонт смартфонов POCO в Железнодорожном — мастерская «IT Сервис» решает любые неисправности устройств этого бренда. Если ваш POCO перестал заряжаться, экран покрылся трещинами, камера выдаёт размытые снимки или телефон завис в цикле перезагрузки — не рискуйте самостоятельным ремонтом: ошибка может усугубить поломку и увеличить итоговую стоимость восстановления.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы специализируемся на смартфонах POCO и знаем особенности каждой линейки — от бюджетных моделей серии C и M до производительных игровых версий F и продвинутых X‑серий. Типичные слабые места моделей (например, усиленная нагрузка на платы в F‑серии, особенности охлаждения, нюансы шлейфов в новых поколениях) и правильные сервисные процедуры для нас не секрет. Диагностику проводим на профессиональном оборудовании, чтобы точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с программными блокировками и восстановлением доступа:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Разблокировка смартфона</strong> при забытом пароле, графическом ключе, PIN‑коде.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> (в рамках допустимых сервисных процедур).</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с блокировками Mi Account</strong> — подбор корректных сервисных методов под конкретную модель POCO и версию прошивки.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для проведения любых работ по снятию блокировок обязательно требуется подтверждение права владения устройством. Мы действуем строго в рамках законодательства РФ и соблюдаем правила производителей: не выполняем процедуры, которые могут расцениваться как обход защитных механизмов или нарушение пользовательского соглашения.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> Диагностика смартфона проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»). </p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели POCO, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Pocophone F1, POCO F2 Pro</li>
+                <li style="margin-bottom: 8px;">POCO F3, POCO F4, POCO F4 GT</li>
+                <li style="margin-bottom: 8px;">POCO F5, POCO F5 Pro</li>
+                <li style="margin-bottom: 8px;">POCO F6, POCO F6 Pro</li>
+                <li style="margin-bottom: 8px;">POCO F7, POCO F7 Pro, POCO F7 Ultra</li>
+                <li style="margin-bottom: 8px;">POCO F8 Pro, POCO F8 Ultra</li>
+                <li style="margin-bottom: 8px;">POCO F9 Pro, POCO F9 Ultra</li>
+                <li style="margin-bottom: 8px;">POCO X3 NFC, POCO X3 Pro, POCO X3 GT</li>
+                <li style="margin-bottom: 8px;">POCO X4 Pro 5G, POCO X4 GT</li>
+                <li style="margin-bottom: 8px;">POCO X5, POCO X5 Pro</li>
+                <li style="margin-bottom: 8px;">POCO X6, POCO X6 Pro</li>
+                <li style="margin-bottom: 8px;">POCO X7, POCO X7 Pro</li>
+                <li style="margin-bottom: 8px;">POCO X8 Pro, POCO X8 Pro Max</li>
+                <li style="margin-bottom: 8px;">POCO M2 Pro, POCO M3, POCO M3 Pro 5G</li>
+                <li style="margin-bottom: 8px;">POCO M4 Pro 5G, POCO M4 Pro, POCO M4 5G</li>
+                <li style="margin-bottom: 8px;">POCO M5, POCO M5s</li>
+                <li style="margin-bottom: 8px;">POCO M6, POCO M6 Pro</li>
+                <li style="margin-bottom: 8px;">POCO M7, POCO M7 Pro</li>
+                <li style="margin-bottom: 8px;">POCO M8, POCO M8 Pro</li>
+                <li style="margin-bottom: 8px;">POCO C31, POCO C40</li>
+                <li style="margin-bottom: 8px;">POCO C65, POCO C61</li>
+                <li style="margin-bottom: 8px;">POCO C75, POCO C85</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Если вашей модели нет в списке — не проблема: приносите устройство, мастер примет его в ремонт независимо от поколения и версии.</p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Чаще всего к нам приносят смартфоны POCO со следующими проблемами</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули на совместимые с конкретной моделью POCO — подбираем так, чтобы сохранить корректную работу сенсора, автояркости и датчика приближения. Для моделей F‑ и X‑серий учитываем повышенную нагрузку на экран и подбираем усиленные варианты комплектующих.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если телефон выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства. В игровых F‑моделях особое внимание уделяем термоконтролю и совместимости батареи с системой охлаждения.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки.</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем смартфон, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте устройство, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+        </div>
+        {% elif current_direction.slug == 'remont-samsung' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ SAMSUNG В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт смартфонов Samsung в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Профессиональный ремонт смартфонов Samsung в Железнодорожном — мастерская «IT Сервис» решает любые неисправности устройств этого бренда. Если ваш Galaxy перестал заряжаться, экран покрылся трещинами, камера выдаёт размытые снимки или телефон завис в цикле перезагрузки — не рискуйте самостоятельным ремонтом: ошибка может усугубить поломку и увеличить итоговую стоимость восстановления.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">У наших мастеров большой опыт по ремонту смартфонов Samsung — мы работаем с устройствами всех линеек: от массовых моделей Galaxy A до флагманов S‑серии и складных Galaxy Z. Нам знакомы типичные слабые места моделей (особенности экранов Super AMOLED, нюансы разборки современных корпусов, специфика складных механизмов) — и мы применяем правильные сервисные процедуры, чтобы вернуть устройство к жизни. Диагностику проводим на профессиональном оборудовании, чтобы точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с программными блокировками и восстановлением доступа:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Разблокировка смартфона</strong> при забытом пароле, графическом ключе, PIN‑коде.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> (в рамках допустимых сервисных процедур).</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с блокировками Samsung Account</strong> — подбор корректных сервисных методов под конкретную модель и версию прошивки.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для проведения любых работ по снятию блокировок обязательно требуется подтверждение права владения устройством. Мы действуем строго в рамках законодательства РФ и соблюдаем правила производителей: не выполняем процедуры, которые могут расцениваться как обход защитных механизмов или нарушение пользовательского соглашения.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> Диагностика смартфона проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»). </p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели Samsung, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Galaxy S10, S10+, S10e, S10 5G</li>
+                <li style="margin-bottom: 8px;">Galaxy S20, S20+, S20 Ultra, S20 FE</li>
+                <li style="margin-bottom: 8px;">Galaxy S21, S21+, S21 Ultra, S21 FE</li>
+                <li style="margin-bottom: 8px;">Galaxy S22, S22+, S22 Ultra</li>
+                <li style="margin-bottom: 8px;">Galaxy S23, S23+, S23 Ultra, S23 FE</li>
+                <li style="margin-bottom: 8px;">Galaxy S24, S24+, S24 Ultra, S24 FE</li>
+                <li style="margin-bottom: 8px;">Galaxy S25, S25+, S25 Ultra, S25 Edge, S25 FE</li>
+                <li style="margin-bottom: 8px;">Galaxy S26, S26+, S26 Ultra, S26 FE</li>
+                <li style="margin-bottom: 8px;">Galaxy Note 10, Note 10+, Note 10 Lite</li>
+                <li style="margin-bottom: 8px;">Galaxy Note 20, Note 20 Ultra</li>
+                <li style="margin-bottom: 8px;">Galaxy Z Flip, Z Flip3, Z Flip4, Z Flip5, Z Flip6, Z Flip7, Z Flip7 FE, Z Flip8</li>
+                <li style="margin-bottom: 8px;">Galaxy Fold, Z Fold2, Z Fold3, Z Fold4, Z Fold5, Z Fold6, Z Fold7, Z Fold8, Z Fold8 Ultra, Z TriFold</li>
+                <li style="margin-bottom: 8px;">Galaxy A01, A02, A02s, A03, A03 Core, A03s, A04, A04s, A05, A05s, A06, A07, A07s, A08</li>
+                <li style="margin-bottom: 8px;">Galaxy A10, A10s, A11, A12, A13, A14, A15, A16, A17, A18</li>
+                <li style="margin-bottom: 8px;">Galaxy A20, A20s, A21s, A22, A23, A24, A25, A26, A27</li>
+                <li style="margin-bottom: 8px;">Galaxy A30, A30s, A31, A32, A33, A34, A35, A36, A37</li>
+                <li style="margin-bottom: 8px;">Galaxy A40, A41, A42, A50, A50s, A51, A52, A53, A54, A55, A56, A57</li>
+                <li style="margin-bottom: 8px;">Galaxy A70, A70s, A71, A72, A73, A80, A90 5G</li>
+                <li style="margin-bottom: 8px;">Galaxy M05, M06, M07, M10, M11, M12, M13, M14, M15 5G, M16 5G</li>
+                <li style="margin-bottom: 8px;">Galaxy M20, M21, M23, M30, M30s, M31, M31s, M32, M35, M51, M52 5G, M53, M55</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Если вашей модели нет в списке — не проблема: приносите устройство, мастер примет его в ремонт независимо от поколения и версии.</p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Чаще всего к нам приносят смартфоны Samsung со следующими проблемами</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули на совместимые с конкретной моделью Galaxy — подбираем так, чтобы сохранить корректную работу сенсора, автояркости, датчика приближения и сканера отпечатка под экраном. Для складных Galaxy Z Flip и Z Fold работаем с гибкими дисплеями и шарнирами — такие устройства требуют особой аккуратности при разборке, и мы располагаем всем необходимым оборудованием и опытом для их восстановления.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если телефон выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки.</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем смартфон, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте устройство, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты. Отдельно работаем с перископическими и складными камерами флагманов S‑серии.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+        </div>
         {% endif %}
     </section>
 
@@ -430,6 +617,14 @@
         <h2 class="section-title">ЭТАПЫ ДИАГНОСТИКИ МОНИТОРОВ И ТЕЛЕВИЗОРОВ</h2>
         {% elif current_direction.slug == 'diagnostika-naushnikov-i-garitur' %}
         <h2 class="section-title">ЭТАПЫ ДИАГНОСТИКИ НАУШНИКОВ И ГАРНИТУР</h2>
+        {% elif current_direction.slug == 'remont-xiaomi' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА XIAOMI</h2>
+        {% elif current_direction.slug == 'remont-redmi' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА REDMI</h2>
+        {% elif current_direction.slug == 'remont-poco' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА POCO</h2>
+        {% elif current_direction.slug == 'remont-samsung' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА SAMSUNG</h2>
         {% else %}
         <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
         {% endif %}
@@ -615,6 +810,98 @@
                 <span class="step-num">4</span>
                 <h3>Заключение и согласование сметы</h3>
                 <p>По результатам тестирования инженер локализует точную причину поломки. При выходе из строя компонентов платы или кнопок мы подбираем новые узлы под замену. Клиенту озвучивается фиксированная стоимость ремонта, и к работам мы приступаем только после личного одобрения.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-xiaomi' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон в сервисный центр «IT Сервис» (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Google Account, Xiaomi My Account) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего Xiaomi. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-redmi' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон в сервисный центр «IT Сервис» (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Google Account, Mi Account) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего Redmi. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-poco' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон в сервисный центр «IT Сервис» (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Google Account, Mi Account) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего POCO. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-samsung' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон в сервисный центр «IT Сервис» (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Google Account, Samsung Account) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего Samsung. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь, датчики и сканер отпечатка. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов. Для складных моделей подскажем правила ухода за гибким дисплеем и шарниром.</p>
             </div>
         </div>
         {% else %}
@@ -848,6 +1135,114 @@
             <div class="faq-item">
                 <h3>Какое оборудование вы используете для тестирования аудиоаппаратуры?</h3>
                 <p>Наша лаборатория на Новой 8а оснащена цифровыми мультиметрами для проверки сопротивления динамиков и целостности жил кабеля, точными лабораторными блоками питания для проверки контроллеров заряда, а также оптическими микроскопами для работы с мелкой пайкой и обнаружения следов влаги на платах.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-xiaomi' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона Xiaomi в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Например, замена экрана или аккумулятора стоит дешевле, чем сложный ремонт платы или восстановление после влаги. Для складных моделей серии MIX Fold и MIX Flip работа дороже из‑за конструкции гибкого дисплея. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня, либо отдаём устройство на следующий день — при наличии нужной запчасти. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании, чтобы вы заранее знали, когда сможете забрать телефон.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для Xiaomi?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов Xiaomi: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать Xiaomi после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-redmi' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона Redmi в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Бюджетные модели серии Note и A ремонтируются дешевле, чем старшие версии Pro и Pro+. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня, либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей Redmi обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для Redmi?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов Redmi: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать Redmi после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-poco' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона POCO в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Бюджетные модели серий C и M ремонтируются дешевле, чем производительные F‑ и X‑версии, где выше сложность узлов и требовательность к комплектующим. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня, либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей POCO обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для POCO?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов POCO: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать POCO после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-samsung' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона Samsung в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Бюджетные модели серии A и M ремонтируются дешевле, чем флагманы S‑серии и складные Galaxy Z, где выше сложность узлов и стоимость комплектующих. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня, либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей Galaxy обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, ремонт складных моделей, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для Samsung?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов Samsung: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать Samsung после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
             </div>
         </div>
         {% else %}

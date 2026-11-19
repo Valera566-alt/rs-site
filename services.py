@@ -104,6 +104,38 @@ def get_site_info():
                 "text": "Профессиональная диагностика Bluetooth-наушников и игровых гарнитур. Проверка динамиков, микрофонов, разъёмов зарядки и плат сопряжения.",
                 "show_on_main": False
             },
+            {
+                "icon": "xiaomi.webp",
+                "title": "Ремонт Xiaomi",
+                "slug": "remont-xiaomi",
+                "seo_keyword": "ремонту смартфонов Xiaomi в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Xiaomi, Redmi, Poco. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "redmi.webp",
+                "title": "Ремонт Redmi",
+                "slug": "remont-redmi",
+                "seo_keyword": "ремонту смартфонов Redmi в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Redmi. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "poco.webp",
+                "title": "Ремонт POCO",
+                "slug": "remont-poco",
+                "seo_keyword": "ремонту смартфонов POCO в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов POCO. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "samsung.webp",
+                "title": "Ремонт Samsung",
+                "slug": "remont-samsung",
+                "seo_keyword": "ремонту смартфонов Samsung в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Samsung. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
         ],
 
         "services": [

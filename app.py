@@ -157,8 +157,8 @@ def index():
 def service_page(slug: str):
     site_info = get_site_info()
 
-    # Специальная обработка для remont-kompyuterov — используем direction.html
-    if slug == 'remont-kompyuterov':
+    # Специальная обработка для remont-kompyuterov, remont-xiaomi, remont-redmi, remont-poco и remont-samsung — используем direction.html
+    if slug in ['remont-kompyuterov', 'remont-xiaomi', 'remont-redmi', 'remont-poco', 'remont-samsung']:
         current_direction: Optional[Dict[str, Any]] = None
         for feature in site_info.get('features', []):
             if feature['slug'] == slug:
@@ -588,6 +588,16 @@ def search_page():
             'description': 'Профессиональная диагностика наушников и гарнитур в Железнодорожном'
         })
     
+    # Ищем на странице ремонта Xiaomi
+    xiaomi_search = "ремонт xiaomi редми поко redmi poco замена экрана аккумулятора разъем зарядки вода удар балашиха железнодорочный".lower()
+    if query in xiaomi_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Xiaomi',
+            'url': '/services/remont-xiaomi',
+            'description': 'Профессиональный ремонт смартфонов Xiaomi, Redmi, Poco в Железнодорожном'
+        })
+    
     # Ищем на странице помощи селлерам
     seller_search = "помощь селлерам маркетплейсов wildberries ozon криптопро рутокен эцп этикетки термопринтер рабочее место фбо фбс маркировка честный знак".lower()
     if query in seller_search:
@@ -626,6 +636,36 @@ def search_page():
             'title': 'Ремонт системных блоков',
             'url': '/services/remont-systemnyh-blokov',
             'description': 'Профессиональный ремонт системных блоков в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Redmi
+    redmi_search = "ремонт redmi редми замена экрана аккумулятора разъем зарядки вода удар mi poco замена дисплей балашиха железнодорочный".lower()
+    if query in redmi_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Redmi',
+            'url': '/services/remont-redmi',
+            'description': 'Профессиональный ремонт смартфонов Redmi в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта POCO
+    poco_search = "ремонт poco poco phone pocophone замена экрана аккумулятора разъем зарядка вода удар замена дисплей балашиха железнодорочный f3 f4 f5 f6 f7 x3 x4 x5 x6 m5 m6 m7".lower()
+    if query in poco_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт POCO',
+            'url': '/services/remont-poco',
+            'description': 'Профессиональный ремонт смартфонов POCO в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Samsung
+    samsung_search = "ремонт samsung samsung galaxy замена экрана аккумулятора разъем зарядка вода удар замена дисплей балашиха железнодорочный s21 s22 s23 s24 a52 a53 a54 a55 a71 a72 note20 note10".lower()
+    if query in samsung_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Samsung',
+            'url': '/services/remont-samsung',
+            'description': 'Профессиональный ремонт смартфонов Samsung в Железнодорожном'
         })
     
     # Ищем на странице ремонта смартфонов
