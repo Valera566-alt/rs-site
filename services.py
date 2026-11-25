@@ -136,6 +136,54 @@ def get_site_info():
                 "text": "Профессиональный ремонт смартфонов Samsung. Замена экрана, аккумулятора, ремонт после воды.",
                 "show_on_main": False
             },
+            {
+                "icon": "apple.webp",
+                "title": "Ремонт Apple",
+                "slug": "remont-apple",
+                "seo_keyword": "ремонту смартфонов Apple iPhone в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Apple iPhone. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "realme.webp",
+                "title": "Ремонт Realme",
+                "slug": "remont-realme",
+                "seo_keyword": "ремонту смартфонов Realme в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Realme. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "huawei.webp",
+                "title": "Ремонт Huawei",
+                "slug": "remont-huawei",
+                "seo_keyword": "ремонту смартфонов Huawei в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Huawei. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "honor.webp",
+                "title": "Ремонт Honor",
+                "slug": "remont-honor",
+                "seo_keyword": "ремонту смартфонов Honor в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Honor. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "tecno.webp",
+                "title": "Ремонт Tecno",
+                "slug": "remont-tecno",
+                "seo_keyword": "ремонту смартфонов Tecno в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Tecno. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
+            {
+                "icon": "infinix.webp",
+                "title": "Ремонт Infinix",
+                "slug": "remont-infinix",
+                "seo_keyword": "ремонту смартфонов Infinix в Железнодорожном (Балашиха)",
+                "text": "Профессиональный ремонт смартфонов Infinix. Замена экрана, аккумулятора, ремонт после воды.",
+                "show_on_main": False
+            },
         ],
 
         "services": [

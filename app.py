@@ -157,8 +157,8 @@ def index():
 def service_page(slug: str):
     site_info = get_site_info()
 
-    # Специальная обработка для remont-kompyuterov, remont-xiaomi, remont-redmi, remont-poco и remont-samsung — используем direction.html
-    if slug in ['remont-kompyuterov', 'remont-xiaomi', 'remont-redmi', 'remont-poco', 'remont-samsung']:
+    # Специальная обработка для remont-kompyuterov, remont-xiaomi, remont-redmi, remont-poco, remont-samsung, remont-apple, remont-realme, remont-huawei, remont-honor, remont-tecno и remont-infinix — используем direction.html
+    if slug in ['remont-kompyuterov', 'remont-xiaomi', 'remont-redmi', 'remont-poco', 'remont-samsung', 'remont-apple', 'remont-realme', 'remont-huawei', 'remont-honor', 'remont-tecno', 'remont-infinix']:
         current_direction: Optional[Dict[str, Any]] = None
         for feature in site_info.get('features', []):
             if feature['slug'] == slug:
@@ -666,6 +666,66 @@ def search_page():
             'title': 'Ремонт Samsung',
             'url': '/services/remont-samsung',
             'description': 'Профессиональный ремонт смартфонов Samsung в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Apple
+    apple_search = "ремонт apple iphone замена экрана аккумулятора разъем зарядка вода удар замена дисплей балашиха железнодорочный 15 14 13 12 11 pro max se xs xr x 8 7 6".lower()
+    if query in apple_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Apple',
+            'url': '/services/remont-apple',
+            'description': 'Профессиональный ремонт смартфонов Apple iPhone в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Realme
+    realme_search = "ремонт realme realme narzo замена экрана аккумулятора разъем зарядка вода удар замена дисплей балашиха железнодорочный gt narzo 10 11 12 13 14 15 20 21 22 23 25 30 31 32 33 40 50 60 70".lower()
+    if query in realme_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Realme',
+            'url': '/services/remont-realme',
+            'description': 'Профессиональный ремонт смартфонов Realme в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Huawei
+    huawei_search = "ремонт huawei huawei p30 p40 p50 p60 p70 nova замена экрана аккумулятора разъем зарядка вода удар замена дисплей балашиха железнодорочный y9 y7 y6 y5".lower()
+    if query in huawei_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Huawei',
+            'url': '/services/remont-huawei',
+            'description': 'Профессиональный ремонт смартфонов Huawei в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Honor
+    honor_search = "ремонт honor honor x honor 90 honor 200 honor magic замена экрана аккумулятора разъем зарядка вода удар замена дисплей балашиха железнодорочный 9 9a 9pro 9x 9x pro 6a 7a 8a 9a 6 7 8 9 9i 9c".lower()
+    if query in honor_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Honor',
+            'url': '/services/remont-honor',
+            'description': 'Профессиональный ремонт смартфонов Honor в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Tecno
+    tecno_search = "ремонт tecno tecno spark camon spark go spark pro spark pop camon 12 13 14 15 16 17 18 20 30 40 pop 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15".lower()
+    if query in tecno_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Tecno',
+            'url': '/services/remont-tecno',
+            'description': 'Профессиональный ремонт смартфонов Tecno в Железнодорожном'
+        })
+    
+    # Ищем на странице ремонта Infinix
+    infinix_search = "ремонт infinix infinix note hot zero note 10 11 12 13 14 20 30 40 50 60 70 zero 30 40 note 10 pro note 12 pro note 30 pro note 40 pro".lower()
+    if query in infinix_search:
+        results.append({
+            'type': 'Услуга',
+            'title': 'Ремонт Infinix',
+            'url': '/services/remont-infinix',
+            'description': 'Профессиональный ремонт смартфонов Infinix в Железнодорожном'
         })
     
     # Ищем на странице ремонта смартфонов

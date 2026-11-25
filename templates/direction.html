@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' or current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' or current_direction.slug == 'pomoshch-selleram-marketplejsov' or current_direction.slug == 'kopirovalnye-uslugi-i-pechat' or current_direction.slug == 'diagnostika-kompyuterov' or current_direction.slug == 'diagnostika-smartfonov' or current_direction.slug == 'remont-kompyuterov' or current_direction.slug == 'diagnostika-monitorov-i-televizorov' or current_direction.slug == 'diagnostika-naushnikov-i-garitur' or current_direction.slug == 'remont-xiaomi' or current_direction.slug == 'remont-redmi' or current_direction.slug == 'remont-poco' or current_direction.slug == 'remont-samsung' %}
+{% if current_direction.slug == 'professionalnyj-remont' or current_direction.slug == 'diagnostika' or current_direction.slug == 'uslugi' or current_direction.slug == 'remont-kompyuterov-noutbukov-monoblokov' or current_direction.slug == 'razrabotka-i-prodvizhenie-sajtov' or current_direction.slug == 'pomoshch-selleram-marketplejsov' or current_direction.slug == 'kopirovalnye-uslugi-i-pechat' or current_direction.slug == 'diagnostika-kompyuterov' or current_direction.slug == 'diagnostika-smartfonov' or current_direction.slug == 'remont-kompyuterov' or current_direction.slug == 'diagnostika-monitorov-i-televizorov' or current_direction.slug == 'diagnostika-naushnikov-i-garitur' or current_direction.slug == 'remont-xiaomi' or current_direction.slug == 'remont-redmi' or current_direction.slug == 'remont-poco' or current_direction.slug == 'remont-samsung' or current_direction.slug == 'remont-apple' or current_direction.slug == 'remont-realme' or current_direction.slug == 'remont-huawei' or current_direction.slug == 'remont-honor' or current_direction.slug == 'remont-tecno' or current_direction.slug == 'remont-infinix' %}
 
     <!-- === СПЕЦИАЛЬНАЯ СТРАНИЦА «РЕМОНТ и страница ДИАГНОСТИКА» === -->
 
@@ -36,6 +36,18 @@
         <img src="{{ url_for('static', filename='img/poco.webp') }}" alt="Ремонт POCO в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% elif current_direction.slug == 'remont-samsung' %}
         <img src="{{ url_for('static', filename='img/samsung.webp') }}" alt="Ремонт Samsung в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-apple' %}
+        <img src="{{ url_for('static', filename='img/apple.webp') }}" alt="Ремонт Apple в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-realme' %}
+        <img src="{{ url_for('static', filename='img/realme.webp') }}" alt="Ремонт Realme в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-huawei' %}
+        <img src="{{ url_for('static', filename='img/huawei.webp') }}" alt="Ремонт Huawei в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-honor' %}
+        <img src="{{ url_for('static', filename='img/honor.webp') }}" alt="Ремонт Honor в Железнодорожном" style="height: 60px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-tecno' %}
+        <img src="{{ url_for('static', filename='img/tecno.webp') }}" alt="Ремонт Tecno в Железнодорожном" style="height: 60px; width: auto; display: block; margin: 0 auto 12px auto;">
+        {% elif current_direction.slug == 'remont-infinix' %}
+        <img src="{{ url_for('static', filename='img/infinix.webp') }}" alt="Ремонт Infinix в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% else %}
         <img src="{{ url_for('static', filename='img/pc_repair.webp') }}" alt="Ремонт компьютеров в Железнодорожном" style="height: 100px; width: auto; display: block; margin: 0 auto 12px auto;">
         {% endif %}
@@ -522,6 +534,239 @@
                 <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления — выполняем корректную прошивку и сброс без лишних рисков.</li>
             </ul>
         </div>
+        {% elif current_direction.slug == 'remont-apple' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ APPLE В ЖЕЛЕЗНОДОРОЖНОМ</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт iPhone в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Ваш iPhone перестал заряжаться, экран покрылся трещинами, камера даёт размытые снимки или устройство зависает на логотипе? В сервисном центре IT‑150 в Железнодорожном мы профессионально ремонтируем смартфоны Apple — с учётом особенностей каждой линейки и требований производителя.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы работаем в Балашихе, микрорайон Железнодорожный, по адресу ул. Новая, 8а (ТЦ «Корона»). У нас есть опыт ремонта как бюджетных моделей (iPhone SE), так и флагманских серий (Pro и Pro Max). Знаем типичные слабые места устройств Apple и применяем правильные сервисные процедуры: диагностику проводим на профессиональном оборудовании, чтобы точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Чаще всего к нам приносят iPhone со следующими проблемами:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули с сохранением работы True Tone и датчиков — подбираем совместимые решения, чтобы сенсор, автояркость и Face ID работали корректно.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если iPhone выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки (USB‑C / Lightning).</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем устройство, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте iPhone, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с сервисными процедурами, которые требуют особого подхода на устройствах Apple:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Восстановление функций после замены дисплея.</strong> На современных iPhone после замены экрана может пропадать True Tone или снижаться точность работы датчиков — мы выполняем необходимые процедуры адаптации, чтобы вернуть все функции.</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с ограничениями iOS и сервисными режимами.</strong> Используем профессиональные инструменты для диагностики и тестирования, чтобы точно локализовать неисправность и не выполнять лишних операций.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> диагностика iPhone проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»).</p>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели iPhone, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">iPhone 7, iPhone 8, iPhone X, iPhone XR</li>
+                <li style="margin-bottom: 8px;">iPhone 11, iPhone 11 Pro, iPhone 11 Pro Max</li>
+                <li style="margin-bottom: 8px;">iPhone 12, iPhone 12 Pro, iPhone 12 Pro Max, iPhone 12 mini</li>
+                <li style="margin-bottom: 8px;">iPhone 13, iPhone 13 Pro, iPhone 13 Pro Max, iPhone 13 mini</li>
+                <li style="margin-bottom: 8px;">iPhone 14, iPhone 14 Pro, iPhone 14 Pro Max</li>
+                <li style="margin-bottom: 8px;">iPhone 15, iPhone 15 Pro, iPhone 15 Pro Max</li>
+                <li style="margin-bottom: 8px;">iPhone 16, iPhone 16 Pro, iPhone 16 Pro Max</li>
+                <li style="margin-bottom: 8px;">iPhone 17 Pro Max</li>
+                <li style="margin-bottom: 8px;">iPhone SE (2022)</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Если вашей модели нет в списке — не проблема: приносите устройство, мастер примет его в ремонт независимо от поколения и версии.</p>
+        </div>
+        {% elif current_direction.slug == 'remont-huawei' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ HUAWEI В ЖЕЛЕЗНОДОРОЖНОМ</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт Huawei в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Ваш Huawei перестал заряжаться, экран покрылся трещинами, камера даёт размытые снимки или телефон зависает на логотипе? В сервисном центре IT‑150 в Железнодорожном мы профессионально ремонтируем смартфоны Huawei — с учётом особенностей каждой линейки и требований производителя.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы работаем в Балашихе, микрорайон Железнодорожный, по адресу ул. Новая, 8а (ТЦ «Корона»). В нашем ассортименте — как популярные линейки nova и P, так и флагманские серии Mate и Pura, включая складной Mate X6. Знаем типичные слабые места моделей и правильные сервисные процедуры: диагностику проводим на профессиональном оборудовании, чтобы точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Учитываем и специфику смартфонов Huawei, о которой часто спрашивают владельцы:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Сервисы Google и HMS.</strong> Современные смартфоны Huawei работают без сервисов Google — вместо них используется AppGallery и сервисы HMS. Помогаем настроить привычные приложения и сервисы корректными методами, без сомнительных «взломов» системы, которые могут привести к сбоям.</li>
+                <li style="margin-bottom: 8px;"><strong>Обновления HarmonyOS и EMUI.</strong> Решаем проблемы, возникшие после неудачного обновления: циклическая перезагрузка, зависания, ошибки прошивки — выполняем корректное восстановление ПО под конкретную модель.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с программными блокировками и восстановлением доступа:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Разблокировка смартфона</strong> при забытом пароле, графическом ключе, PIN‑коде.</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с блокировкой Huawei ID</strong> — подбор корректных сервисных методов под конкретную модель и версию прошивки.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для проведения любых работ по снятию блокировок обязательно требуется подтверждение права владения устройством. Мы действуем строго в рамках законодательства РФ и соблюдаем правила производителей: не выполняем процедуры, которые могут расцениваться как обход защитных механизмов или нарушение пользовательского соглашения.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> диагностика смартфона Huawei проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»).</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Чаще всего к нам приносят смартфоны Huawei со следующими проблемами:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули на совместимые с конкретной моделью Huawei — подбираем так, чтобы сохранить корректную работу сенсора, автояркости и датчика приближения, а в моделях с отпечатком под экраном — работу сканера.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если телефон выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства. Для моделей с фирменной быстрой зарядкой SuperCharge проверяем и корректность работы цепи зарядки.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки.</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем смартфон, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте устройство, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты. Для флагманов Pura и Mate с сложными камерами и перископическими объективами работаем аккуратно, с сохранением заводской калибровки.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления HarmonyOS или EMUI — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели Huawei, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Huawei P10, P10 Plus, P20, P20 Pro, P30, P30 Pro, P40, P40 Pro, P50, P50 Pro</li>
+                <li style="margin-bottom: 8px;">Huawei Pura 70, Pura 70 Pro, Pura 80, Pura 80 Pro</li>
+                <li style="margin-bottom: 8px;">Huawei Mate 20, Mate 20 Pro, Mate 40 Pro, Mate 50, Mate 50 Pro, Mate 70 Pro</li>
+                <li style="margin-bottom: 8px;">Huawei Mate X6 (складной смартфон)</li>
+                <li style="margin-bottom: 8px;">Huawei nova 5T, nova 8, nova 9, nova 9 Pro, nova 10, nova 10 Pro</li>
+                <li style="margin-bottom: 8px;">Huawei nova 11, nova 12, nova 12s, nova 12i, nova 13, nova 13i, nova 14, nova 14i, nova 14 Pro</li>
+                <li style="margin-bottom: 8px;">Huawei nova Y61, nova Y63, nova Y72S, nova Y73</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Если вашей модели нет в списке — не проблема: приносите устройство, мастер примет его в ремонт независимо от поколения и версии.</p>
+        </div>
+        {% elif current_direction.slug == 'remont-honor' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ HONOR В ЖЕЛЕЗНОДОРОЖНОМ</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт Honor в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Ваш Honor перестал заряжаться, экран покрылся трещинами, камера даёт размытые снимки или телефон зависает на логотипе? В сервисном центре IT‑150 в Железнодорожном мы профессионально ремонтируем смартфоны Honor — с учётом особенностей каждой линейки и требований производителя.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы работаем в Балашихе, микрорайон Железнодорожный, по адресу ул. Новая, 8а (ТЦ «Корона»). В ремонте — как бюджетные линейки и серии X, так и топовые модели Honor 200, 400 и флагманы Magic. Знаем типичные слабые места моделей и правильные сервисные процедуры: диагностику проводим на профессиональном оборудовании, чтобы точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Учитываем и специфику бренда, о которой часто спрашивают владельцы:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Honor и Huawei — теперь разные бренды.</strong> С 2020 года Honor работает независимо от Huawei: на современных моделях установлены сервисы Google, фирменная оболочка MagicOS, а прошивки и восстановление устройств идут по своим сервисным процедурам. Мы разделяем подходы к ремонту старых моделей Honor на EMUI и новых на MagicOS — это важно для корректного результата.</li>
+                <li style="margin-bottom: 8px;"><strong>Обновления MagicOS.</strong> Решаем проблемы, возникшие после неудачного обновления: циклическая перезагрузка, зависания, ошибки прошивки — выполняем корректное восстановление ПО под конкретную модель.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с программными блокировками и восстановлением доступа:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Разблокировка смартфона</strong> при забытом пароле, графическом ключе, PIN‑коде.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> (в рамках допустимых сервисных процедур).</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с блокировкой Honor ID</strong> — подбор корректных сервисных методов под конкретную модель и версию прошивки.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для проведения любых работ по снятию блокировок обязательно требуется подтверждение права владения устройством. Мы действуем строго в рамках законодательства РФ и соблюдаем правила производителей: не выполняем процедуры, которые могут расцениваться как обход защитных механизмов или нарушение пользовательского соглашения.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> диагностика смартфона Honor проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»).</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Чаще всего к нам приносят смартфоны Honor со следующими проблемами:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули на совместимые с конкретной моделью Honor — подбираем так, чтобы сохранить корректную работу сенсора, автояркости и датчика приближения, а в моделях с отпечатком под экраном — работу сканера. Это особенно актуально для серий X и Magic, где экран занимает почти всю переднюю панель.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если телефон выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства. Для моделей с быстрой зарядкой Magic Charge дополнительно проверяем корректность работы цепи зарядки.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки.</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем смартфон, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте устройство, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты. У ряда моделей Honor встречается «отвал» основного модуля камеры — при такой неисправности восстанавливаем соединение шлейфа или меняем блок камеры целиком.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления MagicOS — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели Honor, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Honor 7X, Honor 8 Pro, Honor 8A, Honor 8C, Honor 8X</li>
+                <li style="margin-bottom: 8px;">Honor 9, Honor 9A, Honor 9S, Honor 9C, Honor 9X, Honor 9X Pro</li>
+                <li style="margin-bottom: 8px;">Honor View 10, Honor View 20, Honor 10, Honor 10 Lite, Honor Play</li>
+                <li style="margin-bottom: 8px;">Honor 20, Honor 20 Lite, Honor 20 Pro, Honor 30</li>
+                <li style="margin-bottom: 8px;">Honor 50, Honor 50 Lite, Honor 70, Honor 90, Honor 90 Lite</li>
+                <li style="margin-bottom: 8px;">Honor 200, Honor 200 Pro, Honor 400, Honor 400 Lite, Honor 400 Pro</li>
+                <li style="margin-bottom: 8px;">Honor 600, Honor 600 Lite</li>
+                <li style="margin-bottom: 8px;">Honor Magic4 Pro, Honor Magic5 Pro, Honor Magic6 Pro, Honor Magic7 Pro, Honor Magic8 Pro</li>
+                <li style="margin-bottom: 8px;">Honor X6a, Honor X6b, Honor X7, Honor X7a, Honor X7b, Honor X7c</li>
+                <li style="margin-bottom: 8px;">Honor X8, Honor X8a, Honor X8b, Honor X8c, Honor X8d</li>
+                <li style="margin-bottom: 8px;">Honor X9, Honor X9a, Honor X9b, Honor X9c, Honor X9d</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Если вашей модели нет в списке — не проблема: приносите устройство, мастер примет его в ремонт независимо от поколения и версии.</p>
+        </div>
+        {% elif current_direction.slug == 'remont-tecno' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ TECNO В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт смартфонов Tecno в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Tecno зависает на загрузке, не реагирует на зарядку, упал и разбился экран? Мастерская «IT Сервис» в Железнодорожном берётся за любые неисправности смартфонов Tecno — от бюджетных Spark Go до флагманских Camon 50 и Pova 8 Pro 5G. Не спешите разбирать телефон самостоятельно: неосторожное вскрытие без опыта часто приводит к повреждению шлейфов и платы, а итоговая стоимость восстановления вырастает в разы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Наша мастерская находится по адресу: Балашиха, мкр. Железнодорожный, ул. Новая, 8а (ТЦ «Корона»). Мы работаем со всеми линейками бренда и знаем, чем одна модель отличается от другой: у Pova — батареи огромной ёмкости, у Camon — упор на камеры, у Spark — доступная элементная база. Диагностику выполняем на профессиональном оборудовании: сначала находим реальную причину неисправности, и только потом предлагаем ремонт — без «лечения симптомов».</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Отдельно занимаемся программными проблемами и разблокировками:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Снятие забытого пароля,</strong> PIN‑кода или графического ключа.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> (строго в рамках законных сервисных процедур).</li>
+                <li style="margin-bottom: 8px;"><strong>Оживление смартфонов после неудачной прошивки и системных сбоев HiOS</strong> — подбираем рабочие методы под конкретную модель и версию прошивки.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Любые работы, связанные с блокировками, проводим только после подтверждения права владения устройством. Работаем по закону и по правилам производителей: манипуляций, которые можно расценить как обход защиты или нарушение пользовательского соглашения, не выполняем.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Диагностика бесплатна, если ремонт вы делаете у нас. Откажетесь от ремонта — стоимость диагностики составит 850 рублей. Все условия проговариваем заранее, чтобы решение было взвешенным.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Цену и сроки называем до начала работ — без сюрпризов в итоге. Ждём вас в Железнодорожном: ул. Новая, 8а (ТЦ «Корона»).</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">С какими поломками чаще всего приносят Tecno:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Трещины на экране, не отвечает сенсор.</strong> Устанавливаем дисплейные модули, совместимые с конкретной моделью: следим, чтобы сенсор, автояркость и датчик приближения работали как из коробки, а подэкранный сканер отпечатка не потерял чувствительность.</li>
+                <li style="margin-bottom: 16px;"><strong>Аккумулятор не держит заряд.</strong> Телефон гаснет в мороз или при 20–30 % заряда — меняем батарею на новую с реальной, а не «паспортной» ёмкостью. У мощных Pova заодно проверяем цепь быстрой зарядки.</li>
+                <li style="margin-bottom: 16px;"><strong>Сбоит разъём зарядки.</strong> Заряжается только под углом, теряет контакт, не видит кабель — прочищаем, перепаиваем или меняем разъём, после ремонта гоняем нагрузочные тесты.</li>
+                <li style="margin-bottom: 16px;"><strong>Смартфон побывал в воде.</strong> Полная разборка, удаление окислов, восстановление дорожек и замена пострадавших компонентов. Правило простое: чем быстрее телефон попал в сервис, тем больше шансов спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Камера, звук, микрофон.</strong> Размытые фото, пропавший звук при разговоре, эхо и посторонние шумы — меняем модули или восстанавливаем контакты. Камеры линейки Camon перепрошиваем и калибруем аккуратно, чтобы не потерять качество съёмки.</li>
+                <li style="margin-bottom: 16px;"><strong>Глюки прошивки.</strong> Зависания, вылеты приложений, вечная перезагрузка, проблемы после обновления HiOS — выполняем корректную прошивку и сброс с сохранением работоспособности.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">К нам ежедневно обращаются владельцы самых разных моделей Tecno:</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">За время работы через сервис прошли десятки моделей бренда — от простеньких Spark Go до 5G‑флагманов Pova и камерофонов Camon. Поэтому на ходовые устройства комплектующие есть в наличии, а редкие позиции быстро заказываем.</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Tecno Spark 4, Spark 5, Spark 6 Go, Spark 7, Spark 8, Spark 8C, Spark 9</li>
+                <li style="margin-bottom: 8px;">Tecno Spark 10, Spark 10 Pro, Spark 10C</li>
+                <li style="margin-bottom: 8px;">Tecno Spark 20, Spark 20C, Spark 20 Pro, Spark 20 Pro+</li>
+                <li style="margin-bottom: 8px;">Tecno Spark 30, Spark 30 Pro, Spark 40, Spark 40 Pro, Spark 40 Pro+</li>
+                <li style="margin-bottom: 8px;">Tecno Spark 50, Spark Go 1, Spark Go 2, Spark Go 3, Spark Slim</li>
+                <li style="margin-bottom: 8px;">Tecno Pova, Pova Neo 2, Pova Neo 3, Pova 3, Pova 4</li>
+                <li style="margin-bottom: 8px;">Tecno Pova 5, Pova 5 Pro, Pova 6, Pova 6 Pro 5G, Pova 6 Neo</li>
+                <li style="margin-bottom: 8px;">Tecno Pova 7 Neo, Pova 7 Pro 5G, Pova 7 Ultra, Pova 8, Pova 8 Pro 5G, Pova Curve 2 5G</li>
+                <li style="margin-bottom: 8px;">Tecno Camon 12, Camon 15, Camon 16, Camon 18, Camon 19</li>
+                <li style="margin-bottom: 8px;">Tecno Camon 20, Camon 20 Pro, Camon 30, Camon 30 Pro 5G, Camon 30 Premier 5G</li>
+                <li style="margin-bottom: 8px;">Tecno Camon 40, Camon 40 Pro, Camon 40 Pro 5G, Camon 50</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Не нашли свою модель в перечне? Всё равно приносите — мастер примет смартфон в ремонт вне зависимости от поколения и версии прошивки.</p>
+        </div>
+        {% elif current_direction.slug == 'remont-infinix' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ INFINIX В ЖЕЛЕЗНОДОРОЖНОМ (БАЛАШИХА)</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт смартфонов Infinix в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Infinix разряжается за полдня, не включается после падения, тормозит или «подглючивает» после обновления? Мастерская «IT Сервис» в Железнодорожном чинит смартфоны Infinix любых серий — от народных Hot и Smart до игровых GT и модель Note 60. Не разбирайте устройство сами: у Infinix тонкие шлейфы и хрупкие крепления, после любительского вскрытия ремонт нередко обходится дороже первоначальной поломки.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Вы найдёте нас по адресу: Балашиха, мкр. Железнодорожный, ул. Новая, 8а (ТЦ «Корона»). Разбираемся в различиях линеек бренда: Hot — бюджетные массовки с крупными батареями, Note — камеры и быстрый заряд, Smart — самые доступные модели, GT — игровые версии с продвинутым охлаждением. Диагностику проводим на профессиональном оборудовании: ищем первопричину, а не боремся с проявлениями.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Программные проблемы и разблокировки — отдельное направление нашей работы:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Сброс забытого пароля,</strong> PIN‑кода, графического ключа.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> — только законными сервисными методами.</li>
+                <li style="margin-bottom: 8px;"><strong>Возвращение «к жизни» аппаратов после неудачной перепрошивки и сбоев оболочки XOS</strong> — методику подбираем под конкретную модель и версию ПО.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Любые манипуляции с блокировками начинаем только после того, как вы подтвердите право владения устройством. Работаем в рамках закона РФ и сервисных политик производителей: обходом защиты и нарушением пользовательского соглашения не занимаемся.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Принесли аппарат на ремонт — диагностика бесплатно. Забрали без ремонта — 850 рублей. Условия озвучиваем до начала работ, так что решение остаётся за вами.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Цену и срок называем заранее — доплат «по факту» не появляется. Адрес в Железнодорожном: ул. Новая, 8а (ТЦ «Корона»).</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Типичные поломки Infinix, с которыми к нам приходят:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Экран треснул или перестал отвечать.</strong> Ставим дисплейные модули под конкретную модель: проверяем, чтобы сенсор, автояркость и датчик приближения работали штатно, а подэкранный сканер отпечатка не «тупил».</li>
+                <li style="margin-bottom: 16px;"><strong>Батарея стремительно садится.</strong> Аппарат гаснет на морозе или при 20–30 % заряда — меняем аккумулятор на новый с реальной ёмкостью. У линеек Note с быстрой зарядкой заодно тестируем цепь питания.</li>
+                <li style="margin-bottom: 16px;"><strong>Разъём зарядки работает через раз.</strong> Телефон берёт заряд только под определённым углом, не видит кабель, контакт «мигает» — чистим, перепаиваем или ставим новый разъём, потом гоняем нагрузочные тесты.</li>
+                <li style="margin-bottom: 16px;"><strong>Устройство искупалось.</strong> Полная разборка, смывка окислов, восстановление дорожек, замена пострадавших элементов. Запомните главное: счёт на спасение платы идёт на часы, а не на дни.</li>
+                <li style="margin-bottom: 16px;"><strong>Камера, динамик, микрофон барахлят.</strong> Размытые кадры, «глухой» звук в разговоре, эхо, шумы — меняем модули или восстанавливаем соединения. У камерофонов Note калибровку сохраняем, чтобы качество съёмки не просело.</li>
+                <li style="margin-bottom: 16px;"><strong>Софт сбоит.</strong> Зависания, падения приложений, вечная загрузка, капризы после обновления XOS — делаем корректную прошивку и сброс так, чтобы телефон ожил, а не «полужив».</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Модели Infinix у нас в ремонте:</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">За годы работы через мастерскую прошли десятки моделей Infinix — от ранних Hot 6 и Note 5 до свежих Hot 60 Pro+ и GT 30 Pro. На ходовые позиции запчасти держим в наличии, нестандартные быстро заказываем.</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">Infinix Hot 6, Hot 6 Pro, Hot S3, Hot 7, Hot 8, Hot 9, Hot 9 Play</li>
+                <li style="margin-bottom: 8px;">Infinix Hot 10, Hot 10 Play, Hot 11, Hot 11 Play, Hot 12, Hot 12 Play</li>
+                <li style="margin-bottom: 8px;">Infinix Hot 20, Hot 20 Play, Hot 20i, Hot 30, Hot 30i, Hot 30 Play</li>
+                <li style="margin-bottom: 8px;">Infinix Hot 40, Hot 40i, Hot 40 Pro, Hot 50, Hot 50i, Hot 50 Pro, Hot 50 Pro+</li>
+                <li style="margin-bottom: 8px;">Infinix Hot 60, Hot 60i, Hot 60 Pro, Hot 60 Pro+</li>
+                <li style="margin-bottom: 8px;">Infinix Smart 3 Plus, Smart 4, Smart 6, Smart 7, Smart 7 HD, Smart 8, Smart 8 HD, Smart 9, Smart 10</li>
+                <li style="margin-bottom: 8px;">Infinix Note 5, Note 7, Note 8, Note 10, Note 10 Pro, Note 11, Note 11 Pro, Note 11s</li>
+                <li style="margin-bottom: 8px;">Infinix Note 12, Note 12 Pro, Note 30, Note 30 Pro, Note 30i, Note 40, Note 40 Pro, Note 40 Pro+</li>
+                <li style="margin-bottom: 8px;">Infinix Note 50, Note 50x, Note 50 Pro, Note 50 Pro+, Note 60</li>
+                <li style="margin-bottom: 8px;">Infinix GT 10 Pro, GT 20 Pro, GT 30 Pro</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Вашей модели в списке нет? Это не повод расстраиваться: приносите аппарат, мастер возьмёт его в ремонт независимо от поколения и версии прошивки.</p>
+        </div>
+        {% elif current_direction.slug == 'remont-realme' %}
+        <h2 class="section-title" style="margin-bottom: 16px; text-align: center;">РЕМОНТ СМАРТФОНОВ REALME В ЖЕЛЕЗНОДОРОЖНОМ</h2>
+        <div style="background: var(--card-bg); padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><img src="/static/img/xiaomi_1.webp" alt="Ремонт Realme в Железнодорожном" style="width: 200px; height: auto; float: left; margin: 0 24px 12px 0; border-radius: 8px;">Ваш realme перестал заряжаться, экран покрылся трещинами, камера даёт размытые снимки или телефон зависает на логотипе? В сервисном центре IT‑150 в Железнодорожном мы профессионально ремонтируем смартфоны realme — с учётом особенностей каждой линейки и требований производителя.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Мы работаем в Балашихе, микрорайон Железнодорожный, по адресу ул. Новая, 8а (ТЦ «Корона»). В нашем ассортименте — как бюджетные линейки C и Note, так и производительные модели серий GT и P с флагманскими характеристиками. Типичные слабые места моделей и правильные сервисные процедуры для нас не секрет: диагностику проводим на профессиональном оборудовании, чтобы точно определить причину неисправности и устранить её, а не маскировать симптомы.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Дополнительно помогаем с программными блокировками и восстановлением доступа:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;"><strong>Разблокировка смартфона</strong> при забытом пароле, графическом ключе, PIN‑коде.</li>
+                <li style="margin-bottom: 8px;"><strong>Восстановление доступа к Google Account</strong> (в рамках допустимых сервисных процедур).</li>
+                <li style="margin-bottom: 8px;"><strong>Работа с блокировками прошивки и реанимация «окирпиченных» устройств</strong> — подбираем корректные сервисные методы под конкретную модель realme и версию оболочки realme UI.</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Для проведения любых работ по снятию блокировок обязательно требуется подтверждение права владения устройством. Мы действуем строго в рамках законодательства РФ и соблюдаем правила производителей: не выполняем процедуры, которые могут расцениваться как обход защитных механизмов или нарушение пользовательского соглашения.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;"><strong>Условия диагностики:</strong> диагностика смартфона realme проводится бесплатно, если вы соглашаетесь на ремонт в нашей мастерской. В случае отказа от ремонта стоимость диагностики составляет 850 рублей. Мы заранее озвучиваем все условия, чтобы вы могли принять взвешенное решение.</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Точную стоимость и сроки ремонта называем до начала работ — никаких скрытых доплат. Наш сервисный центр находится в Железнодорожном по адресу: ул. Новая, 8а (ТЦ «Корона»).</p>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Чаще всего к нам приносят смартфоны realme со следующими проблемами:</p>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 16px;"><strong>Разбитый или неисправный экран.</strong> Меняем дисплейные модули на совместимые с конкретной моделью realme — подбираем так, чтобы сохранить корректную работу сенсора, автояркости и датчика приближения, а в моделях с отпечатком под экраном — работу сканера.</li>
+                <li style="margin-bottom: 16px;"><strong>Быстро разряжающийся аккумулятор.</strong> Если телефон выключается на морозе или при 20–30 % заряда, ставим новый аккумулятор с проверенной ёмкостью — возвращаем штатную автономность устройства. Для моделей с быстрой зарядкой SUPERVOOC проверяем и корректность работы цепи зарядки.</li>
+                <li style="margin-bottom: 16px;"><strong>Неисправный разъём зарядки.</strong> Когда телефон заряжается только под определённым углом, не видит кабель или периодически теряет соединение, выполняем чистку, перепайку или замену разъёма — с контролем нагрузочных тестов после ремонта.</li>
+                <li style="margin-bottom: 16px;"><strong>Последствия попадания влаги.</strong> Разбираем смартфон, удаляем окислы, восстанавливаем токоведущие дорожки и заменяем повреждённые компоненты — чем раньше вы принесёте устройство, тем выше шанс спасти плату.</li>
+                <li style="margin-bottom: 16px;"><strong>Проблемы с камерой, динамиками и микрофонами.</strong> Устраняем размытие снимков, отсутствие звука в разговоре, «шумы» и эхо — меняем модули или восстанавливаем контакты.</li>
+                <li style="margin-bottom: 16px;"><strong>Программные сбои.</strong> Решаем зависания, вылеты приложений, циклическую перезагрузку и проблемы после неудачного обновления realme UI — выполняем корректную прошивку и сброс без лишних рисков.</li>
+            </ul>
+            <h3 style="font-size: 22px; margin: 32px 0 16px; color: #222; text-align: center;">Модели realme, которые мы ремонтируем</h3>
+            <ul style="line-height: 1.8; color: #555; margin-left: 24px; margin-bottom: 16px; padding-left: 16px;">
+                <li style="margin-bottom: 8px;">realme C3, realme C21, realme C25, realme C31, realme C33, realme C35, realme C51, realme C53, realme C55, realme C61, realme C67, realme C75</li>
+                <li style="margin-bottom: 8px;">realme 6, realme 7, realme 8, realme 8 Pro, realme 9, realme 9 Pro</li>
+                <li style="margin-bottom: 8px;">realme 10, realme 11, realme 12, realme 12 Pro, realme 13, realme 13 Pro</li>
+                <li style="margin-bottom: 8px;">realme 14 5G, realme 14 Pro, realme 14 Pro+</li>
+                <li style="margin-bottom: 8px;">realme Note 50, realme Note 60, realme Note 60X</li>
+                <li style="margin-bottom: 8px;">realme Narzo 50</li>
+                <li style="margin-bottom: 8px;">realme GT Neo 2, realme GT Neo 3, realme GT6, realme GT7 Pro</li>
+                <li style="margin-bottom: 8px;">realme P3, realme P3 Ultra</li>
+            </ul>
+            <p style="line-height: 1.6; color: #555; margin-bottom: 16px; text-indent: 24px;">Если вашей модели нет в списке — не проблема: приносите устройство, мастер примет его в ремонт независимо от поколения и версии.</p>
+        </div>
         {% endif %}
     </section>
 
@@ -625,6 +870,18 @@
         <h2 class="section-title">ЭТАПЫ РЕМОНТА POCO</h2>
         {% elif current_direction.slug == 'remont-samsung' %}
         <h2 class="section-title">ЭТАПЫ РЕМОНТА SAMSUNG</h2>
+        {% elif current_direction.slug == 'remont-apple' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА APPLE</h2>
+        {% elif current_direction.slug == 'remont-realme' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА REALME</h2>
+        {% elif current_direction.slug == 'remont-huawei' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА HUAWEI</h2>
+        {% elif current_direction.slug == 'remont-honor' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА HONOR</h2>
+        {% elif current_direction.slug == 'remont-tecno' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА TECNO</h2>
+        {% elif current_direction.slug == 'remont-infinix' %}
+        <h2 class="section-title">ЭТАПЫ РЕМОНТА INFINIX</h2>
         {% else %}
         <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
         {% endif %}
@@ -902,6 +1159,144 @@
                 <span class="step-num">4</span>
                 <h3>Выдача и гарантия</h3>
                 <p>Вы получаете смартфон с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов. Для складных моделей подскажем правила ухода за гибким дисплеем и шарниром.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-apple' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите iPhone в сервисный центр IT‑150 (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с программными ограничениями или сервисными режимами, мастер сразу расскажет, какие варианты решения возможны.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего iPhone. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете iPhone с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-realme' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон realme в сервисный центр IT‑150 (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Google Account) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего realme. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон realme с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор с поддержкой быстрой зарядки и защищать телефон от влаги и ударов.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-huawei' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон Huawei в сервисный центр IT‑150 (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Huawei ID) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего Huawei. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. Для складного Mate X6 дополнительно проверяем работу шарнира и стыковку половин дисплея. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон Huawei с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-honor' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон Honor в сервисный центр IT‑150 (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Google Account, Honor ID) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего Honor. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон Honor с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-tecno' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приезжаете в сервисный центр «IT Сервис» (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер находит причину неисправности и озвучивает цену со сроком. Напомним: диагностика бесплатна при ремонте у нас, при отказе — 850 рублей. Если дело в блокировке или забытом аккаунте, мастер уточнит её тип (PIN, графический ключ, Google Account) и пояснит возможные варианты — при наличии подтверждения права владения.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование работ</h3>
+                <p>Рассказываем, что предстоит сделать и какие комплектующие подойдут именно вашей модели. Вы определяетесь с деталями — оригинал или качественный аналог, — а мы фиксируем цену и срок до старта работ. Доплат после согласования не будет.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Сам ремонт</h3>
+                <p>Работы выполняем в мастерской, на профильном оборудовании. После замены деталей или пайки тестируем всё подряд: дисплей, камеру, звук, зарядку, связь, датчики. Типовой ремонт обычно завершается в тот же день или на следующий.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантийные обязательства</h3>
+                <p>Возвращаете домой смартфон с гарантийным талоном на работу и установленные комплектующие. Мастер на пальцах объяснит, как батарея проживёт дольше и чем уберечь телефон от воды и падений.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-infinix' %}
+        <div class="steps">
+            <div class="step-item">
+                <span class="step-num">1</span>
+                <h3>Приём и диагностика</h3>
+                <p>Приносите смартфон Infinix в сервисный центр «IT Сервис» (Балашиха, мкр. Железнодорожный, ул. Новая, 8а, ТЦ «Корона»). Мастер проводит диагностику, определяет точную причину неисправности и озвучивает стоимость и срок ремонта. Помните: диагностика бесплатна при согласии на ремонт, при отказе — 850 рублей. Если проблема связана с блокировкой или забытым аккаунтом, мастер сразу уточнит тип блокировки (PIN, графический ключ, Google Account) и расскажет, какие варианты решения возможны — при наличии подтверждения права владения устройством.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">2</span>
+                <h3>Согласование ремонта</h3>
+                <p>Мы подробно рассказываем, какие работы нужны и какие комплектующие подойдут для вашего Infinix. Вы выбираете вариант (оригинальные или качественные аналоги), а мы фиксируем стоимость и срок до начала ремонта — без последующих доплат.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">3</span>
+                <h3>Выполнение работ</h3>
+                <p>Ремонт проводится в мастерской на профессиональном оборудовании. После замены деталей или пайки обязательно проверяем все функции устройства: экран, камеру, звук, зарядку, связь и датчики. В большинстве случаев работы выполняются в течение дня либо выдаются на следующий день.</p>
+            </div>
+            <div class="step-item">
+                <span class="step-num">4</span>
+                <h3>Выдача и гарантия</h3>
+                <p>Вы получаете смартфон Infinix с гарантийным талоном на работы и установленные комплектующие. Мастер даёт персональные рекомендации, как продлить срок службы устройства — например, как правильно заряжать аккумулятор и защищать телефон от влаги и ударов.</p>
             </div>
         </div>
         {% else %}
@@ -1244,6 +1639,169 @@
                 <h3>Можно ли отремонтировать Samsung после попадания воды?</h3>
                 <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
             </div>
+        </div>
+        {% elif current_direction.slug == 'remont-apple' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт iPhone в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей iPhone обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для iPhone?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов Apple: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать iPhone после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-realme' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона realme в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Бюджетные линейки C и Note ремонтируются дешевле, чем производительные серии GT и P. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей realme обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для realme?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов realme: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать realme после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-huawei' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона Huawei в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Линейки nova и Y ремонтируются дешевле, чем флагманские серии Pura, Mate и складной Mate X6. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей Huawei обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для Huawei?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов Huawei: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать Huawei после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-honor' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона Honor в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Бюджетные линейки и серии X ремонтируются дешевле, чем топовые модели Honor 200/400 и флагманы Magic. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей Honor обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для Honor?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов Honor: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать Honor после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-tecno' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько обойдётся ремонт Tecno в Железнодорожном?</h3>
+                <p>Всё решают характер поломки и модель. Простые Spark и Spark Go чинятся дешевле, чем Camon Pro/Premier и 5G‑версии Pova. Экран или батарея — заметно доступнее по цене, чем пайка платы или спасение утопленника. Финальную цифру называем после диагностики, до начала работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Как быстро получится починить?</h3>
+                <p>Замена экрана, батареи, разъёма зарядки — как правило, день в день или выдача на следующий. Комплектующие на ходовые модели Tecno обычно лежат на складе. Дольше ждут владельцы устройств с неисправностью платы, последствиями воды, редкими запчастями и блокировками. Точный срок фиксируем на согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию?</h3>
+                <p>Обязательно. Гарантия распространяется на работы и установленные детали, срок прописывается в квитанции. Повторится поломка по нашей вине в гарантийный период — устраним бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Что за запчасти ставите на Tecno?</h3>
+                <p>Только то, что подходит конкретной модели: оригинальные комплектующие и проверенные аналоги с адекватными характеристиками. Перед ремонтом выкладываем варианты «на стол», чтобы решение принимали вы.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Не потеряю ли я свои данные?</h3>
+                <p>Замена экрана, батареи или разъёма зарядки на содержимое памяти не влияет. Риски появляются при перепрошивке и ремонте платы — поэтому резервную копию лучше сделать заранее. Мастер объяснит, как сохранить данные быстро и без потерь.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Стоит ли чинить Tecno после утопления?</h3>
+                <p>Стоит, если действовать оперативно. Первые часы решают: чем быстрее телефон выключен и доставлен в сервис, тем меньше коррозии успеет «съесть» плату. Не подключайте намокший смартфон к зарядке и не грейте феном — так вы только ускорите окисление. Мы полностью разберём устройство, вычистим плату и восстановим работоспособность.</p>
+            </div>
+        </div>
+        {% elif current_direction.slug == 'remont-infinix' %}
+        <div class="faq">
+            <div class="faq-item">
+                <h3>Сколько стоит ремонт смартфона Infinix в Железнодорожном?</h3>
+                <p>Стоимость зависит от характера неисправности и модели устройства. Бюджетные модели серий Hot и Smart ремонтируются дешевле, чем игровые GT и камеры Note. Замена экрана или аккумулятора обойдётся дешевле, чем ремонт платы или восстановление после влаги. Точную сумму назовём после диагностики — до начала любых работ.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сколько времени займёт ремонт?</h3>
+                <p>В большинстве случаев типовые работы (замена экрана, аккумулятора, разъёма зарядки) выполняем в течение дня, либо отдаём устройство на следующий день — при наличии нужной запчасти. Запчасти для популярных моделей Infinix обычно есть в наличии. Сложные случаи — ремонт платы, восстановление после воды, редкие комплектующие, а также процедуры, связанные с разблокировкой, — могут потребовать больше времени. Сроки фиксируем при согласовании.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Даёте ли гарантию на ремонт?</h3>
+                <p>Да. На все работы и установленные детали предоставляем гарантию — её срок указываем в квитанции. Если проблема повторится по нашей вине в течение гарантийного периода, устраним её бесплатно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие запчасти вы используете для Infinix?</h3>
+                <p>Используем комплектующие, подходящие именно для смартфонов Infinix: оригинальные детали и качественные аналоги с проверенными характеристиками. Перед ремонтом подробно рассказываем о вариантах, чтобы вы могли осознанно выбрать.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Сохранятся ли мои данные при ремонте?</h3>
+                <p>При замене экрана, аккумулятора или разъёма зарядки данные не затрагиваются. При прошивке или ремонте платы есть риск потери информации — поэтому рекомендуем заранее сделать резервную копию. Мастер подскажет, как это сделать быстро и безопасно.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Можно ли отремонтировать Infinix после попадания воды?</h3>
+                <p>Да, но успех зависит от скорости обращения. Чем раньше устройство будет отключено и доставлено в сервис, тем меньше повреждений нанесёт коррозия. Не заряжайте намокший телефон и не сушите его феном — это ускоряет окисление контактов. Мы аккуратно разбираем устройство, чистим плату и восстанавливаем работоспособность.</p>
+            </div>
+        </div>
         </div>
         {% else %}
         <div class="faq">
