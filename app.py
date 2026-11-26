@@ -57,6 +57,7 @@ BREADCRUMB_MAP = {
     '/directions/diagnostika-smartfonov': 'Диагностика смартфонов',
     '/directions/diagnostika-monitorov-i-televizorov': 'Диагностика мониторов и телевизоров',
     '/directions/diagnostika-naushnikov-i-garitur': 'Диагностика наушников и гарнитур',
+    '/directions/diagnostika-monoblokov': 'Диагностика моноблоков',
     '/services/remont-smartfonov': 'Ремонт смартфонов',
     '/services/remont-xiaomi': 'Ремонт Xiaomi',
     '/services/remont-redmi': 'Ремонт Redmi',
@@ -225,6 +226,17 @@ def remont_statsionarnyh_kompyuterov_page():
     page_data["tagline"] = "Профессиональный ремонт стационарных компьютеров в мкр. Железнодорожный. Замена комплектующих, пайка материнских плат, восстановление после залития."
     page_data["current_breadcrumb"] = "Ремонт стационарных компьютеров"
     return render_template("remont_systemnyh_blokov.html", **page_data)
+
+
+@app.route("/services/remont-monoblokov")
+def remont_monoblokov_page():
+    """Страница ремонта моноблоков"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Ремонт моноблоков в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональный ремонт моноблоков в мкр. Железнодорожный. Замена комплектующих, пайка материнских плат, восстановление после залития."
+    page_data["current_breadcrumb"] = "Ремонт моноблоков"
+    return render_template("remont_monoblokov.html", **page_data)
 
 
 @app.route("/services/remont-smartfonov-detail")
