@@ -70,7 +70,9 @@ BREADCRUMB_MAP = {
     '/services/remont-tecno': 'Ремонт Tecno',
     '/services/remont-infinix': 'Ремонт Infinix',
     '/services/remont-monoblokov': 'Ремонт моноблоков',
+    '/services/remont-monoblokov-zheleznodorozhny': 'Ремонт моноблоков в Железнодорожном',
     '/services/remont-televizorov': 'Ремонт телевизоров',
+    '/services/remont-noutbukov': 'Ремонт ноутбуков',
     '/services/remont-noutbukov': 'Ремонт ноутбуков',
     '/services/remont-systemnyh-blokov': 'Ремонт системных блоков',
     '/services/remont-statsionarnyh-kompyuterov': 'Ремонт стационарных компьютеров',
@@ -206,6 +208,28 @@ def unlock_smartphones_page():
     return render_template("unlock_smartphones.html", **page_data)
 
 
+@app.route("/services/remont-televizorov")
+def remont_televizorov_page():
+    """Страница ремонта телевизоров"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Ремонт телевизоров в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональный ремонт телевизоров в мкр. Железнодорожный. Замена матриц, подсветки, блоков питания, восстановление после залития."
+    page_data["current_breadcrumb"] = "Ремонт телевизоров"
+    return render_template("remont_televizorov.html", **page_data)
+
+
+@app.route("/services/remont-noutbukov")
+def remont_noutbukov_page():
+    """Страница ремонта ноутбуков"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Ремонт ноутбуков в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональный ремонт ноутбуков в мкр. Железнодорожный. Замена матриц, клавиатур, аккумуляторов, пайка материнских плат."
+    page_data["current_breadcrumb"] = "Ремонт ноутбуков"
+    return render_template("remont_noutbukov.html", **page_data)
+
+
 @app.route("/services/diagnostika-systemnyh-blokov")
 def diagnostika_systemnyh_blokov_page():
     """Страница диагностики системных блоков"""
@@ -237,6 +261,17 @@ def remont_monoblokov_page():
     page_data["tagline"] = "Профессиональный ремонт моноблоков в мкр. Железнодорожный. Замена комплектующих, пайка материнских плат, восстановление после залития."
     page_data["current_breadcrumb"] = "Ремонт моноблоков"
     return render_template("remont_monoblokov.html", **page_data)
+
+
+@app.route("/services/remont-monoblokov-zheleznodorozhny")
+def remont_monoblokov_zheleznodorozhny_page():
+    """Страница ремонта моноблоков в Железнодорожном"""
+    site_info = get_site_info()
+    page_data = site_info.copy()
+    page_data["title"] = "Ремонт моноблоков в Железнодорожном — IT Сервис"
+    page_data["tagline"] = "Профессиональный ремонт моноблоков в мкр. Железнодорожный. Замена комплектующих, пайка материнских плат, восстановление после залития."
+    page_data["current_breadcrumb"] = "Ремонт моноблоков в Железнодорожном"
+    return render_template("remont_monoblokov_zheleznodorozhny.html", **page_data)
 
 
 @app.route("/services/remont-smartfonov-detail")
